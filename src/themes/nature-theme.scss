@@ -1,0 +1,9 @@
+$zerofee-app-nature-primary: mat-palette($mat-brown, 700, 300, 900);
+$zerofee-app-nature-accent: mat-palette($mat-deep-purple, 300);
+$zerofee-app-nature-warn: mat-palette($mat-red, 600);
+
+$zerofee-app-nature-theme: mat-light-theme(
+  $zerofee-app-nature-primary,
+  $zerofee-app-nature-accent,
+  $zerofee-app-nature-warn
+);

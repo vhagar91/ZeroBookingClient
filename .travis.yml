@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+  - "9"
+sudo: required
+dist: trusty
+addons:
+  chrome: stable
+cache:
+  directories:
+  - $HOME/.npm
+install:
+  - npm i -g npm@6.0.1
+  - npm ci
+script:
+  # run build script specified in package.json
+  - npm run ci
+  # call script for deploying of produced artifacts
+  - bash ./.travis-deploy.sh
