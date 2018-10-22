@@ -1,5 +1,6 @@
 {
   "zerofee-app.title": "Angular NgRx Material Štartér",
+  "zerofee-app.title.admin": "Admin Console",
   "zerofee-app.title.short": "Angular Štartér",
   "zerofee-app.header.github": "Github Repotitár Projektu",
   "zerofee-app.footer.changelog": "Zobraziť list zmien",

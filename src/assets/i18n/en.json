@@ -1,5 +1,6 @@
 {
   "zerofee-app.title": "Angular NgRx Material Starter",
+  "zerofee-app.title.admin": "Admin Console",
   "zerofee-app.title.short": "Angular Starter",
   "zerofee-app.header.github": "Project Github Repository",
   "zerofee-app.footer.changelog": "Show changelog",

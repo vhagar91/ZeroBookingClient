@@ -2,4 +2,8 @@ $zerofee-app-primary: mat-palette($mat-indigo, 800, 300, 900);
 $zerofee-app-accent: mat-palette($mat-light-blue);
 $zerofee-app-warn: mat-palette($mat-pink, 600);
 
-$zerofee-app-theme: mat-light-theme($zerofee-app-primary, $zerofee-app-accent, $zerofee-app-warn);
+$zerofee-app-theme: mat-light-theme(
+  $zerofee-app-primary,
+  $zerofee-app-accent,
+  $zerofee-app-warn
+);

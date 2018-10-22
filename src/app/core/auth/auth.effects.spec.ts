@@ -51,7 +51,14 @@ describe('AuthEffects', () => {
 
   it('should call setItem on LocalStorageService for login action', () => {
     const loginState: AuthState = {
-      isAuthenticated: true
+      isAuthenticated: true,
+      user: {
+        userId: '',
+        userName: '',
+        userEmail: ''
+      },
+      refresh: '',
+      token: ''
     };
 
     authEffect.login.subscribe(() => {
@@ -64,7 +71,14 @@ describe('AuthEffects', () => {
 
   it('should call setItem on LocalStorageService for logout action and navigate to about', () => {
     const logoutState: AuthState = {
-      isAuthenticated: false
+      isAuthenticated: false,
+      user: {
+        userId: '',
+        userName: '',
+        userEmail: ''
+      },
+      refresh: '',
+      token: ''
     };
 
     authEffect.logout.subscribe(() => {

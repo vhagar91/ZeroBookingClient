@@ -38,13 +38,15 @@ describe('BigInputActionComponent', () => {
     }));
 
   it('should be created', () => {
-    const template = '<zerofee-app-big-input-action></zerofee-app-big-input-action>';
+    const template =
+      '<zerofee-app-big-input-action></zerofee-app-big-input-action>';
     fixture = createHostComponent(template);
     expect(component).toBeTruthy();
   });
 
   it('should initially not be disabled and show no icon or label', () => {
-    const template = '<zerofee-app-big-input-action></zerofee-app-big-input-action>';
+    const template =
+      '<zerofee-app-big-input-action></zerofee-app-big-input-action>';
     fixture = createHostComponent(template);
     expect(getButton().nativeElement.disabled).toBeFalsy();
     expect(getIcon()).toBeNull();

@@ -2,7 +2,14 @@ import { AuthState } from './auth.models';
 import { AuthActions, AuthActionTypes } from './auth.actions';
 
 export const initialState: AuthState = {
-  isAuthenticated: false
+  isAuthenticated: false,
+  user: {
+    userId: '',
+    userName: '',
+    userEmail: ''
+  },
+  refresh: '',
+  token: ''
 };
 
 export function authReducer(

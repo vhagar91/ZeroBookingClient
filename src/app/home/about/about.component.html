@@ -1,0 +1,92 @@
+<div class="background">
+  <div class="gradient">
+    <div class="container">
+      <h1>{{ 'zerofee-app.title' | translate }}</h1>
+      <div class="actions">
+        <a [ngClass]="routeAnimationsElements" mat-raised-button class="actions-main" color="primary" routerLink="../features">
+          {{ 'zerofee-app.menu.features' | translate }}
+        </a>
+        <a mat-raised-button class="actions-main" color="accent" routerLink="../examples" [ngClass]="routeAnimationsElements">
+          {{ 'zerofee-app.menu.examples' | translate }}
+        </a>
+        <a mat-raised-button class="actions-main" color="warn" routerLink="../settings" [ngClass]="routeAnimationsElements">
+          {{ 'zerofee-app.about.change-theme' | translate }}
+        </a>
+        <br>
+        <span [ngClass]="routeAnimationsElements">{{ 'zerofee-app.about.check-blogs' | translate }}</span>
+        <br>
+        <a mat-raised-button
+           [ngClass]="routeAnimationsElements"
+           target="_blank"
+           href="https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1">
+           <fa-icon [icon]="['fab','medium-m']"></fa-icon>
+          Material Theming
+        </a>
+        <a mat-raised-button
+           [ngClass]="routeAnimationsElements"
+           target="_blank"
+           href="https://medium.com/@tomastrajan/6-best-practices-pro-tips-for-angular-cli-better-developer-experience-7b328bc9db81">
+           <fa-icon [icon]="['fab','medium-m']"></fa-icon>
+          Angular Cli Tips
+        </a>
+        <a mat-raised-button
+           [ngClass]="routeAnimationsElements"
+           target="_blank"
+           href="https://medium.com/@tomastrajan/object-assign-vs-object-spread-in-angular-ngrx-reducers-3d62ecb4a4b0">
+           <fa-icon [icon]="['fab','medium-m']"></fa-icon>
+          Ngrx Typescript Tips
+        </a>
+        <a mat-raised-button
+           [ngClass]="routeAnimationsElements"
+           target="_blank"
+           href="https://medium.com/@tomastrajan/how-to-style-angular-application-loading-with-angular-cli-like-a-boss-cdd4f5358554">
+           <fa-icon [icon]="['fab','medium-m']"></fa-icon>
+          App Loading Style
+        </a>
+      </div>
+      <div class="get-started" [ngClass]="routeAnimationsElements">
+        <h2 data-testid='get-started'>{{ 'zerofee-app.about.get-started' | translate }}</h2>
+        <code>git clone
+          https://github.com/tomastrajan/angular-ngrx-material-starter.git
+          new-project</code><br>
+        <code>cd new-project</code><br>
+        <code>npm install</code><br>
+        <code>npm start</code>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="follow-releases" [ngClass]="routeAnimationsElements">
+    <h2>{{ 'zerofee-app.about.get-notified' | translate }}</h2>
+    <p>
+      {{ 'zerofee-app.about.get-notified.follow' | translate }} <a href="https://www.twitter.com/releasebutler" target="_blank">Release
+        Butler</a>
+      {{ 'zerofee-app.about.get-notified.description' | translate }}
+    </p>
+
+    <img [src]="releaseButler" alt="Release Butler tweet example">
+  </div>
+</div>
+<div class="container">
+  <div class="contributors" [ngClass]="routeAnimationsElements">
+    <h2>{{ 'zerofee-app.about.contributors' | translate }}</h2>
+    <p>{{ 'zerofee-app.about.contributors.description1' | translate }}</p>
+    <p>{{ 'zerofee-app.about.contributors.description2' | translate }}</p>
+    <p>
+      {{ 'zerofee-app.about.contributors.description3' | translate }}
+      <a href="https://github.com/tomastrajan/angular-ngrx-material-starter/issues" target="_blank">{{'zerofee-app.about.contributors.issues'
+        | translate}}</a>
+      {{ 'zerofee-app.about.contributors.description4' | translate }}
+      <a href="https://github.com/tomastrajan/angular-ngrx-material-starter/blob/master/CONTRIBUTING.md" target="_blank">{{'zerofee-app.about.contributors.guide'
+        | translate}}</a>
+      ...
+    </p>
+
+    <div class="contributors-wrapper">
+
+
+
+    </div>
+  </div>
+</div>

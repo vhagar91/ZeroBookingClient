@@ -14,12 +14,10 @@ describe('App', () => {
     );
   });
 
-  it('should have "About", "Features", "Examples" menus', () => {
+  it('should have "Features", menus', () => {
     cy.get('mat-toolbar button.nav-button').should(navItems => {
-      expect(navItems).to.have.length(3);
-      expect(navItems.eq(0)).to.contain('About');
-      expect(navItems.eq(1)).to.contain('Features');
-      expect(navItems.eq(2)).to.contain('Examples');
+      expect(navItems).to.have.length(1);
+      expect(navItems.eq(0)).to.contain('Features');
     });
   });
 });

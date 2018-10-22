@@ -9,9 +9,15 @@ describe('AuthGuardService', () => {
   let authGuardService: AuthGuardService;
   let store: MockStore<AppState>;
   let state: AppState;
-
   const authState: AuthState = {
-    isAuthenticated: true
+    isAuthenticated: true,
+    user: {
+      userId: '',
+      userName: '',
+      userEmail: ''
+    },
+    refresh: '',
+    token: ''
   };
 
   beforeEach(() => {

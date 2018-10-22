@@ -16,23 +16,13 @@
 @import 'styles-reset.scss-theme';
 @import 'app/app.component.scss-theme';
 @import 'app/shared/big-input/big-input.component.scss-theme';
-@import 'app/static/about/about.component.scss-theme';
-@import 'app/examples/todos/components/todos-container.component.scss-theme';
-@import 'app/examples/stock-market/components/stock-market-container.component.scss-theme';
-@import 'app/examples/theming/parent/parent.component.scss-theme';
-@import 'app/examples/theming/child/child.component.scss-theme';
-@import 'app/examples/examples/examples.component.scss-theme';
+@import 'app/home/about/about.component.scss-theme';
 
 @mixin custom-components-theme($theme) {
   @include zerofee-app-styles-reset-theme($theme);
   @include zerofee-app-app-component-theme($theme);
   @include zerofee-app-about-component-theme($theme);
   @include zerofee-app-big-input-component-theme($theme);
-  @include zerofee-app-todos-container-component-theme($theme);
-  @include zerofee-app-stock-market-container-component-theme($theme);
-  @include zerofee-app-parent-component-theme($theme);
-  @include zerofee-app-child-component-theme($theme);
-  @include zerofee-app-examples-component-theme($theme);
 }
 
 .default-theme {
@@ -53,4 +43,8 @@
 .nature-theme {
   @include angular-material-theme($zerofee-app-nature-theme);
   @include custom-components-theme($zerofee-app-nature-theme);
+}
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
 }

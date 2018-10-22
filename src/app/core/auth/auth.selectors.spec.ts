@@ -15,7 +15,14 @@ describe('Auth Selectors', () => {
 function createAuthState() {
   return {
     auth: {
-      isAuthenticated: false
+      isAuthenticated: false,
+      user: {
+        userId: '',
+        userName: '',
+        userEmail: ''
+      },
+      refresh: '',
+      token: ''
     },
     router: {} as any
   };

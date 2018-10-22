@@ -1,31 +1,34 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
-import { SettingsContainerComponent } from './settings';
+import { MainComponent } from '@app/home/main/main.component';
+import { routes as MainRoutes } from '@app/home';
+import { routes as AdminRoutes } from '@app/admin';
+import { AdminComponent } from '@app/admin/admin/admin.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'about',
+    redirectTo: 'home/about',
     pathMatch: 'full'
   },
   {
-    path: 'settings',
-    component: SettingsContainerComponent,
-    data: { title: 'zerofee-app.menu.settings' }
+    path: 'home',
+    component: MainComponent,
+    children: MainRoutes
   },
   {
-    path: 'examples',
-    loadChildren: 'app/examples/examples.module#ExamplesModule'
+    path: 'admin',
+    component: AdminComponent,
+    children: AdminRoutes,
+    data: { title: 'zerofee-app.title.admin' }
   },
   {
     path: '**',
-    redirectTo: 'about'
+    redirectTo: 'home'
   }
 ];
 
 @NgModule({
-  // useHash supports github.io demo page, remove in your app
   imports: [
     RouterModule.forRoot(routes, {
       useHash: false,
