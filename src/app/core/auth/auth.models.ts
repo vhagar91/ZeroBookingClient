@@ -1,12 +1,10 @@
-export interface AuthState {
-  isAuthenticated: boolean;
-  user: UserState;
-  refresh: string;
-  token: string;
-}
+import { User } from '@app/model/user';
 
-export interface UserState {
-  userId: string;
-  userName: string;
-  userEmail: string;
+export interface AuthState {
+  // is a user authenticated?
+  isAuthenticated: boolean;
+  // if authenticated, there should be a user object
+  user: User | null;
+  // error message
+  errorMessage: string | null;
 }

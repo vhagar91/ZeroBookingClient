@@ -22,6 +22,8 @@ import {
   RouterStateSerializer
 } from '@ngrx/router-store';
 import { CustomSerializer } from './router/custom-serializer';
+import { AuthService } from '@app/core/auth/auth.service';
+import { Error } from 'tslint/lib/error';
 
 @NgModule({
   imports: [
@@ -55,6 +57,7 @@ import { CustomSerializer } from './router/custom-serializer';
     AnimationsService,
     httpInterceptorProviders,
     TitleService,
+    AuthService,
     { provide: ErrorHandler, useClass: AppErrorHandler },
     { provide: RouterStateSerializer, useClass: CustomSerializer }
   ],

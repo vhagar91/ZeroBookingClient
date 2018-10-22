@@ -4,6 +4,8 @@ import { Store, StoreModule } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@testing/utils';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthState } from './auth.models';
+import { AuthService } from '@app/core/auth/auth.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AuthGuardService', () => {
   let authGuardService: AuthGuardService;
@@ -11,19 +13,19 @@ describe('AuthGuardService', () => {
   let state: AppState;
   const authState: AuthState = {
     isAuthenticated: true,
-    user: {
-      userId: '',
-      userName: '',
-      userEmail: ''
-    },
-    refresh: '',
-    token: ''
+    user: null,
+    errorMessage: null
   };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [StoreModule.forRoot({})],
-      providers: [AuthGuardService, provideMockStore()]
+      providers: [
+        AuthService,
+        HttpClientTestingModule,
+        AuthGuardService,
+        provideMockStore()
+      ]
     });
     authGuardService = TestBed.get(AuthGuardService);
     store = TestBed.get(Store);

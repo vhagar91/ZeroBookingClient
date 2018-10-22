@@ -16,13 +16,8 @@ function createAuthState() {
   return {
     auth: {
       isAuthenticated: false,
-      user: {
-        userId: '',
-        userName: '',
-        userEmail: ''
-      },
-      refresh: '',
-      token: ''
+      user: null,
+      errorMessage: null
     },
     router: {} as any
   };

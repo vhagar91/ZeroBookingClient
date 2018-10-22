@@ -1,12 +1,19 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { LocalStorageService } from '@app/core';
+import { AppState, LocalStorageService } from '@app/core';
 import { EffectsMetadata, getEffectsMetadata } from '@ngrx/effects';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { Action } from '@ngrx/store';
+import { Action, Store, StoreModule } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AuthEffects, AUTH_KEY } from './auth.effects';
 import { AuthState } from './auth.models';
+import { AuthService } from '@app/core/auth/auth.service';
+import {
+  HttpClientTestingModule,
+  HttpTestingController
+} from '@angular/common/http/testing';
+import { HttpClient } from '@angular/common/http';
+import { MockStore } from '@testing/utils';
 
 describe('AuthEffects', () => {
   const actions$: Observable<Action> = null;
@@ -14,11 +21,16 @@ describe('AuthEffects', () => {
   let metadata: EffectsMetadata<AuthEffects>;
   let localStorageService: any;
   let router: Router;
+  let httpClient: HttpClient;
+  let httpTestingController: HttpTestingController;
+  let store: MockStore<AppState>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [StoreModule.forRoot({}), HttpClientTestingModule],
       providers: [
         AuthEffects,
+        AuthService,
         provideMockActions(() => actions$),
         {
           provide: LocalStorageService,
@@ -33,15 +45,19 @@ describe('AuthEffects', () => {
     localStorageService = TestBed.get(LocalStorageService);
     authEffect = TestBed.get(AuthEffects);
     router = TestBed.get(Router);
+    // Inject the http service and test controller for each test
+    httpClient = TestBed.get(HttpClient);
+    httpTestingController = TestBed.get(HttpTestingController);
+    store = TestBed.get(Store);
   });
 
   it('should be created', () => {
     expect(authEffect).toBeTruthy();
   });
 
-  it('login should not dispatch any action', () => {
+  it('login should dispatch any action', () => {
     metadata = getEffectsMetadata(authEffect);
-    expect(metadata.login).toEqual({ dispatch: false });
+    expect(metadata.login).toEqual({ dispatch: true });
   });
 
   it('logout should not dispatch any action', () => {
@@ -51,14 +67,9 @@ describe('AuthEffects', () => {
 
   it('should call setItem on LocalStorageService for login action', () => {
     const loginState: AuthState = {
-      isAuthenticated: true,
-      user: {
-        userId: '',
-        userName: '',
-        userEmail: ''
-      },
-      refresh: '',
-      token: ''
+      isAuthenticated: false,
+      user: null,
+      errorMessage: null
     };
 
     authEffect.login.subscribe(() => {
@@ -72,13 +83,8 @@ describe('AuthEffects', () => {
   it('should call setItem on LocalStorageService for logout action and navigate to about', () => {
     const logoutState: AuthState = {
       isAuthenticated: false,
-      user: {
-        userId: '',
-        userName: '',
-        userEmail: ''
-      },
-      refresh: '',
-      token: ''
+      user: null,
+      errorMessage: null
     };
 
     authEffect.logout.subscribe(() => {
@@ -90,3 +96,8 @@ describe('AuthEffects', () => {
     });
   });
 });
+function createState(authState: AuthState) {
+  return {
+    auth: authState
+  } as AppState;
+}

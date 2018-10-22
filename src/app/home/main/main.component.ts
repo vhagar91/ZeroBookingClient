@@ -91,7 +91,7 @@ export class MainComponent implements OnInit, OnDestroy {
   }
 
   onLoginClick() {
-    this.store.dispatch(new ActionAuthLogin('user', 'passs'));
+    this.store.dispatch(new ActionAuthLogin('user'));
   }
 
   onLogoutClick() {
