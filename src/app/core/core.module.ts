@@ -24,6 +24,8 @@ import {
 import { CustomSerializer } from './router/custom-serializer';
 import { AuthService } from '@app/core/auth/auth.service';
 import { Error } from 'tslint/lib/error';
+import { BreadcrumbComponent } from '../admin/breadcrumb/breadcrumb.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [

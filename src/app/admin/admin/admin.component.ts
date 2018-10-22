@@ -36,23 +36,9 @@ export class AdminComponent implements OnInit, OnDestroy {
   componentCssClass;
   version = env.versions.app;
   logo = require('../../../assets/logo.png');
-  navigationSideMenu = [
-    { link: './features', label: 'zerofee-app.menu.features' }
-  ];
   mainMenu = {
     Users: {
-      'anticon anticon-user': {
-        Users: './users',
-        Roles: './roles',
-        Permissions: './permission'
-      }
-    },
-    Listings: {
-      'anticon anticon-home': {
-        Listings: './listings',
-        Reservations: './reservations',
-        Bookings: './bookings'
-      }
+      Users: './users'
     }
   };
   settings: SettingsState;

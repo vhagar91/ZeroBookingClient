@@ -5,6 +5,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from '@app/shared';
 import { CoreModule } from '@app/core';
 import { AdminComponent } from '@app/admin/admin/admin.component';
+import { RouterModule } from '@angular/router';
+import { BreadcrumbComponent } from '@app/admin/breadcrumb/breadcrumb.component';
+import { MatExpansionModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -14,6 +17,8 @@ import { AdminComponent } from '@app/admin/admin/admin.component';
     // core & shared
     CoreModule,
     SharedModule,
+    MatExpansionModule,
+
     // app
     StaticRoutingModule
   ],
