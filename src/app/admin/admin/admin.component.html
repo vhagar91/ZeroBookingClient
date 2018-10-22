@@ -1,6 +1,6 @@
 <mat-sidenav-container>
 
-  <mat-sidenav mode="side" opened>
+  <mat-sidenav #sidenav [opened]="true">
     <div class="branding"><img [src]="logo" />
       <span data-testid="title">{{ 'zerofee-app.title.admin' | translate}}</span></div>
     <mat-nav-list>
@@ -11,15 +11,13 @@
     </mat-nav-list>
   </mat-sidenav>
 
-  <mat-sidenav-content>
   <div class="wrapper">
    <div class="content" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path">
       <router-outlet #o="outlet"></router-outlet>
    </div>
-  </div>
-  </mat-sidenav-content>
 
+
+
+  </div>
 
 </mat-sidenav-container>
-
-

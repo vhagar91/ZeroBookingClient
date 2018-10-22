@@ -2,15 +2,7 @@ import { Injectable } from '@angular/core';
 import { BaseUrl, login, tokenRefresh } from '@app/core/urls';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LocalStorageService } from '@app/core';
-import { Store } from '@ngrx/store';
-import { AppState } from '@app/core';
-import {
-  ActionAuthLogin,
-  ActionAuthLogout,
-  AuthActionTypes,
-  LogInSuccess
-} from './auth.actions';
+import { LocalStorageService } from '../local-storage/local-storage.service';
 import { map } from 'rxjs/operators';
 
 @Injectable()
@@ -18,8 +10,7 @@ export class AuthService {
   static BASE_URL = BaseUrl;
   constructor(
     private http: HttpClient,
-    private localStorageService: LocalStorageService,
-    private store: Store<AppState>
+    private localStorageService: LocalStorageService
   ) {}
 
   login(payload: any) {
@@ -41,9 +32,7 @@ export class AuthService {
       })
     );
   }
-  logout() {
-    this.store.dispatch(new ActionAuthLogout());
-  }
+  logout() {}
 
   getToken(): string {
     const token = this.localStorageService.getItem('Token');

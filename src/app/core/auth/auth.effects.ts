@@ -30,9 +30,9 @@ export class AuthEffects {
   login = this.actions$.pipe(
     // filter out the actions, except '[Customers Page] Get'
     ofType<ActionAuthLogin>(AuthActionTypes.LOGIN),
-    switchMap(payload =>
+    switchMap(action =>
       // call the service
-      this.authService.login(payload).pipe(
+      this.authService.login(action.payload).pipe(
         // return a Success action when everything went OK
         map(access_token => {
           return new LogInSuccess({
@@ -49,9 +49,12 @@ export class AuthEffects {
   LogInSuccess: Observable<any> = this.actions$.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
     tap(access_token => {
-      this.localStorageService.setItem('currentUser', access_token.user);
-      this.localStorageService.setItem('Token', access_token.token);
-      this.localStorageService.setItem('Refresh', access_token.refresh);
+      this.localStorageService.setItem(
+        'currentUser',
+        access_token.payload.user
+      );
+      this.localStorageService.setItem('Token', access_token.payload.token);
+      this.localStorageService.setItem('Refresh', access_token.payload.refresh);
       this.localStorageService.setItem(AUTH_KEY, { isAuthenticated: true });
       this.router.navigateByUrl('/');
     })
