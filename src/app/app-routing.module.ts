@@ -4,6 +4,7 @@ import { MainComponent } from '@app/home/main/main.component';
 import { routes as MainRoutes } from '@app/home';
 import { routes as AdminRoutes } from '@app/admin';
 import { AdminComponent } from '@app/admin/admin/admin.component';
+import { LoginComponent } from '@app/admin/login/login.component';
 
 const routes: Routes = [
   {

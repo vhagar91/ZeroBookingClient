@@ -8,6 +8,8 @@ import { AdminComponent } from '@app/admin/admin/admin.component';
 import { RouterModule } from '@angular/router';
 import { BreadcrumbComponent } from '@app/admin/breadcrumb/breadcrumb.component';
 import { MatExpansionModule } from '@angular/material';
+import { LoginComponent } from './login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [

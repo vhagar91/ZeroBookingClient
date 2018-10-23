@@ -26,6 +26,8 @@ import { AuthService } from '@app/core/auth/auth.service';
 import { Error } from 'tslint/lib/error';
 import { BreadcrumbComponent } from '../admin/breadcrumb/breadcrumb.component';
 import { RouterModule } from '@angular/router';
+import { LoaderService } from '@app/core/loader/loader.service';
+import { LoaderComponent } from '@app/core/loader/loader.component';
 
 @NgModule({
   imports: [
@@ -40,7 +42,7 @@ import { RouterModule } from '@angular/router';
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
-          name: 'Angular NgRx Material Starter'
+          name: 'Zero'
         }),
 
     // 3rd party
@@ -59,6 +61,7 @@ import { RouterModule } from '@angular/router';
     AnimationsService,
     httpInterceptorProviders,
     TitleService,
+    LoaderService,
     AuthService,
     { provide: ErrorHandler, useClass: AppErrorHandler },
     { provide: RouterStateSerializer, useClass: CustomSerializer }

@@ -13,10 +13,31 @@ export function authReducer(
 ): AuthState {
   switch (action.type) {
     case AuthActionTypes.LOGIN:
-      return { ...state, isAuthenticated: true };
-
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: {
+          id: action.payload.id,
+          name: action.payload.name,
+          token: action.payload.token,
+          email: action.payload.email,
+          refresh: action.payload.refresh
+        },
+        errorMessage: null
+      };
     case AuthActionTypes.LOGOUT:
-      return { ...state, isAuthenticated: false };
+      return {
+        ...state,
+        isAuthenticated: false,
+        user: {
+          id: null,
+          name: null,
+          token: null,
+          email: null,
+          refresh: null
+        },
+        errorMessage: null
+      };
     case AuthActionTypes.LOGIN_SUCCESS: {
       return {
         ...state,
@@ -29,6 +50,12 @@ export function authReducer(
           refresh: action.payload.refresh
         },
         errorMessage: null
+      };
+    }
+    case AuthActionTypes.LOGIN_FAILURE: {
+      return {
+        ...state,
+        errorMessage: 'Incorrect email and/or password.'
       };
     }
     default:

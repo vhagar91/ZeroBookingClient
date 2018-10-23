@@ -19,11 +19,6 @@ export const routes: Routes = [
     path: 'features',
     component: FeaturesComponent,
     data: { title: 'zerofee-app.menu.features' }
-  },
-  {
-    path: 'settings',
-    component: SettingsContainerComponent,
-    data: { title: 'zerofee-app.menu.settings' }
   }
 ];
 

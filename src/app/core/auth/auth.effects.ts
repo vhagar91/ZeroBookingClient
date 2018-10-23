@@ -10,6 +10,7 @@ import {
   ActionAuthLogin,
   ActionAuthLogout,
   AuthActionTypes,
+  LogInFailure,
   LogInSuccess
 } from './auth.actions';
 import { Observable } from 'rxjs';
@@ -26,7 +27,7 @@ export class AuthEffects {
     private authService: AuthService
   ) {}
 
-  @Effect()
+  @Effect({ dispatch: false })
   login = this.actions$.pipe(
     // filter out the actions, except '[Customers Page] Get'
     ofType<ActionAuthLogin>(AuthActionTypes.LOGIN),
@@ -34,13 +35,18 @@ export class AuthEffects {
       // call the service
       this.authService.login(action.payload).pipe(
         // return a Success action when everything went OK
-        map(access_token => {
-          return new LogInSuccess({
-            token: access_token.token.access,
-            user: access_token.user,
-            refresh: access_token.token.refresh
-          });
-        })
+        map(
+          access_token => {
+            return new LogInSuccess({
+              token: access_token.token.access,
+              user: access_token.user,
+              refresh: access_token.token.refresh
+            });
+          },
+          error => {
+            return new LogInFailure({ error: error });
+          }
+        )
       )
     )
   );
@@ -64,8 +70,13 @@ export class AuthEffects {
   logout = this.actions$.pipe(
     ofType<ActionAuthLogout>(AuthActionTypes.LOGOUT),
     tap(() => {
-      this.router.navigate(['']);
       this.localStorageService.setItem(AUTH_KEY, { isAuthenticated: false });
+      this.router.navigate(['about']);
     })
+  );
+
+  @Effect({ dispatch: false })
+  LogInFailure: Observable<any> = this.actions$.pipe(
+    ofType(AuthActionTypes.LOGIN_FAILURE)
   );
 }

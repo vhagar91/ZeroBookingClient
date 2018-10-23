@@ -1,5 +1,7 @@
 @import '../../../styles-variables';
-
+* {
+  font-size: 14px;
+}
 mat-sidenav-container {
   height: 100%;
   width: 100%;
@@ -15,7 +17,7 @@ mat-sidenav-container {
     }
 
     fa-icon {
-      font-size: 24px;
+      font-size: 20px;
     }
 
     .branding {

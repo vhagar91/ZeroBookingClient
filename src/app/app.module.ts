@@ -6,6 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AdminModule } from '@app/admin/admin.module';
 import { BreadcrumbComponent } from '@app/admin/breadcrumb/breadcrumb.component';
+import { LoaderComponent } from '@app/core/loader/loader.component';
+import {
+  MatCardModule,
+  MatChipAvatar,
+  MatInputModule
+} from '@angular/material';
+import { LoginComponent } from '@app/admin/login/login.component';
+import { CoreModule } from '@app/core';
+import { SharedModule } from '@app/shared';
 
 @NgModule({
   imports: [
@@ -15,10 +24,11 @@ import { BreadcrumbComponent } from '@app/admin/breadcrumb/breadcrumb.component'
     // features
     StaticModule,
     AdminModule,
+    SharedModule,
     // app
     AppRoutingModule
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoaderComponent, LoginComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

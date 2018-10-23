@@ -1,21 +1,27 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 
 import { TestingModule } from '@testing/utils';
 import { CoreModule } from '@app/core';
 
 import { AppComponent } from './app.component';
+import { LoaderComponent } from '@app/core/loader/loader.component';
+import { LoginComponent } from '@app/admin/login/login.component';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [CoreModule, TestingModule],
-      declarations: [AppComponent]
+      declarations: [AppComponent, LoaderComponent]
     }).compileComponents();
   }));
-
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
   it('should create the app', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   }));
 });
