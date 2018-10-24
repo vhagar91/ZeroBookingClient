@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
 import { AuthService } from '@app/core/auth/auth.service';
 import { UsersService } from '@app/admin/users/service/users.service';
 import {
+  ActionSearchFailUsers,
   ActionSearchSuccessUsers,
   ActionSearchUsers,
   UserActionTypes
@@ -35,12 +36,17 @@ export class UsersEffects {
       // call the service
       this.usersService.getUsers(action.payload.pageIndex).pipe(
         // return a Success action when everything went OK
-        map(payload => {
-          return new ActionSearchSuccessUsers({
-            users: payload.results,
-            total: payload.count
-          });
-        })
+        map(
+          payload => {
+            return new ActionSearchSuccessUsers({
+              users: payload.results,
+              total: payload.count
+            });
+          },
+          error => {
+            return new ActionSearchFailUsers({ error: error });
+          }
+        )
       )
     )
   );

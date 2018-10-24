@@ -22,6 +22,8 @@ export function usersReducer(
         page: state.page + 1,
         total: action.payload.total
       };
+    case UserActionTypes.SEARCH_FAIL:
+      return state;
     default:
       return state;
   }
