@@ -1,5 +1,5 @@
 import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
-import { ActivationEnd, NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { environment as env } from '@env/environment';
 import { TranslateService } from '@ngx-translate/core';
 import {
@@ -57,7 +57,6 @@ export class AdminComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.translate.setDefaultLang('en');
     this.subscribeToSettings();
     this.subscribeToIsAuthenticated();
     this.storageService.testLocalStorage();
@@ -92,11 +91,6 @@ export class AdminComponent implements OnInit, OnDestroy {
       .subscribe(settings => {
         this.settings = settings;
         this.setTheme(settings);
-        this.setLanguage(settings);
-        this.animationService.updateRouteAnimationType(
-          settings.pageAnimations,
-          settings.elementsAnimations
-        );
       });
   }
 
@@ -116,11 +110,5 @@ export class AdminComponent implements OnInit, OnDestroy {
       classList.remove(...toRemove);
     }
     classList.add(effectiveTheme);
-  }
-  private setLanguage(settings: SettingsState) {
-    const { language } = settings;
-    if (language) {
-      this.translate.use(language);
-    }
   }
 }
