@@ -12,7 +12,6 @@ import {
   ActionAuthLogin,
   ActionAuthLogout,
   AnimationsService,
-  TitleService,
   selectAuth,
   routeAnimations,
   AppState,
@@ -61,7 +60,6 @@ export class MainComponent implements OnInit, OnDestroy {
     public overlayContainer: OverlayContainer,
     private store: Store<AppState>,
     private router: Router,
-    private titleService: TitleService,
     private animationService: AnimationsService,
     private translate: TranslateService,
     private storageService: LocalStorageService
@@ -81,7 +79,6 @@ export class MainComponent implements OnInit, OnDestroy {
     this.translate.setDefaultLang('en');
     this.subscribeToSettings();
     this.subscribeToIsAuthenticated();
-    this.subscribeToRouterEvents();
     this.storageService.testLocalStorage();
   }
 
@@ -92,7 +89,7 @@ export class MainComponent implements OnInit, OnDestroy {
 
   onLoginClick() {
     const payload = {
-      email: 'admin@example.com',
+      email: 'admin@example.coms',
       password: 'root'
     };
     this.store.dispatch(new ActionAuthLogin(payload));
@@ -168,17 +165,5 @@ export class MainComponent implements OnInit, OnDestroy {
     if (language) {
       this.translate.use(language);
     }
-  }
-
-  private subscribeToRouterEvents() {
-    this.router.events.pipe(takeUntil(this.unsubscribe$)).subscribe(event => {
-      if (event instanceof ActivationEnd) {
-        this.titleService.setTitle(event.snapshot);
-      }
-
-      if (event instanceof NavigationEnd) {
-        MainComponent.trackPageView(event);
-      }
-    });
   }
 }

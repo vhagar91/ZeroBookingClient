@@ -6,8 +6,7 @@ import {
   AnimationsService,
   LocalStorageService,
   routeAnimations,
-  selectAuth,
-  TitleService
+  selectAuth
 } from '@app/core';
 import { Subject } from 'rxjs';
 import { OverlayContainer } from '@angular/cdk/overlay';
@@ -48,7 +47,6 @@ export class AdminComponent implements OnInit, OnDestroy {
     public overlayContainer: OverlayContainer,
     private store: Store<AppState>,
     private router: Router,
-    private titleService: TitleService,
     private animationService: AnimationsService,
     private translate: TranslateService,
     private storageService: LocalStorageService
@@ -62,7 +60,6 @@ export class AdminComponent implements OnInit, OnDestroy {
     this.translate.setDefaultLang('en');
     this.subscribeToSettings();
     this.subscribeToIsAuthenticated();
-    this.subscribeToRouterEvents();
     this.storageService.testLocalStorage();
   }
 
@@ -125,12 +122,5 @@ export class AdminComponent implements OnInit, OnDestroy {
     if (language) {
       this.translate.use(language);
     }
-  }
-  private subscribeToRouterEvents() {
-    this.router.events.pipe(takeUntil(this.unsubscribe$)).subscribe(event => {
-      if (event instanceof ActivationEnd) {
-        this.titleService.setTitle(event.snapshot);
-      }
-    });
   }
 }

@@ -57,7 +57,7 @@ describe('AuthEffects', () => {
 
   it('login should dispatch any action', () => {
     metadata = getEffectsMetadata(authEffect);
-    expect(metadata.login).toEqual({ dispatch: false });
+    expect(metadata.login).toEqual({ dispatch: true });
   });
 
   it('logout should not dispatch any action', () => {

@@ -5,6 +5,7 @@ import { routes as MainRoutes } from '@app/home';
 import { routes as AdminRoutes } from '@app/admin';
 import { AdminComponent } from '@app/admin/admin/admin.component';
 import { LoginComponent } from '@app/admin/login/login.component';
+import { AdminGuard } from '@app/admin/admin.guard';
 
 const routes: Routes = [
   {
@@ -18,8 +19,13 @@ const routes: Routes = [
     children: MainRoutes
   },
   {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
     path: 'admin',
     component: AdminComponent,
+    canActivate: [AdminGuard],
     children: AdminRoutes,
     data: { title: 'zerofee-app.title.admin' }
   },

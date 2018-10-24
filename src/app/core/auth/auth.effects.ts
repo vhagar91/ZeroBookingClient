@@ -27,7 +27,7 @@ export class AuthEffects {
     private authService: AuthService
   ) {}
 
-  @Effect({ dispatch: false })
+  @Effect()
   login = this.actions$.pipe(
     // filter out the actions, except '[Customers Page] Get'
     ofType<ActionAuthLogin>(AuthActionTypes.LOGIN),
@@ -71,7 +71,7 @@ export class AuthEffects {
     ofType<ActionAuthLogout>(AuthActionTypes.LOGOUT),
     tap(() => {
       this.localStorageService.setItem(AUTH_KEY, { isAuthenticated: false });
-      this.router.navigate(['about']);
+      this.router.navigate(['home']);
     })
   );
 

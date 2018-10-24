@@ -1,11 +1,17 @@
-Useful Commands
-npm start - starts a dev server and opens browser with running app
-npm run test - runs lint and tests
-npm run watch - runs tests in watch mode
-npm run cy:open - opens the Cypress Test Runner in interactive mode
-npm run cy:run - runs Cypress tests via the cli
-npm run prod - runs full prod build and serves prod bundle
-npm run prettier - runs prettier to format whole code base (.ts and .scss)
-npm run analyze - runs full prod build and webpack-bundle-analyzer to visualize how much code is shipped (dependencies & application)
-npm run extract	Generate all json files with the translations in assets folder
-npm run translate	Translate all keys remaining using Google Translate and using English language as the origin
+**Note**
+
+## Usage
+
+Tasks                    | Description
+-------------------------|---------------------------------------------------------------------------------------
+npm i                    | Install dependencies
+npm start                | Start the app in development mode
+npm run test             | Run unit tests with karma and jasmine
+npm run e2e              | Run end to end tests with protractor
+npm run build            | Build the app for production
+npm run build:library    | Build the library
+npm run lint             | Run the linter (tslint)
+npm run ci               | Execute linter and tests
+npm run extract          | Generate all json files with the translations in assets folder
+npm run translate        | Translate all keys remaining using Google Translate and using English language as the origin
+

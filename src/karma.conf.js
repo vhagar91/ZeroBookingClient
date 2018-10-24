@@ -38,6 +38,6 @@ module.exports = function (config) {
       }
     },
     browserNoActivityTimeout: 50000,
-    singleRun: !isWatch
+    singleRun: false
   });
 };
