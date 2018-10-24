@@ -55,7 +55,15 @@ export function authReducer(
     case AuthActionTypes.LOGIN_FAILURE: {
       return {
         ...state,
-        errorMessage: 'Incorrect email and/or password.'
+        isAuthenticated: false,
+        user: {
+          id: null,
+          name: null,
+          token: null,
+          email: null,
+          refresh: null
+        },
+        errorMessage: 'Incorrect User or Password'
       };
     }
     default:
