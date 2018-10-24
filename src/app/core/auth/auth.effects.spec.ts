@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AppState, LocalStorageService } from '@app/core';
 import { EffectsMetadata, getEffectsMetadata } from '@ngrx/effects';
 import { provideMockActions } from '@ngrx/effects/testing';
@@ -13,7 +13,8 @@ import {
   HttpTestingController
 } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
-import { MockStore } from '@testing/utils';
+import { MockStore, TestingModule } from '@testing/utils';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('AuthEffects', () => {
   const actions$: Observable<Action> = null;
@@ -27,7 +28,11 @@ describe('AuthEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [StoreModule.forRoot({}), HttpClientTestingModule],
+      imports: [
+        StoreModule.forRoot({}),
+        HttpClientTestingModule,
+        RouterTestingModule
+      ],
       providers: [
         AuthEffects,
         AuthService,

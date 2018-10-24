@@ -4,5 +4,4 @@ export class User {
   email?: string;
   token?: string;
   refresh?: string;
-  avatar?: string;
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { map, switchMap, tap } from 'rxjs/operators';
@@ -20,12 +20,14 @@ export const AUTH_KEY = 'AUTH';
 
 @Injectable()
 export class AuthEffects {
+  returnUrl: string;
   constructor(
     private actions$: Actions<Action>,
     private localStorageService: LocalStorageService,
     private router: Router,
     private authService: AuthService
-  ) {}
+  ) // private route: ActivatedRoute
+  {}
 
   @Effect()
   login = this.actions$.pipe(
@@ -59,10 +61,11 @@ export class AuthEffects {
         'currentUser',
         access_token.payload.user
       );
+      // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
       this.localStorageService.setItem('Token', access_token.payload.token);
       this.localStorageService.setItem('Refresh', access_token.payload.refresh);
       this.localStorageService.setItem(AUTH_KEY, { isAuthenticated: true });
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl(this.returnUrl);
     })
   );
 
