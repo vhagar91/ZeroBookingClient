@@ -25,6 +25,7 @@ import { AuthService } from '@app/core/auth/auth.service';
 import { ApiKey } from '@app/core/urls';
 import { AppState } from '@app/core';
 import { Store } from '@ngrx/store';
+import { error } from 'util';
 
 /** Passes HttpErrorResponse to application-wide error handler */
 @Injectable()
@@ -52,9 +53,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             default:
               return this.handleCustomError(err);
           }
-        } else {
-          const appErrorHandler = this.injector.get(ErrorHandler);
-          appErrorHandler.handleError(err);
         }
       })
     );
@@ -73,15 +71,15 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   private handle401Error(req: HttpRequest<any>, next: HttpHandler) {
     if (!this.isRefreshingToken) {
       this.isRefreshingToken = true;
-
       // Reset here so that the following requests wait until the token
       // comes back from the refreshToken call.
       this.tokenSubject.next(null);
-      return this.authService.refreshToken().pipe(
-        map((newToken: string) => {
+      return (
+        this.authService.refreshToken().subscribe(newToken => {
           if (newToken) {
-            this.tokenSubject.next(newToken);
-            return next.handle(this.addTokenToRequest(req, newToken));
+            this.tokenSubject.next(newToken.access);
+            const newRequest = this.addTokenToRequest(req, newToken.access);
+            return next.handle(newRequest).subscribe();
           }
           // If we don't get a new token, we are in trouble so logout.
           return this.authService.logout();
@@ -101,29 +99,29 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       );
     }
   }
-  private handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
+  private handleError(err: HttpErrorResponse) {
+    if (err.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error.message);
+      console.error('An error occurred:', err.error.message);
     } else {
       // If there is an exception calling 'refreshToken', bad news so logout.
       this.authService.logout();
       console.error(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+        `Backend returned code ${err.status}, ` + `body was: ${err.error}`
       );
     }
     // return an observable with a user-facing error message
     return throwError('Something bad happened; please try again later.');
   }
-  private handle400Error(error) {
+  private handle400Error(err) {
     // If we get a 400 and the error message is 'invalid_grant', the token is no longer valid so logout.
     const appErrorHandler = this.injector.get(ErrorHandler);
-    appErrorHandler.handleError(error);
+    appErrorHandler.handleError(err);
     return this.authService.logout();
   }
 
-  private handleCustomError(error) {
+  private handleCustomError(err) {
     const appErrorHandler = this.injector.get(ErrorHandler);
-    appErrorHandler.handleError(error);
+    appErrorHandler.handleError(err);
   }
 }

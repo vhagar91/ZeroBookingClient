@@ -14,13 +14,18 @@ export function usersReducer(
 ): UserListState {
   switch (action.type) {
     case UserActionTypes.SEARCH:
-      return state;
+      return {
+        ...state,
+        users: null,
+        page: null,
+        total: null
+      };
     case UserActionTypes.SEARCH_SUCCESS:
       return {
         ...state,
-        users: action.payload.users,
+        users: action.payload.results,
         page: state.page + 1,
-        total: action.payload.total
+        total: action.payload.count
       };
     case UserActionTypes.SEARCH_FAIL:
       return state;

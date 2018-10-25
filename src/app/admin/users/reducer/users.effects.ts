@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import {
   ActionAuthLogin,
   ActionAuthLogout,
@@ -10,8 +10,7 @@ import {
   LogInFailure,
   LogInSuccess
 } from './auth.actions';
-import { Observable } from 'rxjs';
-import { AuthService } from '@app/core/auth/auth.service';
+import { Observable, of } from 'rxjs';
 import { UsersService } from '@app/admin/users/service/users.service';
 import {
   ActionSearchFailUsers,
@@ -19,6 +18,7 @@ import {
   ActionSearchUsers,
   UserActionTypes
 } from '@app/admin/users/reducer/users.actions';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Injectable()
 export class UsersEffects {
@@ -28,26 +28,32 @@ export class UsersEffects {
     private router: Router,
     private usersService: UsersService
   ) {}
-
   @Effect()
   searchUsers = this.actions$.pipe(
+    // filter out the actions, except '[Customers Page] Get'
     ofType<ActionSearchUsers>(UserActionTypes.SEARCH),
+    tap(action => console.log(action)),
+    map(action => action),
     switchMap(action =>
-      // call the service
       this.usersService.getUsers(action.payload.pageIndex).pipe(
-        // return a Success action when everything went OK
-        map(
-          payload => {
-            return new ActionSearchSuccessUsers({
-              users: payload.results,
-              total: payload.count
-            });
-          },
-          error => {
-            return new ActionSearchFailUsers({ error: error });
-          }
-        )
+        map(users => new ActionSearchSuccessUsers(users)),
+        catchError(err => of(new ActionSearchFailUsers(err)))
       )
     )
+  );
+
+  @Effect({ dispatch: false })
+  SearchFailure: Observable<any> = this.actions$.pipe(
+    ofType(UserActionTypes.SEARCH_FAIL),
+    tap(error => {
+      switch (error.payload.status) {
+        case 401: {
+          const newpayload = {
+            pageIndex: 1
+          };
+          return new ActionSearchSuccessUsers(newpayload);
+        }
+      }
+    })
   );
 }

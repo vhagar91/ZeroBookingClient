@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
 import { LocalStorageService } from '../local-storage/local-storage.service';
 
@@ -13,7 +13,7 @@ import {
   LogInFailure,
   LogInSuccess
 } from './auth.actions';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AuthService } from '@app/core/auth/auth.service';
 
 export const AUTH_KEY = 'AUTH';
@@ -25,30 +25,20 @@ export class AuthEffects {
     private actions$: Actions<Action>,
     private localStorageService: LocalStorageService,
     private router: Router,
-    private authService: AuthService
-  ) // private route: ActivatedRoute
-  {}
+    private authService: AuthService,
+    private route: ActivatedRoute
+  ) {}
 
   @Effect()
   login = this.actions$.pipe(
     // filter out the actions, except '[Customers Page] Get'
     ofType<ActionAuthLogin>(AuthActionTypes.LOGIN),
-    switchMap(action =>
-      // call the service
-      this.authService.login(action.payload).pipe(
-        // return a Success action when everything went OK
-        map(
-          access_token => {
-            return new LogInSuccess({
-              token: access_token.token.access,
-              user: access_token.user,
-              refresh: access_token.token.refresh
-            });
-          },
-          error => {
-            return new LogInFailure({ error: error });
-          }
-        )
+    tap(action => console.log(action)),
+    map(action => action),
+    switchMap(campaign =>
+      this.authService.login(campaign.payload).pipe(
+        map(credentials => new LogInSuccess(credentials)),
+        catchError(err => of(new LogInFailure(err)))
       )
     )
   );
@@ -61,9 +51,15 @@ export class AuthEffects {
         'currentUser',
         access_token.payload.user
       );
-      // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-      this.localStorageService.setItem('Token', access_token.payload.token);
-      this.localStorageService.setItem('Refresh', access_token.payload.refresh);
+      this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+      this.localStorageService.setItem(
+        'Token',
+        access_token.payload.token.access
+      );
+      this.localStorageService.setItem(
+        'Refresh',
+        access_token.payload.token.refresh
+      );
       this.localStorageService.setItem(AUTH_KEY, { isAuthenticated: true });
       this.router.navigateByUrl(this.returnUrl);
     })

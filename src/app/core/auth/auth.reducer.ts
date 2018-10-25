@@ -43,11 +43,11 @@ export function authReducer(
         ...state,
         isAuthenticated: true,
         user: {
-          id: action.payload.id,
-          name: action.payload.name,
-          token: action.payload.token,
-          email: action.payload.email,
-          refresh: action.payload.refresh
+          id: action.payload.user.id,
+          name: action.payload.user.name,
+          token: action.payload.token.access,
+          email: action.payload.user.email,
+          refresh: action.payload.token.success
         },
         errorMessage: null
       };

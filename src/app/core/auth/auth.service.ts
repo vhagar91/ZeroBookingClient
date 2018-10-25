@@ -20,12 +20,13 @@ export class AuthService {
     });
   }
   refreshToken(): Observable<any> {
-    const token = localStorage.getItem('Refresh');
-    const Url = `${AuthService.BASE_URL + tokenRefresh + token}`;
+    const token = this.localStorageService.getItem('Refresh');
+    const Url = `${AuthService.BASE_URL + tokenRefresh}`;
+
     return this.http.post<any>(Url, { refresh: token }).pipe(
       map(newToken => {
         if (newToken) {
-          localStorage.setItem('Token', newToken);
+          this.localStorageService.setItem('Token', newToken.access);
         }
 
         return <any>newToken;

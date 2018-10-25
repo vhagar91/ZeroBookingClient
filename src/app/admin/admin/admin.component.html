@@ -28,6 +28,10 @@
   <mat-sidenav-content>
     <div class="toolbar d-none d-sm-inline" [style.position]="isHeaderSticky ? 'fixed' : 'inherit'" [class.mat-elevation-z4]="isHeaderSticky">
       <mat-toolbar color="primary">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <fa-icon icon="bars"></fa-icon>
+
+        </button>
         <div style="margin-left: auto">
 
         <button mat-icon-button routerLink="./settings" class="d-none d-sm-inline">

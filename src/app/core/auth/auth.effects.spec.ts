@@ -40,10 +40,6 @@ describe('AuthEffects', () => {
         {
           provide: LocalStorageService,
           useValue: jasmine.createSpyObj('LocalStorageService', ['setItem'])
-        },
-        {
-          provide: Router,
-          useValue: jasmine.createSpyObj('Router', ['navigateByUrl'])
         }
       ]
     });

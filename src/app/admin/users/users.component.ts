@@ -62,11 +62,16 @@ export class UsersComponent implements OnInit, OnDestroy {
         select(getAdminState),
         takeUntil(this.unsubscribe$)
       )
-      .subscribe(admin => {
-        this.displayUsers = admin.users.users;
-        this.resultsLength = admin.users.total;
-        this.isLoadingResults = false;
-      });
+      .subscribe(
+        admin => {
+          this.displayUsers = admin.users.users;
+          this.resultsLength = admin.users.total;
+          this.isLoadingResults = false;
+        },
+        error1 => {
+          this.isLoadingResults = false;
+        }
+      );
     this.searchUsers();
   }
   searchUsers(reset: boolean = false): void {
