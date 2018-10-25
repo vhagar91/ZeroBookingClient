@@ -34,6 +34,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   @HostBinding('class')
   componentCssClass;
   version = env.versions.app;
+  avatar = '';
   logo = require('../../../assets/logo.png');
   mainMenu = {
     Users: {
@@ -72,7 +73,11 @@ export class AdminComponent implements OnInit, OnDestroy {
         select(selectAuth),
         takeUntil(this.unsubscribe$)
       )
-      .subscribe(auth => (this.isAuthenticated = auth.isAuthenticated));
+      .subscribe(auth => {
+        console.log(auth);
+        this.isAuthenticated = auth.isAuthenticated;
+        this.avatar = auth.user.avatar;
+      });
   }
 
   private subscribeToSettings() {

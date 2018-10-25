@@ -21,7 +21,8 @@ export function authReducer(
           name: action.payload.name,
           token: action.payload.token,
           email: action.payload.email,
-          refresh: action.payload.refresh
+          refresh: action.payload.refresh,
+          avatar: action.payload.avatar
         },
         errorMessage: null
       };
@@ -34,7 +35,8 @@ export function authReducer(
           name: null,
           token: null,
           email: null,
-          refresh: null
+          refresh: null,
+          avatar: null
         },
         errorMessage: null
       };
@@ -47,7 +49,8 @@ export function authReducer(
           name: action.payload.user.name,
           token: action.payload.token.access,
           email: action.payload.user.email,
-          refresh: action.payload.token.success
+          refresh: action.payload.token.success,
+          avatar: action.payload.user.avatar
         },
         errorMessage: null
       };
@@ -61,7 +64,8 @@ export function authReducer(
           name: null,
           token: null,
           email: null,
-          refresh: null
+          refresh: null,
+          avatar: null
         },
         errorMessage: 'Incorrect User or Password'
       };

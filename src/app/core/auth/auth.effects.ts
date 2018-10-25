@@ -47,10 +47,6 @@ export class AuthEffects {
   LogInSuccess: Observable<any> = this.actions$.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
     tap(access_token => {
-      this.localStorageService.setItem(
-        'currentUser',
-        access_token.payload.user
-      );
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
       this.localStorageService.setItem(
         'Token',
@@ -60,7 +56,14 @@ export class AuthEffects {
         'Refresh',
         access_token.payload.token.refresh
       );
-      this.localStorageService.setItem(AUTH_KEY, { isAuthenticated: true });
+      this.localStorageService.setItem(AUTH_KEY, {
+        isAuthenticated: true,
+        user: {
+          ...access_token.payload.user,
+          access: access_token.payload.token.access,
+          refresh: access_token.payload.token.refresh
+        }
+      });
       this.router.navigateByUrl(this.returnUrl);
     })
   );

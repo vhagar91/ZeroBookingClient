@@ -32,8 +32,16 @@
           <fa-icon icon="bars"></fa-icon>
 
         </button>
-        <div style="margin-left: auto">
 
+        <div style="margin-left: auto; display: flex">
+          <button mat-button [matMenuTriggerFor]="menu">
+            <ngx-avatar  name="Jane Doe" value="25%" bgColor="#000000" fgColor="#58D3F7" size="35"
+                         textSizeRatio="2.5" [round]="true" src="{{avatar}}" ></ngx-avatar>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
         <button mat-icon-button routerLink="./settings" class="d-none d-sm-inline">
           <fa-icon icon="cog"></fa-icon>
         </button>

@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { BreadcrumbComponent } from '@app/admin/breadcrumb/breadcrumb.component';
 import {
   MatExpansionModule,
+  MatMenuModule,
   MatPaginatorModule,
   MatTableDataSource,
   MatTableModule
@@ -24,6 +25,7 @@ import { adminReducers } from '@app/admin/admin.state';
 import { AuthEffects } from '@app/core/auth/auth.effects';
 import { UsersEffects } from '@app/admin/users/reducer/users.effects';
 import { UsersService } from '@app/admin/users/service/users.service';
+import { AvatarModule } from 'ngx-avatar';
 
 @NgModule({
   imports: [
@@ -32,6 +34,8 @@ import { UsersService } from '@app/admin/users/service/users.service';
     BrowserModule,
     MatTableModule,
     MatPaginatorModule,
+    AvatarModule,
+    MatMenuModule,
     // core & shared
     CoreModule,
     SharedModule,
