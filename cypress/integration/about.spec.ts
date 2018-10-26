@@ -1,9 +1,9 @@
 describe('About', () => {
   beforeEach(() => {
-    cy.visit('/home/about');
+    cy.visit('/zeroapp/about');
   });
 
-  it('should display main heading', () => {
+  it('should display layout heading', () => {
     cy.get('h1').should('contain', 'Angular NgRx Material Starter');
   });
 

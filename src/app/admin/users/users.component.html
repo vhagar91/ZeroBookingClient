@@ -48,5 +48,5 @@
     </table>
   </div>
 
-  <mat-paginator [length]="resultsLength" [pageSize]="20"  (page)="pageEvent = $event" ></mat-paginator>
+  <mat-paginator [length]="resultsLength" [pageSize]="20"  showFirstLastButtons (page)="pageEvent = $event" ></mat-paginator>
 </div>

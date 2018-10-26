@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BaseUrl, login, tokenRefresh } from '@app/core/urls';
+import { BaseUrl, login, tokenRefresh } from '@app/core/app.config';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from '../local-storage/local-storage.service';

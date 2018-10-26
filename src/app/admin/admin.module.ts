@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
-import { StaticRoutingModule } from '@app/home/static-routing.module';
+import { StaticRoutingModule } from '@app/zeroapp/static-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from '@app/shared';
 import { CoreModule } from '@app/core';
-import { AdminComponent } from '@app/admin/admin/admin.component';
-import { RouterModule } from '@angular/router';
+import { AdminComponent } from '@app/admin/layout/admin.component';
 import { BreadcrumbComponent } from '@app/admin/breadcrumb/breadcrumb.component';
 import {
   MatExpansionModule,
@@ -14,18 +13,23 @@ import {
   MatTableDataSource,
   MatTableModule
 } from '@angular/material';
-import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+
 import { UsersComponent } from './users/users.component';
-import { SettingsEffects } from '@app/settings/settings.effects';
+
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { settingsReducer } from '@app/settings/settings.reducer';
+
 import { adminReducers } from '@app/admin/admin.state';
-import { AuthEffects } from '@app/core/auth/auth.effects';
+
 import { UsersEffects } from '@app/admin/users/reducer/users.effects';
 import { UsersService } from '@app/admin/users/service/users.service';
 import { AvatarModule } from 'ngx-avatar';
+import {
+  PERFECT_SCROLLBAR_CONFIG,
+  PerfectScrollbarModule
+} from 'ngx-perfect-scrollbar';
+import { DEFAULT_PERFECT_SCROLLBAR_CONFIG } from '@app/core/app.config';
+import { ProfileComponent } from '@app/admin/profile/profile.component';
 
 @NgModule({
   imports: [
@@ -36,6 +40,7 @@ import { AvatarModule } from 'ngx-avatar';
     MatPaginatorModule,
     AvatarModule,
     MatMenuModule,
+    PerfectScrollbarModule,
     // core & shared
     CoreModule,
     SharedModule,
@@ -46,7 +51,13 @@ import { AvatarModule } from 'ngx-avatar';
     StoreModule.forFeature('admin', adminReducers),
     EffectsModule.forFeature([UsersEffects])
   ],
-  providers: [UsersService],
-  declarations: [AdminComponent, UsersComponent]
+  providers: [
+    UsersService,
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    }
+  ],
+  declarations: [AdminComponent, UsersComponent, ProfileComponent]
 })
 export class AdminModule {}

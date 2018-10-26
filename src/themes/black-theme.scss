@@ -1,7 +1,7 @@
 $zerofee-app-black-primary: mat-palette($mat-grey, 700, 300, 900);
-$zerofee-app-black-accent: mat-palette($mat-blue-grey, 400);
+$zerofee-app-black-accent: mat-palette($mat-light-blue);
 $zerofee-app-black-warn: mat-palette($mat-red, 500);
-
+@import 'scss/material-dashboard';
 $zerofee-app-black-theme: mat-dark-theme(
   $zerofee-app-black-primary,
   $zerofee-app-black-accent,

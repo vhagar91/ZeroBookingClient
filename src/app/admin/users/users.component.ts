@@ -1,20 +1,12 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-  ViewChild
-} from '@angular/core';
-import { merge, Subject } from 'rxjs';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Subject } from 'rxjs';
 import { UserListState } from '@app/admin/users/state/users';
 import { select, Store } from '@ngrx/store';
-import { ActionAuthLogin, AppState } from '@app/core';
-import { map, startWith, switchMap, takeUntil } from 'rxjs/operators';
+
+import { takeUntil } from 'rxjs/operators';
 import { ActionSearchUsers } from '@app/admin/users/reducer/users.actions';
-import { AdminState, getAdminState, State } from '@app/admin/admin.state';
-import { MatPaginator, MatSort, PageEvent } from '@angular/material';
+import { getAdminState, State } from '@app/admin/admin.state';
+import { MatPaginator } from '@angular/material';
 import { getUsers } from '@app/admin/users/reducer/users.selector';
 
 @Component({
@@ -64,9 +56,11 @@ export class UsersComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         admin => {
-          this.displayUsers = admin.users.users;
-          this.resultsLength = admin.users.total;
-          this.isLoadingResults = false;
+          if (admin) {
+            this.displayUsers = admin.users.users;
+            this.resultsLength = admin.users.total;
+            this.isLoadingResults = false;
+          }
         },
         error1 => {
           this.isLoadingResults = false;

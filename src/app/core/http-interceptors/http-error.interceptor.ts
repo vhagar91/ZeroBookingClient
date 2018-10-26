@@ -22,7 +22,7 @@ import {
   tap
 } from 'rxjs/operators';
 import { AuthService } from '@app/core/auth/auth.service';
-import { ApiKey } from '@app/core/urls';
+import { ApiKey } from '@app/core/app.config';
 import { AppState } from '@app/core';
 import { Store } from '@ngrx/store';
 import { error } from 'util';

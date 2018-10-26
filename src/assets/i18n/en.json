@@ -6,6 +6,7 @@
   "zerofee-app.footer.changelog": "Show changelog",
   "zerofee-app.menu.about": "About",
   "zerofee-app.title.users": "Users List",
+  "zerofee-app.user.profile": "Profile",
   "zerofee-app.menu.features": "Features",
   "zerofee-app.menu.examples": "Examples",
   "zerofee-app.menu.settings": "Settings",
@@ -60,5 +61,7 @@
   "zerofee-app.settings.themes.sticky-header": "Sticky header",
   "zerofee-app.settings.animations": "Animations",
   "zerofee-app.settings.animations.page": "Navigation whole page transition",
-  "zerofee-app.settings.animations.elements": "Navigation page elements slide up"
+  "zerofee-app.settings.animations.elements": "Navigation page elements slide up",
+  "error404": "404 Error",
+  "mayTheForce": "May the force be with you"
 }

@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainComponent } from '@app/home/main/main.component';
-import { routes as MainRoutes } from '@app/home';
+import { MainComponent } from '@app/zeroapp/layout/main.component';
+import { routes as MainRoutes } from '@app/zeroapp';
 import { routes as AdminRoutes } from '@app/admin';
-import { AdminComponent } from '@app/admin/admin/admin.component';
+import { AdminComponent } from '@app/admin/layout/admin.component';
 import { LoginComponent } from '@app/admin/login/login.component';
 import { AdminGuard } from '@app/admin/admin.guard';
+import { ProfileComponent } from '@app/admin/profile/profile.component';
+import { AppConfig } from '@app/core/app.config';
+import { Error404PageComponent } from '@app/shared/error404-page/error404-page.component';
 
 const routes: Routes = [
   {
@@ -29,17 +32,17 @@ const routes: Routes = [
     children: AdminRoutes,
     data: { title: 'zerofee-app.title.admin' }
   },
-  {
-    path: '**',
-    redirectTo: 'home'
-  }
+
+  // otherwise redirect to 404
+  { path: '**', redirectTo: 'zeroapp/' + AppConfig.routes.error404 }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
       useHash: false,
-      scrollPositionRestoration: 'enabled'
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled'
     })
   ],
   exports: [RouterModule]

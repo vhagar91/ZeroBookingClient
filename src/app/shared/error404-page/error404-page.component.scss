@@ -1,0 +1,65 @@
+// Descriptive Colors
+$white: #ffffff;
+$blue: #3f51b5;
+$red: #dc143c;
+$grey: #bbbbbb;
+$light-grey: #eeeeee;
+
+// Functional Colors
+$primary--color: $blue;
+$secondary--color: $white;
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+@mixin push--auto($vertically: false) {
+  @if $vertically {
+    margin: {
+      top: $vertically;
+      bottom: $vertically;
+      left: auto;
+      right: auto;
+    }
+  } @else {
+    margin: {
+      left: auto;
+      right: auto;
+    }
+  }
+}
+
+@mixin font-roboto($size: false, $colour: false, $weight: false, $lh: false) {
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  @if $size {
+    font-size: $size;
+  }
+  @if $colour {
+    color: $colour;
+  }
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $lh {
+    line-height: $lh;
+  }
+}
+
+img {
+  @include push--auto();
+  display: block;
+}
+
+.explanation {
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+image {
+  display: flex;
+}

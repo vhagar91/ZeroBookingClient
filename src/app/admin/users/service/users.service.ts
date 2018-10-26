@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { BaseUrl, userList, getAvatar } from '@app/core/urls';
+import { BaseUrl, userList, getAvatar } from '@app/core/app.config';
 
 @Injectable()
 export class UsersService {

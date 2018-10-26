@@ -6,7 +6,7 @@ describe('About Page', () => {
 
   beforeEach(() => (page = new AboutPage()));
 
-  it('should display main heading', () => {
+  it('should display layout heading', () => {
     page.navigateTo();
     expect(page.getParagraphText()).toEqual('ANGULAR NGRX MATERIAL STARTER');
   });

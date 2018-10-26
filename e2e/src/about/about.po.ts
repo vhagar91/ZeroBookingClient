@@ -2,7 +2,7 @@ import { browser, by, element } from 'protractor';
 
 export class AboutPage {
   navigateTo() {
-    return browser.get('home/about');
+    return browser.get('zeroapp/about');
   }
 
   getParagraphText() {

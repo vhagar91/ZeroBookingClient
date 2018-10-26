@@ -21,7 +21,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatSliderModule } from '@angular/material/';
+import { MatFormFieldModule, MatSliderModule } from '@angular/material/';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material';
 
@@ -93,6 +93,7 @@ library.add(
 
 import { BigInputComponent } from './big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action.component';
+import { ProfileComponent } from '../admin/profile/profile.component';
 
 @NgModule({
   imports: [
@@ -100,7 +101,7 @@ import { BigInputActionComponent } from './big-input/big-input-action.component'
     FormsModule,
 
     TranslateModule,
-
+    MatFormFieldModule,
     MatButtonModule,
     MatToolbarModule,
     MatSelectModule,
