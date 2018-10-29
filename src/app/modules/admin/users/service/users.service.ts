@@ -12,10 +12,4 @@ export class UsersService {
     const queryUrl = `${BaseUrl + userList}?${params}`;
     return this.http.get<any>(queryUrl);
   }
-
-  getAvatar(userId: string = ''): Observable<any> {
-    const params = new HttpParams();
-    const queryUrl = `${BaseUrl + getAvatar + userId}?${params}`;
-    return this.http.get<string>(queryUrl);
-  }
 }
