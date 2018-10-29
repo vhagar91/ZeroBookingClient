@@ -1,5 +1,5 @@
 **Note**
-
+Client Example using Angular 7 and Ngrx whit Admin Dashboard
 ## Usage
 
 Tasks                    | Description

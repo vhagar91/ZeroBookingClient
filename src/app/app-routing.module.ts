@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MainComponent } from '@app/zeroapp/layout/main.component';
-import { routes as MainRoutes } from '@app/zeroapp';
-import { routes as AdminRoutes } from '@app/admin';
-import { AdminComponent } from '@app/admin/layout/admin.component';
-import { LoginComponent } from '@app/admin/login/login.component';
-import { AdminGuard } from '@app/admin/admin.guard';
-import { ProfileComponent } from '@app/admin/profile/profile.component';
+import { MainComponent } from '@app/modules/zeroapp/layout/main.component';
+import { routes as MainRoutes } from '@app/modules/zeroapp';
+import { routes as AdminRoutes } from '@app/modules/admin';
+import { AdminComponent } from '@app/modules/admin';
+import { LoginComponent } from '@app/modules/admin/login/login.component';
+import { AdminGuard } from '@app/modules/admin/admin.guard';
 import { AppConfig } from '@app/core/app.config';
-import { Error404PageComponent } from '@app/shared/error404-page/error404-page.component';
-
 const routes: Routes = [
   {
     path: '',

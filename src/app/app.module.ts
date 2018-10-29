@@ -1,15 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { StaticModule } from './zeroapp';
+import { StaticModule } from '@app/modules/zeroapp';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminModule } from '@app/admin/admin.module';
-import { BreadcrumbComponent } from '@app/admin/breadcrumb/breadcrumb.component';
+import { AdminModule } from '@app/modules/admin/admin.module';
 import { LoaderComponent } from '@app/core/loader/loader.component';
-import { LoginComponent } from '@app/admin/login/login.component';
+import { LoginComponent } from '@app/modules/admin/login/login.component';
 import { SharedModule } from '@app/shared';
-import { AdminGuard } from '@app/admin/admin.guard';
+import { AdminGuard } from '@app/modules/admin/admin.guard';
 
 @NgModule({
   imports: [

@@ -21,7 +21,7 @@ describe('Error404Page', () => {
     component = fixture.debugElement.componentInstance;
   }));
 
-  it('should create nav component', () => {
+  it('should create error 404 component', () => {
     expect(component).toBeTruthy();
   });
 });

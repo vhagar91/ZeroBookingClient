@@ -16,7 +16,7 @@
 @import 'styles-reset.scss-theme';
 @import 'app/app.component.scss-theme';
 @import 'app/shared/big-input/big-input.component.scss-theme';
-@import 'app/zeroapp/about/about.component.scss-theme';
+@import 'app/modules/zeroapp/about/about.component.scss-theme';
 
 @mixin custom-components-theme($theme) {
   @include zerofee-app-styles-reset-theme($theme);

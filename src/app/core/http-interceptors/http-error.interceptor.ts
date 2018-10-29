@@ -26,6 +26,7 @@ import { ApiKey } from '@app/core/app.config';
 import { AppState } from '@app/core';
 import { Store } from '@ngrx/store';
 import { error } from 'util';
+import { ActionSearchUsers } from '@app/modules/admin/users/reducer/users.actions';
 
 /** Passes HttpErrorResponse to application-wide error handler */
 @Injectable()
@@ -47,9 +48,12 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         if (err instanceof HttpErrorResponse) {
           switch ((<HttpErrorResponse>err).status) {
             case 401:
-              return this.handle401Error(request, next);
-            case 400:
-              return this.handle400Error(err);
+              if (err.error.code === 'token_not_valid') {
+                return this.handle401Error(request, next);
+              } else {
+                return this.handleCustomError(err);
+              }
+
             default:
               return this.handleCustomError(err);
           }
@@ -77,9 +81,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       return (
         this.authService.refreshToken().subscribe(newToken => {
           if (newToken) {
-            this.tokenSubject.next(newToken.access);
-            const newRequest = this.addTokenToRequest(req, newToken.access);
-            return next.handle(newRequest).subscribe();
+            const newpayload = {
+              pageIndex: 1
+            };
+            this.store.dispatch(new ActionSearchUsers(newpayload));
           }
           // If we don't get a new token, we are in trouble so logout.
           return this.authService.logout();
@@ -112,12 +117,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     }
     // return an observable with a user-facing error message
     return throwError('Something bad happened; please try again later.');
-  }
-  private handle400Error(err) {
-    // If we get a 400 and the error message is 'invalid_grant', the token is no longer valid so logout.
-    const appErrorHandler = this.injector.get(ErrorHandler);
-    appErrorHandler.handleError(err);
-    return this.authService.logout();
   }
 
   private handleCustomError(err) {
