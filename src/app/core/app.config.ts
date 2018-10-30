@@ -9,7 +9,8 @@ export const login = 'api/login/';
 export const getAvatar = 'api/users/avatar/';
 export const tokenRefresh = 'api/token/refresh/';
 export const getProfile = 'api/users/profile/';
-
+export const putProfilePicture = 'api/users/avatar/';
+export const putProfile = 'api/users/profile/';
 // ExtraConfigs
 export const AppConfig: any = {
   routes: {

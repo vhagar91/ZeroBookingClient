@@ -24,6 +24,10 @@ export function profileReducer(
         profile: action.payload,
         error: null
       };
+    case ProfileActionTypes.UPDATE:
+      return state;
+    case ProfileActionTypes.UPDATEPROFILEPIC:
+      return state;
     case ProfileActionTypes.FAIL:
       return state;
     default:

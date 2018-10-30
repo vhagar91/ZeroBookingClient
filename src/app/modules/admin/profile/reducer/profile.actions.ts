@@ -2,9 +2,10 @@ import { Action } from '@ngrx/store';
 
 export enum ProfileActionTypes {
   GETPROFILE = '[Profile] Get',
-  UPDATEPROFILE = '[Profile] Update',
+  UPDATEPROFILEPIC = '[Profile] Update',
   SUCCESS = '[Profile] Success',
-  FAIL = '[Profile] FAIL'
+  FAIL = '[Profile] FAIL',
+  UPDATE = '[Profile] UPDATE'
 }
 
 export class ActionGetProfile implements Action {
@@ -19,8 +20,18 @@ export class ActionGetProfileFail implements Action {
   constructor(public payload: any) {}
   readonly type = ProfileActionTypes.FAIL;
 }
+export class ActionUpdateProfilePicture implements Action {
+  constructor(public payload: any) {}
+  readonly type = ProfileActionTypes.UPDATEPROFILEPIC;
+}
+export class ActionUpdateProfile implements Action {
+  constructor(public payload: any) {}
+  readonly type = ProfileActionTypes.UPDATE;
+}
 
 export type ProfileActions =
   | ActionGetProfile
   | ActionGetProfileSuccess
-  | ActionGetProfileFail;
+  | ActionUpdateProfile
+  | ActionGetProfileFail
+  | ActionUpdateProfilePicture;

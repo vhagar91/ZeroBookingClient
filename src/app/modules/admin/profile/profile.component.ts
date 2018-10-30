@@ -5,7 +5,11 @@ import { Subject } from 'rxjs';
 import { getProfileState, State } from '@app/modules/admin/admin.state';
 import { select, Store } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
-import { ActionGetProfile } from '@app/modules/admin/profile/reducer/profile.actions';
+import {
+  ActionGetProfile,
+  ActionUpdateProfile,
+  ActionUpdateProfilePicture
+} from '@app/modules/admin/profile/reducer/profile.actions';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'zerofee-app-profile',
@@ -15,6 +19,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class ProfileComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
   profile: Profile;
+  selectedFile: File;
   profileForm: FormGroup;
   private userId;
   constructor(
@@ -23,20 +28,20 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ) {
     this.profileForm = new FormGroup({
       // I assume that data which is received from your WEBAPI contains a key usernames and want to set this in your formControl
-      userName: new FormControl(this.profile ? this.profile.username : '', [
+      username: new FormControl(this.profile ? this.profile.username : '', [
         <any>Validators.required
       ]),
-      lastName: new FormControl(this.profile ? this.profile.last_name : '', [
+      last_name: new FormControl(this.profile ? this.profile.last_name : '', [
         <any>Validators.required
       ]),
-      firstName: new FormControl(this.profile ? this.profile.first_name : '', [
+      first_name: new FormControl(this.profile ? this.profile.first_name : '', [
         <any>Validators.required
       ]),
       email: new FormControl(this.profile ? this.profile.email : '', [
         <any>Validators.required,
         Validators.email
       ]),
-      aboutMe: new FormControl(this.profile ? this.profile.about_me : ''),
+      about_me: new FormControl(this.profile ? this.profile.about_me : ''),
       gender: new FormControl(this.profile ? this.profile.gender : '', [
         <any>Validators.required
       ]),
@@ -89,14 +94,31 @@ export class ProfileComponent implements OnInit, OnDestroy {
   SetProfileForm() {
     this.profileForm.patchValue({
       username: this.profile ? this.profile.username : '',
-      lastName: this.profile ? this.profile.last_name : '',
-      firstName: this.profile ? this.profile.first_name : '',
+      last_name: this.profile ? this.profile.last_name : '',
+      first_name: this.profile ? this.profile.first_name : '',
       email: this.profile ? this.profile.email : '',
-      aboutMe: this.profile ? this.profile.about_me : '',
+      about_me: this.profile ? this.profile.about_me : '',
       gender: this.profile ? this.profile.gender : '',
       address: this.profile ? this.profile.address : '',
       country: this.profile ? this.profile.country : '',
       city: this.profile ? this.profile.city : ''
     });
+  }
+  onSubmit() {
+    const newProfile = this.profileForm.value;
+    const payload = {
+      userId: this.userId,
+      profile: newProfile
+    };
+    this.store.dispatch(new ActionUpdateProfile(payload));
+  }
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+    const payload = {
+      userId: this.userId,
+      file: this.selectedFile,
+      picId: this.profile.picture.id
+    };
+    this.store.dispatch(new ActionUpdateProfilePicture(payload));
   }
 }
