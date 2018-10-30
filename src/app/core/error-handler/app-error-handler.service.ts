@@ -53,6 +53,7 @@ export class AppErrorHandler extends ErrorHandler {
   }
   private handle400Error(error) {
     // If we get a 400 and the error message is 'invalid_grant', the token is no longer valid so logout.
+
     this.showNotification('You Are Not Allowed Here', 'Error');
   }
   private handle403Error(error) {

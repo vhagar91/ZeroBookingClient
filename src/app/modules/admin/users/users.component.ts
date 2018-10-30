@@ -7,7 +7,11 @@ import { takeUntil } from 'rxjs/operators';
 import { ActionSearchUsers } from '@app/modules/admin/users/reducer/users.actions';
 import { MatPaginator } from '@angular/material';
 import { getUsers } from '@app/modules/admin/users/reducer/users.selector';
-import { getAdminState, State } from '@app/modules/admin/admin.state';
+import {
+  getAdminState,
+  getUserListState,
+  State
+} from '@app/modules/admin/admin.state';
 
 @Component({
   selector: 'zerofee-app-users',
@@ -51,14 +55,14 @@ export class UsersComponent implements OnInit, OnDestroy {
   private subscribeToUsers() {
     this.store
       .pipe(
-        select(getAdminState),
+        select(getUserListState),
         takeUntil(this.unsubscribe$)
       )
       .subscribe(
-        admin => {
-          if (admin) {
-            this.displayUsers = admin.users.users;
-            this.resultsLength = admin.users.total;
+        users => {
+          if (users) {
+            this.displayUsers = users.users;
+            this.resultsLength = users.total;
             this.isLoadingResults = false;
           }
         },

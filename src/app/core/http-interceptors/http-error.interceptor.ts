@@ -27,6 +27,7 @@ import { AppState } from '@app/core';
 import { Store } from '@ngrx/store';
 import { error } from 'util';
 import { ActionSearchUsers } from '@app/modules/admin/users/reducer/users.actions';
+import { ActionAuthLogout } from '@app/core/auth/auth.actions';
 
 /** Passes HttpErrorResponse to application-wide error handler */
 @Injectable()
@@ -87,7 +88,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
             this.store.dispatch(new ActionSearchUsers(newpayload));
           }
           // If we don't get a new token, we are in trouble so logout.
-          return this.authService.logout();
+          this.store.dispatch(new ActionAuthLogout());
         }),
         catchError(this.handleError),
         finalize(() => {
@@ -110,7 +111,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       console.error('An error occurred:', err.error.message);
     } else {
       // If there is an exception calling 'refreshToken', bad news so logout.
-      this.authService.logout();
+      this.store.dispatch(new ActionAuthLogout());
       console.error(
         `Backend returned code ${err.status}, ` + `body was: ${err.error}`
       );

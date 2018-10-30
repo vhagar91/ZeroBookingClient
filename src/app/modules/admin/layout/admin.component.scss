@@ -188,3 +188,6 @@ mat-sidenav {
   /*change color of label*/
   color: grey !important;
 }
+:host ::ng-deep .mat-select-value {
+  color: black !important;
+}

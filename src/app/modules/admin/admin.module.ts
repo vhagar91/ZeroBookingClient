@@ -30,6 +30,8 @@ import {
 } from 'ngx-perfect-scrollbar';
 import { DEFAULT_PERFECT_SCROLLBAR_CONFIG } from '@app/core/app.config';
 import { ProfileComponent } from '@app/modules/admin/profile/profile.component';
+import { ProfileEffects } from '@app/modules/admin/profile/reducer/profile.effects';
+import { ProfileService } from '@app/modules/admin/profile/service/profile.service';
 
 @NgModule({
   imports: [
@@ -49,10 +51,15 @@ import { ProfileComponent } from '@app/modules/admin/profile/profile.component';
     StaticRoutingModule,
     // store
     StoreModule.forFeature('admin', adminReducers),
-    EffectsModule.forFeature([UsersEffects])
+    EffectsModule.forFeature([UsersEffects, ProfileEffects])
   ],
   providers: [
     UsersService,
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
+    },
+    ProfileService,
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG

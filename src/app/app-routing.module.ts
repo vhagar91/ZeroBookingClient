@@ -31,7 +31,7 @@ const routes: Routes = [
   },
 
   // otherwise redirect to 404
-  { path: '**', redirectTo: 'zeroapp/' + AppConfig.routes.error404 }
+  { path: '**', redirectTo: 'home/' + AppConfig.routes.error404 }
 ];
 
 @NgModule({

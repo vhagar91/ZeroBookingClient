@@ -6,16 +6,20 @@ import {
 import { AppState } from '../../core/core.state';
 import { UserListState } from '@app/modules/admin/users/state/users';
 import { usersReducer } from '@app/modules/admin/users/reducer/users.reducer';
+import { ProfileState } from '@app/modules/admin/profile/state/profile.state';
+import { profileReducer } from '@app/modules/admin/profile/reducer/profile.reducer';
 
 export interface AdminState {
   users: UserListState;
+  profile: ProfileState;
 }
 export interface State extends AppState {
   admin: AdminState;
 }
 
 export const adminReducers: ActionReducerMap<AdminState> = {
-  users: usersReducer
+  users: usersReducer,
+  profile: profileReducer
 };
 
 export const selectAdminState = createFeatureSelector<State, AdminState>(
@@ -25,4 +29,13 @@ export const selectAdminState = createFeatureSelector<State, AdminState>(
 export const getAdminState = createSelector(
   selectAdminState,
   (state: AdminState) => state
+);
+export const getUserListState = createSelector(
+  getAdminState,
+  (state: AdminState) => state.users
+);
+
+export const getProfileState = createSelector(
+  getAdminState,
+  (state: AdminState) => state.profile
 );

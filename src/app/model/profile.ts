@@ -10,4 +10,5 @@ export class Profile {
   address?: string;
   city?: string;
   country?: string;
+  about_me?: string;
 }

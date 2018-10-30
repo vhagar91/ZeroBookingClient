@@ -33,7 +33,6 @@ export class AuthService {
       })
     );
   }
-  logout() {}
 
   getToken(): string {
     const token = this.localStorageService.getItem('Token');
