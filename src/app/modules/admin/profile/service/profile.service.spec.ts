@@ -6,7 +6,7 @@ import {
   HttpTestingController
 } from '@angular/common/http/testing';
 import { AppErrorHandler } from '@app/core/error-handler/app-error-handler.service';
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import {
   BaseUrl,
   getProfile,
