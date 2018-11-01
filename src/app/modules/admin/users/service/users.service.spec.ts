@@ -68,6 +68,7 @@ describe('UsersService', () => {
 
     it('should return expected users(called once)', () => {
       const pageIndex = 1;
+      const pageSize = 20;
       userService
         .getUsers(pageIndex)
         .subscribe(
@@ -80,7 +81,9 @@ describe('UsersService', () => {
         );
 
       // UserService should have made one request to GET users from expected URL
-      const params = new HttpParams().append('page', `${pageIndex}`);
+      const params = new HttpParams()
+        .append('page', `${pageIndex}`)
+        .append('page_size', `${pageSize}`);
       const queryUrl = `${BaseUrl + userList}?${params}`;
       const req = httpTestingController.expectOne(queryUrl);
       expect(req.request.method).toEqual('GET');
@@ -91,6 +94,7 @@ describe('UsersService', () => {
 
     it('should be OK returning no users', () => {
       const pageIndex = 1;
+      const pageSize = 20;
       userService
         .getUsers(pageIndex)
         .subscribe(
@@ -98,7 +102,9 @@ describe('UsersService', () => {
             expect(users.length).toEqual(0, 'should have empty users array'),
           fail
         );
-      const params = new HttpParams().append('page', `${pageIndex}`);
+      const params = new HttpParams()
+        .append('page', `${pageIndex}`)
+        .append('page_size', `${pageSize}`);
       const queryUrl = `${BaseUrl + userList}?${params}`;
       const req = httpTestingController.expectOne(queryUrl);
       req.flush([]); // Respond with no heroes
@@ -118,7 +124,10 @@ describe('UsersService', () => {
           fail
         );
       const pageIndex = 1;
-      const params = new HttpParams().append('page', `${pageIndex}`);
+      const pageSize = 20;
+      const params = new HttpParams()
+        .append('page', `${pageIndex}`)
+        .append('page_size', `${pageSize}`);
       const queryUrl = `${BaseUrl + userList}?${params}`;
       const requests = httpTestingController.match(queryUrl);
       expect(requests.length).toEqual(3, 'calls to getUsers()');

@@ -7,6 +7,7 @@ import { CoreModule } from '@app/core';
 import { AdminComponent } from '@app/modules/admin/layout/admin.component';
 import { BreadcrumbComponent } from '@app/admin/breadcrumb/breadcrumb.component';
 import {
+  MatDialogModule,
   MatExpansionModule,
   MatMenuModule,
   MatPaginatorModule,
@@ -32,6 +33,7 @@ import { DEFAULT_PERFECT_SCROLLBAR_CONFIG } from '@app/core/app.config';
 import { ProfileComponent } from '@app/modules/admin/profile/profile.component';
 import { ProfileEffects } from '@app/modules/admin/profile/reducer/profile.effects';
 import { ProfileService } from '@app/modules/admin/profile/service/profile.service';
+import { AddUserComponent } from './users/dialogs/adduser/adduser.component';
 
 @NgModule({
   imports: [
@@ -42,6 +44,7 @@ import { ProfileService } from '@app/modules/admin/profile/service/profile.servi
     MatPaginatorModule,
     AvatarModule,
     MatMenuModule,
+    MatDialogModule,
     PerfectScrollbarModule,
     // core & shared
     CoreModule,
@@ -65,6 +68,12 @@ import { ProfileService } from '@app/modules/admin/profile/service/profile.servi
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     }
   ],
-  declarations: [AdminComponent, UsersComponent, ProfileComponent]
+  entryComponents: [AddUserComponent],
+  declarations: [
+    AdminComponent,
+    UsersComponent,
+    ProfileComponent,
+    AddUserComponent
+  ]
 })
 export class AdminModule {}

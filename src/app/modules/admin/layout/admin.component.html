@@ -51,7 +51,7 @@
       </mat-toolbar>
     </div>
 
-    <div class="content container" style="padding:14px; background: #fff; min-height: 100%; margin-top: 6px!important;" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path">
+    <div class="main-panel" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path">
       <router-outlet #o="outlet"></router-outlet>
    </div>
     </perfect-scrollbar>

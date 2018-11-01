@@ -76,7 +76,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
           if (profile) {
             this.profile = profile.profile;
             console.log(profile);
-            this.SetProfileForm();
+            this.setProfileForm();
           }
         },
         error1 => {}
@@ -91,7 +91,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     this.store.dispatch(new ActionGetProfile(payload));
   }
 
-  SetProfileForm() {
+  setProfileForm() {
     this.profileForm.patchValue({
       username: this.profile ? this.profile.username : '',
       last_name: this.profile ? this.profile.last_name : '',

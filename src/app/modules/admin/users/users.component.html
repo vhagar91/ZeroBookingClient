@@ -3,9 +3,20 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-primary">
-            <h4 class="card-title ">Simple Table</h4>
-            <p class="card-category"> Here is a subtitle for this table</p>
+          <div class="row card-header card-header-primary">
+            <h4 class="col card-title ">{{'zerofee-app.title.users'| translate}}</h4>
+
+            <div class="col-md-1 card- table-menu">
+            <button mat-icon-button [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item (click)="addNew()">
+                <mat-icon>account_box</mat-icon>
+                <span>Add User</span>
+              </button>
+            </mat-menu>
+            </div>
           </div>
           <div class="card-body">
             <div class="example-loading-shade"
@@ -54,7 +65,7 @@
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
               </table>
             </div>
-            <mat-paginator [length]="resultsLength" [pageSize]="20"  showFirstLastButtons (page)="pageEvent = $event" ></mat-paginator>
+            <mat-paginator [length]="resultsLength" [pageSizeOptions]="[1, 2, 20]"  showFirstLastButtons (page)="pageEvent = $event" ></mat-paginator>
           </div>
         </div>
       </div>

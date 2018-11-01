@@ -27,6 +27,13 @@ export function usersReducer(
         page: state.page + 1,
         total: action.payload.count
       };
+    case UserActionTypes.AddUserSuccess:
+      return {
+        ...state,
+        users: [...state.users, action.payload],
+        page: state.page,
+        total: state.total + 1
+      };
     case UserActionTypes.SEARCH_FAIL:
       return state;
     default:

@@ -13,6 +13,8 @@ import {
 import { Observable, of } from 'rxjs';
 import { UsersService } from '../service/users.service';
 import {
+  ActionAddUser,
+  ActionAddUserSuccess,
   ActionSearchFailUsers,
   ActionSearchSuccessUsers,
   ActionSearchUsers,
@@ -34,10 +36,12 @@ export class UsersEffects {
     tap(action => console.log(action)),
     map(action => action),
     switchMap(action =>
-      this.usersService.getUsers(action.payload.pageIndex).pipe(
-        map(users => new ActionSearchSuccessUsers(users)),
-        catchError(err => of(new ActionSearchFailUsers(err)))
-      )
+      this.usersService
+        .getUsers(action.payload.pageIndex, action.payload.pageSize)
+        .pipe(
+          map(users => new ActionSearchSuccessUsers(users)),
+          catchError(err => of(new ActionSearchFailUsers(err)))
+        )
     )
   );
 
@@ -54,5 +58,18 @@ export class UsersEffects {
         }
       }
     })
+  );
+  @Effect()
+  addUser = this.actions$.pipe(
+    // filter out the actions, except '[Customers Page] Get'
+    ofType<ActionAddUser>(UserActionTypes.AddUser),
+    tap(action => console.log(action)),
+    map(action => action),
+    switchMap(action =>
+      this.usersService.addUser(action.payload.user).pipe(
+        map(user => new ActionAddUserSuccess(user)),
+        catchError(err => of(new ActionSearchFailUsers(err)))
+      )
+    )
   );
 }

@@ -5,13 +5,15 @@ import { select, Store } from '@ngrx/store';
 
 import { takeUntil } from 'rxjs/operators';
 import { ActionSearchUsers } from '@app/modules/admin/users/reducer/users.actions';
-import { MatPaginator } from '@angular/material';
+import { MatDialog, MatPaginator } from '@angular/material';
 import { getUsers } from '@app/modules/admin/users/reducer/users.selector';
 import {
   getAdminState,
   getUserListState,
   State
 } from '@app/modules/admin/admin.state';
+import { User } from '@app/modules/admin/users/state/user';
+import { AddUserComponent } from '@app/modules/admin/users/dialogs/adduser/adduser.component';
 
 @Component({
   selector: 'zerofee-app-users',
@@ -21,6 +23,7 @@ import {
 export class UsersComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
   pageIndex = 1;
+  pageSize = 20;
   users: UserListState;
   isLoadingResults = true;
   resultsLength = 0;
@@ -35,7 +38,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     'is_staff',
     'groups'
   ];
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<State>, public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.subscribeToUsers();
@@ -49,6 +52,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   private subscribeToPage() {
     this.paginator.page.subscribe(event => {
       this.pageIndex = event.pageIndex + 1;
+      this.pageSize = event.pageSize;
       this.searchUsers();
     });
   }
@@ -76,10 +80,26 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.isLoadingResults = true;
     if (reset) {
       this.pageIndex = 1;
+      this.pageSize = 20;
     }
     const payload = {
-      pageIndex: this.pageIndex
+      pageIndex: this.pageIndex,
+      pageSize: this.pageSize
     };
     this.store.dispatch(new ActionSearchUsers(payload));
+  }
+  addNew(user: User) {
+    const dialogRef = this.dialog.open(AddUserComponent, {
+      data: { user: user }
+    });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result === 1) {
+    //     // After dialog is closed we're doing frontend updates
+    //     // For add we're just pushing a new row inside DataService
+    //     this.exampleDatabase.dataChange.value.push(this.dataService.getDialogData());
+    //     this.refreshTable();
+    //   }
+    // });
   }
 }
