@@ -21,6 +21,10 @@ export class FilterComponent implements OnInit {
   }
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.filter = {
+      username: '',
+      email_filter: ''
+    };
+    this.dialogRef.close(this.filter);
   }
 }

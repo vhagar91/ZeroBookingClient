@@ -3,15 +3,11 @@ import { Subject } from 'rxjs';
 import { UserListState } from '@app/modules/admin/users/state/users';
 import { select, Store } from '@ngrx/store';
 
-import { filter, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 import { ActionSearchUsers } from '@app/modules/admin/users/reducer/users.actions';
 import { MatDialog, MatPaginator } from '@angular/material';
 import { getUsers } from '@app/modules/admin/users/reducer/users.selector';
-import {
-  getAdminState,
-  getUserListState,
-  State
-} from '@app/modules/admin/admin.state';
+import { getUserListState, State } from '@app/modules/admin/admin.state';
 import { User } from '@app/modules/admin/users/state/user';
 import { AddUserComponent } from '@app/modules/admin/users/dialogs/adduser/adduser.component';
 import { FilterComponent } from '@app/modules/admin/users/dialogs/filter/filter.component';
@@ -108,12 +104,15 @@ export class UsersComponent implements OnInit, OnDestroy {
   openFilters(): void {
     const dialogRef = this.dialog.open(FilterComponent, {
       width: '250px',
-      hasBackdrop: false,
+      hasBackdrop: true,
       data: this.filters
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result !== this.filters) {
+      if (
+        JSON.stringify(result).toLowerCase() !==
+        JSON.stringify(this.filters).toLowerCase()
+      ) {
         this.filters = result;
         this.searchUsers();
       }
