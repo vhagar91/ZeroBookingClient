@@ -28,6 +28,7 @@ const translateText = (text, sourceLang, targetLang) => {
 };
 
 const translateJson = (json, sourceLang, targetLang, translations, level = 0) => {
+
   if (level > 10) return Promise.resolve(json);
 
   translations = translations || clone(json);
@@ -35,7 +36,6 @@ const translateJson = (json, sourceLang, targetLang, translations, level = 0) =>
 
   Object.entries(json).forEach(([key, value]) => {
     let promise;
-
     if (typeof value === 'string') {
       promise = translateText(value, sourceLang, targetLang);
       promise.then(translation => {
@@ -46,6 +46,7 @@ const translateJson = (json, sourceLang, targetLang, translations, level = 0) =>
       promise = translateJson(value, sourceLang, targetLang, translations[key], level++);
 
     } else {
+
       promise = Promise.resolve(value);
     }
 

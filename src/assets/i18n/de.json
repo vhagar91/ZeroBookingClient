@@ -56,5 +56,10 @@
   "zerofee-app.settings.themes.night-mode": "Auto Nachtmodus (von 21:00 bis 7:00)",
   "zerofee-app.settings.animations": "Animationen",
   "zerofee-app.settings.animations.page": "Navigation ganzer Seitenübergang",
-  "zerofee-app.settings.animations.elements": "Navigation Seitenelemente nach oben schieben"
+  "zerofee-app.settings.animations.elements": "Navigation Seitenelemente nach oben schieben",
+  "error404": "404 Fehler",
+  "mayTheForce": "Möge die Macht mit dir sein",
+  "zerofee-app.new.user": "Neuer Benutzer",
+  "zerofee-app.filter": "Filter",
+  "zerofee-app.dashboard": "Instrumententafel"
 }

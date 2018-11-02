@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Filters</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <input matInput [(ngModel)]="filter.username" placeholder="User Name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput [(ngModel)]="filter.email_filter" placeholder="Email">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="filter" cdkFocusInitial>Ok</button>
+</div>

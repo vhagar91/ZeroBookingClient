@@ -63,5 +63,8 @@
   "zerofee-app.settings.animations.page": "Navigation whole page transition",
   "zerofee-app.settings.animations.elements": "Navigation page elements slide up",
   "error404": "404 Error",
-  "mayTheForce": "May the force be with you"
+  "mayTheForce": "May the force be with you",
+  "zerofee-app.new.user": "New User",
+  "zerofee-app.filter": "Filter",
+  "zerofee-app.dashboard": "Dashboard"
 }

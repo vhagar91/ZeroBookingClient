@@ -12,7 +12,15 @@ import {
   MatMenuModule,
   MatPaginatorModule,
   MatTableDataSource,
-  MatTableModule
+  MatTableModule,
+  MatGridListModule,
+  MatCardModule,
+  MatIconModule,
+  MatButtonModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatListModule,
+  MatSortModule
 } from '@angular/material';
 
 import { UsersComponent } from '@app/modules/admin/users/users.component';
@@ -34,6 +42,9 @@ import { ProfileComponent } from '@app/modules/admin/profile/profile.component';
 import { ProfileEffects } from '@app/modules/admin/profile/reducer/profile.effects';
 import { ProfileService } from '@app/modules/admin/profile/service/profile.service';
 import { AddUserComponent } from './users/dialogs/adduser/adduser.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { FilterComponent } from './users/dialogs/filter/filter.component';
 
 @NgModule({
   imports: [
@@ -54,7 +65,16 @@ import { AddUserComponent } from './users/dialogs/adduser/adduser.component';
     StaticRoutingModule,
     // store
     StoreModule.forFeature('admin', adminReducers),
-    EffectsModule.forFeature([UsersEffects, ProfileEffects])
+    EffectsModule.forFeature([UsersEffects, ProfileEffects]),
+    MatGridListModule,
+    MatCardModule,
+    MatIconModule,
+    MatButtonModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatSortModule
   ],
   providers: [
     UsersService,
@@ -68,12 +88,14 @@ import { AddUserComponent } from './users/dialogs/adduser/adduser.component';
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     }
   ],
-  entryComponents: [AddUserComponent],
+  entryComponents: [AddUserComponent, FilterComponent],
   declarations: [
     AdminComponent,
     UsersComponent,
     ProfileComponent,
-    AddUserComponent
+    AddUserComponent,
+    DashboardComponent,
+    FilterComponent
   ]
 })
 export class AdminModule {}

@@ -3,7 +3,7 @@ import { Subject } from 'rxjs';
 import { UserListState } from '@app/modules/admin/users/state/users';
 import { select, Store } from '@ngrx/store';
 
-import { takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 import { ActionSearchUsers } from '@app/modules/admin/users/reducer/users.actions';
 import { MatDialog, MatPaginator } from '@angular/material';
 import { getUsers } from '@app/modules/admin/users/reducer/users.selector';
@@ -14,6 +14,7 @@ import {
 } from '@app/modules/admin/admin.state';
 import { User } from '@app/modules/admin/users/state/user';
 import { AddUserComponent } from '@app/modules/admin/users/dialogs/adduser/adduser.component';
+import { FilterComponent } from '@app/modules/admin/users/dialogs/filter/filter.component';
 
 @Component({
   selector: 'zerofee-app-users',
@@ -28,6 +29,11 @@ export class UsersComponent implements OnInit, OnDestroy {
   isLoadingResults = true;
   resultsLength = 0;
   displayUsers = [];
+  filters = {
+    username: '',
+    email_filter: ''
+  };
+
   @ViewChild(MatPaginator)
   paginator: MatPaginator;
   displayedColumns: string[] = [
@@ -84,22 +90,33 @@ export class UsersComponent implements OnInit, OnDestroy {
     }
     const payload = {
       pageIndex: this.pageIndex,
-      pageSize: this.pageSize
+      pageSize: this.pageSize,
+      filters: this.filters
     };
     this.store.dispatch(new ActionSearchUsers(payload));
   }
   addNew(user: User) {
+    this.isLoadingResults = true;
     const dialogRef = this.dialog.open(AddUserComponent, {
       data: { user: user }
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result === 1) {
-    //     // After dialog is closed we're doing frontend updates
-    //     // For add we're just pushing a new row inside DataService
-    //     this.exampleDatabase.dataChange.value.push(this.dataService.getDialogData());
-    //     this.refreshTable();
-    //   }
-    // });
+    dialogRef.afterClosed().subscribe(result => {
+      this.isLoadingResults = false;
+    });
+  }
+  openFilters(): void {
+    const dialogRef = this.dialog.open(FilterComponent, {
+      width: '250px',
+      hasBackdrop: false,
+      data: this.filters
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result !== this.filters) {
+        this.filters = result;
+        this.searchUsers();
+      }
+    });
   }
 }

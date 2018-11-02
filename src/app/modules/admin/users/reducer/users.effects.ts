@@ -37,7 +37,11 @@ export class UsersEffects {
     map(action => action),
     switchMap(action =>
       this.usersService
-        .getUsers(action.payload.pageIndex, action.payload.pageSize)
+        .getUsers(
+          action.payload.pageIndex,
+          action.payload.pageSize,
+          action.payload.filters
+        )
         .pipe(
           map(users => new ActionSearchSuccessUsers(users)),
           catchError(err => of(new ActionSearchFailUsers(err)))

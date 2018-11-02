@@ -60,5 +60,10 @@
   "zerofee-app.settings.animations.page": "Navegação com transição em toda pagina",
   "zerofee-app.settings.animations.elements": "Elementos de navegação deslizam para cima",
   "zerofee-app.menu.configuracoes": "Configurações",
-  "zerofee-app.configuracoes.title": "Configurações"
+  "zerofee-app.configuracoes.title": "Configurações",
+  "error404": "Erro 404",
+  "mayTheForce": "Que a força esteja com você",
+  "zerofee-app.new.user": "Novo usuário",
+  "zerofee-app.filter": "Filtro",
+  "zerofee-app.dashboard": "painel de controle"
 }

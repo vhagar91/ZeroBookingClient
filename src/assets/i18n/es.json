@@ -56,5 +56,10 @@
   "zerofee-app.settings.themes.night-mode": "Modo oscuro automático (de 21:00 a 7:00)",
   "zerofee-app.settings.animations": "Animaciones",
   "zerofee-app.settings.animations.page": "Navegación de transición de página completa",
-  "zerofee-app.settings.animations.elements": "Los elementos de la página de navegación se deslizan"
+  "zerofee-app.settings.animations.elements": "Los elementos de la página de navegación se deslizan",
+  "error404": "error 404",
+  "mayTheForce": "Que la fuerza esté con usted",
+  "zerofee-app.new.user": "Nuevo usuario",
+  "zerofee-app.filter": "Filtrar",
+  "zerofee-app.dashboard": "Tablero"
 }

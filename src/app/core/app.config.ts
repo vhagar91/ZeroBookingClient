@@ -17,7 +17,10 @@ export const AppConfig: any = {
   routes: {
     profile: 'profile',
     error404: '404',
-    admin: 'admin'
+    admin: 'admin',
+    adminUsers: 'users',
+    adminSettings: 'settings',
+    adminDashboard: 'dashboard'
   }
 };
 export const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {

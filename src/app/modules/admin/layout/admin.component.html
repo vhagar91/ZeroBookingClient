@@ -1,6 +1,10 @@
 <mat-sidenav-container>
 
-  <mat-sidenav #sidenav [opened]="isMobileMenu()" mode="side" >
+
+    <mat-sidenav #sidenav class="sidenav" fixedInViewport="true"
+                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+                 [mode]="(isHandset$ | async) ? 'over' : 'side'"
+                 [opened]="!(isHandset$ | async)">
     <div class="branding"><img [src]="logo" />
       <span data-testid="title">{{ 'zerofee-app.title.admin' | translate}}</span></div>
 

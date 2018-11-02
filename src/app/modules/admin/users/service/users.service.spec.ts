@@ -70,7 +70,7 @@ describe('UsersService', () => {
       const pageIndex = 1;
       const pageSize = 20;
       userService
-        .getUsers(pageIndex)
+        .getUsers(pageIndex, pageSize, {})
         .subscribe(
           users =>
             expect(users).toEqual(
@@ -96,7 +96,7 @@ describe('UsersService', () => {
       const pageIndex = 1;
       const pageSize = 20;
       userService
-        .getUsers(pageIndex)
+        .getUsers(pageIndex, pageSize, {})
         .subscribe(
           users =>
             expect(users.length).toEqual(0, 'should have empty users array'),
@@ -111,10 +111,10 @@ describe('UsersService', () => {
     });
 
     it('should return expected heroes (called multiple times)', () => {
-      userService.getUsers(1).subscribe();
-      userService.getUsers(1).subscribe();
+      userService.getUsers(1, 20, {}).subscribe();
+      userService.getUsers(1, 20, {}).subscribe();
       userService
-        .getUsers(1)
+        .getUsers(1, 20, {})
         .subscribe(
           users =>
             expect(users).toEqual(

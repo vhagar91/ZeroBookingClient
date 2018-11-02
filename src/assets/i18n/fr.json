@@ -58,5 +58,10 @@
   "zerofee-app.settings.themes.sticky-header": "Entête fixe",
   "zerofee-app.settings.animations": "Animations",
   "zerofee-app.settings.animations.page": "Transition de la page entière lors de la navigation",
-  "zerofee-app.settings.animations.elements": "Les éléments de la page de navigation glissent vers le haut"
+  "zerofee-app.settings.animations.elements": "Les éléments de la page de navigation glissent vers le haut",
+  "error404": "Erreur 404",
+  "mayTheForce": "Que la force soit avec toi",
+  "zerofee-app.new.user": "Nouvel utilisateur",
+  "zerofee-app.filter": "Filtre",
+  "zerofee-app.dashboard": "Tableau de bord"
 }

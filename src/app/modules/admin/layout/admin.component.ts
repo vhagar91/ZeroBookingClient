@@ -8,7 +8,7 @@ import {
   routeAnimations,
   selectAuth
 } from '../../../core/index';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import browser from 'browser-detect';
 import {
@@ -18,11 +18,12 @@ import {
   SettingsState
 } from '../../../settings/index';
 import { select, Store } from '@ngrx/store';
-import { takeUntil } from 'rxjs/operators';
+import { map, takeUntil } from 'rxjs/operators';
 
 import { AppState } from '../../../core/index';
 import { AppConfig } from '../../../core/app.config';
-import { User } from '../../../model/user';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { User } from '@app/model/user';
 
 @Component({
   selector: 'zerofee-app-admin',
@@ -32,7 +33,9 @@ import { User } from '../../../model/user';
 })
 export class AdminComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
-
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
+    .pipe(map(result => result.matches));
   @HostBinding('class')
   componentCssClass;
   version = env.versions.app;
@@ -47,6 +50,7 @@ export class AdminComponent implements OnInit, OnDestroy {
   isAuthenticated: boolean;
 
   constructor(
+    private breakpointObserver: BreakpointObserver,
     public overlayContainer: OverlayContainer,
     private store: Store<AppState>,
     private router: Router,
@@ -126,11 +130,5 @@ export class AdminComponent implements OnInit, OnDestroy {
         '/' +
         this.user.id
     ]);
-  }
-  isMobileMenu() {
-    if (window.screen.width > 991) {
-      return true;
-    }
-    return false;
   }
 }

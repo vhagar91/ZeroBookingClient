@@ -57,5 +57,10 @@
   "zerofee-app.settings.themes.night-mode": "Automatický nočný režim (od 21:00 do 7:00)",
   "zerofee-app.settings.animations": "Animácie",
   "zerofee-app.settings.animations.page": "Animácia celej stránky pri navigácii",
-  "zerofee-app.settings.animations.elements": "Animácia elementov stránky pri navigácii"
+  "zerofee-app.settings.animations.elements": "Animácia elementov stránky pri navigácii",
+  "error404": "404 Chyba",
+  "mayTheForce": "Nech ťa sila sprevádza",
+  "zerofee-app.new.user": "Nový užívateľ",
+  "zerofee-app.filter": "filter",
+  "zerofee-app.dashboard": "prístrojová doska"
 }

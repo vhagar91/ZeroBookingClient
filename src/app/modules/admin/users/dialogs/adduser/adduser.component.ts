@@ -57,6 +57,4 @@ export class AddUserComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
-  public confirmAdd(): void {}
 }
