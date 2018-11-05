@@ -19,7 +19,7 @@ export class UsersService {
       .append('page_size', `${pageSize}`);
 
     for (const prop in filters) {
-      if (filters[prop] !== '') {
+      if (filters[prop] !== '' && filters[prop] !== null) {
         params = params.append(prop, filters[prop]);
       }
     }

@@ -13,14 +13,14 @@
       <mat-expansion-panel *ngFor="let mainItem of mainMenu | keyvalue">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            {{mainItem.key}}
+            {{mainItem.value.label | translate}}
           </mat-panel-title>
         </mat-expansion-panel-header>
 
-        <mat-nav-list  *ngFor="let subMenu of mainItem.value | keyvalue">
-          <a mat-list-item [routerLink]="subMenu.value"
+        <mat-nav-list  *ngFor="let subMenu of mainItem.value.items | keyvalue">
+          <a mat-list-item [routerLink]="subMenu.value.link"
              routerLinkActive="active">
-            {{subMenu.key}}
+            {{subMenu.value.label | translate}}
           </a>
         </mat-nav-list>
       </mat-expansion-panel>

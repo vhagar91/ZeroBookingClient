@@ -82,7 +82,7 @@
         <div class="card card-profile" *ngIf="profile">
           <div class="card-avatar">
             <a>
-              <img class="img" [src]="profile.picture.thumbnail" src="../../../../assets/logo.png"/>
+              <img class="img" *ngIf="profile" [src]="profile.picture.thumbnail"/>
               <input
                 style="display: none"
                 type="file" accept="image/*" (change)="onFileChanged($event)"

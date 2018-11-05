@@ -6,7 +6,7 @@
 const packageJson = require('../../package.json');
 
 export const environment = {
-  appName: 'Zero Fee Booking',
+  appName: 'Zero App',
   envName: 'DEV',
   production: false,
   test: false,

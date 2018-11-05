@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Filters</h1>
+<h1 mat-dialog-title>{{'zerofee.filters'|translate}}</h1>
 <div mat-dialog-content>
   <mat-form-field>
     <input matInput [(ngModel)]="filter.username" placeholder="User Name">
@@ -8,6 +8,6 @@
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="filter" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onNoClick()">{{'zerofee.nothanks'|translate}}</button>
+  <button mat-button [mat-dialog-close]="filter" cdkFocusInitial>{{'zerofee.ok'|translate}}</button>
 </div>

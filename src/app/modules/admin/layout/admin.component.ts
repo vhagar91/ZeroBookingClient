@@ -43,7 +43,10 @@ export class AdminComponent implements OnInit, OnDestroy {
   logo = require('../../../../assets/logo.png');
   mainMenu = {
     Users: {
-      Users: './users'
+      items: {
+        Users: { link: './users', label: 'zerofee.users' }
+      },
+      label: 'zerofee.users'
     }
   };
   settings: SettingsState;

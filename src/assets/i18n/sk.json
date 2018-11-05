@@ -62,5 +62,9 @@
   "mayTheForce": "Nech ťa sila sprevádza",
   "zerofee-app.new.user": "Nový užívateľ",
   "zerofee-app.filter": "filter",
-  "zerofee-app.dashboard": "prístrojová doska"
+  "zerofee-app.dashboard": "prístrojová doska",
+  "zerofee.users": "",
+  "zerofee.filters": "",
+  "zerofee.nothanks": "",
+  "zerofee.ok": ""
 }

@@ -61,5 +61,9 @@
   "mayTheForce": "Möge die Macht mit dir sein",
   "zerofee-app.new.user": "Neuer Benutzer",
   "zerofee-app.filter": "Filter",
-  "zerofee-app.dashboard": "Instrumententafel"
+  "zerofee-app.dashboard": "Instrumententafel",
+  "zerofee.users": "",
+  "zerofee.filters": "",
+  "zerofee.nothanks": "",
+  "zerofee.ok": ""
 }

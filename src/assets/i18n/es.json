@@ -61,5 +61,9 @@
   "mayTheForce": "Que la fuerza esté con usted",
   "zerofee-app.new.user": "Nuevo usuario",
   "zerofee-app.filter": "Filtrar",
-  "zerofee-app.dashboard": "Tablero"
+  "zerofee-app.dashboard": "Tablero",
+  "zerofee.users": "",
+  "zerofee.filters": "",
+  "zerofee.nothanks": "",
+  "zerofee.ok": ""
 }

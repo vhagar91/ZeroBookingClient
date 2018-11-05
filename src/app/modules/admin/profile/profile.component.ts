@@ -75,7 +75,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         profile => {
           if (profile) {
             this.profile = profile.profile;
-            console.log(profile);
             this.setProfileForm();
           }
         },
