@@ -6,3 +6,35 @@ $zerofee-app-black-theme: mat-dark-theme(
   $zerofee-app-black-accent,
   $zerofee-app-black-warn
 );
+@import '~@angular/material/theming';
+@import '../app/modules/admin/layout/admin.component';
+@import '../app/modules/admin/layout/core/sidemenu/sidemenu.component.scss';
+@import '../app/modules/admin/layout/core/sidemenu-item/sidemenu-item.component.scss';
+@include mat-core();
+$primary: $mat-indigo;
+$accent: $mat-orange;
+$warn: $mat-red;
+$primary-app-primary: mat-palette($primary, 400);
+$primary-app-accent: mat-palette($accent, 900);
+$primary-app-warn: mat-palette($warn);
+$cdk-theme: mat-light-theme(
+  $primary-app-primary,
+  $primary-app-accent,
+  $primary-app-warn
+);
+cdk-sidemenu {
+  $sidemenu-app-primary: mat-palette($primary, 400);
+  $sidemenu-app-accent: mat-palette($accent, 900);
+  $sidemenu-app-warn: mat-palette($warn);
+  $cdk-sidemenu-theme: mat-dark-theme(
+    $sidemenu-app-primary,
+    $sidemenu-app-accent,
+    $sidemenu-app-warn
+  );
+  @include mat-list-theme($cdk-sidemenu-theme);
+}
+cdk-sidemenu-item {
+  @include sidemenu-item($cdk-theme, 20px);
+}
+@include angular-material-theme($cdk-theme);
+@include auth($cdk-theme);

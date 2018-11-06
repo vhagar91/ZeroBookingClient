@@ -9,6 +9,7 @@ import {
 import { MockStore, TestingModule } from '@testing/utils';
 import { Store } from '@ngrx/store';
 import { CoreModule } from '@app/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 describe('UsersComponent', () => {
   let component: UsersComponent;
@@ -21,7 +22,8 @@ describe('UsersComponent', () => {
         TestingModule,
         MatTableModule,
         MatPaginatorModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        FlexLayoutModule
       ],
       declarations: [UsersComponent]
     }).compileComponents();

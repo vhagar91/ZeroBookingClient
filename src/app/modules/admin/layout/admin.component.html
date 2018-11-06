@@ -1,65 +1,50 @@
-<mat-sidenav-container>
-
-
-    <mat-sidenav #sidenav class="sidenav" fixedInViewport="true"
-                 [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-                 [mode]="(isHandset$ | async) ? 'over' : 'side'"
-                 [opened]="!(isHandset$ | async)">
-    <div class="branding"><img [src]="logo" />
-      <span data-testid="title">{{ 'zerofee-app.title.admin' | translate}}</span></div>
-
-    <mat-accordion>
-
-      <mat-expansion-panel *ngFor="let mainItem of mainMenu | keyvalue">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            {{mainItem.value.label | translate}}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-
-        <mat-nav-list  *ngFor="let subMenu of mainItem.value.items | keyvalue">
-          <a mat-list-item [routerLink]="subMenu.value.link"
-             routerLinkActive="active">
-            {{subMenu.value.label | translate}}
-          </a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-
-    </mat-accordion>
-
+<mat-sidenav-container class="containers" >
+  <mat-sidenav [mode]="sideNavMode" class="sidenav" #sidenav [opened]="sideNavOpened" style="overflow: hidden;">
+    <mat-toolbar color="primary" class="mat-elevation-z4">
+      <img [src]="logo" width="36px">
+      <h1 class="logo">
+        Zero.<span style="font-size: 12px;">com</span>
+      </h1>
+    </mat-toolbar>
+    <cdk-sidemenu></cdk-sidemenu>
   </mat-sidenav>
+  <mat-sidenav-content style="z-index: unset;overflow: hidden;">
+    <mat-drawer-container fullscreen>
+      <mat-drawer mode="side" #drawer class="drawer" [opened]="matDrawerOpened" style="overflow: hidden;">
+        <mat-toolbar color="primary" class="mat-elevation-z4">
+          <img [src]="logo" width="36px">
+        </mat-toolbar>
+        <cdk-sidemenu [iconOnly]="true"></cdk-sidemenu>
+      </mat-drawer>
+      <mat-drawer-content style="overflow: hidden;">
 
-  <mat-sidenav-content>
-    <perfect-scrollbar [config]="config">
-    <div class="toolbar" [style.position]="isHeaderSticky ? 'fixed' : 'inherit'" [class.mat-elevation-z4]="isHeaderSticky">
-      <mat-toolbar color="primary">
-        <button mat-icon-button (click)="sidenav.toggle()">
-          <fa-icon icon="bars"></fa-icon>
+        <cdk-toolbar [currentUser]="user" [sidenav]="sidenav" [drawer]="drawer" [matDrawerShow]="matDrawerShow" style="z-index: 500"></cdk-toolbar>
 
-        </button>
 
-        <div style="margin-left: auto; display: flex">
-          <button mat-button [matMenuTriggerFor]="menu">
-            <ngx-avatar *ngIf="user"  name="Jane Doe" value="25%" bgColor="#000000" fgColor="#58D3F7" size="35"
-                         textSizeRatio="2.5" [round]="true" src="{{user.avatar}}" ></ngx-avatar>
-          </button>
-          <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="editProfile()">{{'zerofee-app.user.profile' | translate}}</button>
-          </mat-menu>
-        <button mat-icon-button routerLink="./settings" class="d-none d-sm-inline">
-          <fa-icon icon="cog"></fa-icon>
-        </button>
-        </div>
-        <span>
-         </span>
-      </mat-toolbar>
-    </div>
+        <perfect-scrollbar  style="height: calc(100% - 33px);" >
+          <div class="content" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path">
+            <router-outlet #o="outlet"></router-outlet>
+          </div>
+        </perfect-scrollbar>
 
-    <div class="main-panel" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path">
-      <router-outlet #o="outlet"></router-outlet>
-   </div>
-    </perfect-scrollbar>
 
+      </mat-drawer-content>
+    </mat-drawer-container>
   </mat-sidenav-content>
 
+
 </mat-sidenav-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

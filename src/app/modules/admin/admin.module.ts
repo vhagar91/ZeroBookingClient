@@ -18,9 +18,15 @@ import {
   MatIconModule,
   MatButtonModule,
   MatToolbarModule,
-  MatSidenavModule,
   MatListModule,
-  MatSortModule
+  MatSortModule,
+  MatInputModule,
+  MatChipsModule,
+  MatFormFieldModule,
+  MatSidenavModule,
+  MatTabsModule,
+  MatSliderModule,
+  MatProgressBarModule
 } from '@angular/material';
 
 import { UsersComponent } from '@app/modules/admin/users/users.component';
@@ -32,7 +38,6 @@ import { adminReducers } from '@app/modules/admin/admin.state';
 
 import { UsersEffects } from '@app/modules/admin/users/reducer/users.effects';
 import { UsersService } from '@app/modules/admin/users/service/users.service';
-import { AvatarModule } from 'ngx-avatar';
 import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarModule
@@ -45,6 +50,11 @@ import { AddUserComponent } from './users/dialogs/adduser/adduser.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FilterComponent } from './users/dialogs/filter/filter.component';
+import { SidemenuComponent } from '@app/modules/admin/layout/core/sidemenu/sidemenu.component';
+import { SidemenuItemComponent } from '@app/modules/admin/layout/core/sidemenu-item/sidemenu-item.component';
+import { ToolbarComponent } from '@app/modules/admin/layout/core/toolbar/toolbar.component';
+import { UserMenuComponent } from '@app/modules/admin/layout/core/user-menu/user-menu.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   imports: [
@@ -53,10 +63,20 @@ import { FilterComponent } from './users/dialogs/filter/filter.component';
     BrowserModule,
     MatTableModule,
     MatPaginatorModule,
-    AvatarModule,
     MatMenuModule,
     MatDialogModule,
     PerfectScrollbarModule,
+    MatListModule,
+    MatButtonModule,
+    MatInputModule,
+    MatChipsModule,
+    FlexLayoutModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatSidenavModule,
+    MatTabsModule,
+    MatSliderModule,
+    MatProgressBarModule,
     // core & shared
     CoreModule,
     SharedModule,
@@ -71,8 +91,6 @@ import { FilterComponent } from './users/dialogs/filter/filter.component';
     MatIconModule,
     MatButtonModule,
     LayoutModule,
-    MatToolbarModule,
-    MatSidenavModule,
     MatListModule,
     MatSortModule
   ],
@@ -95,7 +113,17 @@ import { FilterComponent } from './users/dialogs/filter/filter.component';
     ProfileComponent,
     AddUserComponent,
     DashboardComponent,
-    FilterComponent
+    FilterComponent,
+    SidemenuComponent,
+    SidemenuItemComponent,
+    ToolbarComponent,
+    UserMenuComponent
+  ],
+  exports: [
+    SidemenuComponent,
+    SidemenuItemComponent,
+    ToolbarComponent,
+    UserMenuComponent
   ]
 })
 export class AdminModule {}

@@ -11,6 +11,7 @@ import { getUserListState, State } from '@app/modules/admin/admin.state';
 import { User } from '@app/modules/admin/users/state/user';
 import { AddUserComponent } from '@app/modules/admin/users/dialogs/adduser/adduser.component';
 import { FilterComponent } from '@app/modules/admin/users/dialogs/filter/filter.component';
+import { ResponsiveTableHeaders } from '@app/modules/admin/users/helpers.data';
 
 @Component({
   selector: 'zerofee-app-users',
@@ -22,7 +23,6 @@ export class UsersComponent implements OnInit, OnDestroy {
   pageIndex = 1;
   pageSize = 20;
   users: UserListState;
-  isLoadingResults = true;
   resultsLength = 0;
   displayUsers = [];
   filters = {
@@ -32,6 +32,7 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   @ViewChild(MatPaginator)
   paginator: MatPaginator;
+  helpers = ResponsiveTableHeaders;
   displayedColumns: string[] = [
     'username',
     'email',
@@ -69,17 +70,13 @@ export class UsersComponent implements OnInit, OnDestroy {
           if (users) {
             this.displayUsers = users.users;
             this.resultsLength = users.total;
-            this.isLoadingResults = false;
           }
         },
-        error1 => {
-          this.isLoadingResults = false;
-        }
+        error1 => {}
       );
     this.searchUsers();
   }
   searchUsers(reset: boolean = false): void {
-    this.isLoadingResults = true;
     if (reset) {
       this.pageIndex = 1;
       this.pageSize = 20;
@@ -92,14 +89,11 @@ export class UsersComponent implements OnInit, OnDestroy {
     this.store.dispatch(new ActionSearchUsers(payload));
   }
   addNew(user: User) {
-    this.isLoadingResults = true;
     const dialogRef = this.dialog.open(AddUserComponent, {
       data: { user: user }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      this.isLoadingResults = false;
-    });
+    dialogRef.afterClosed().subscribe(result => {});
   }
   openFilters(): void {
     const dialogRef = this.dialog.open(FilterComponent, {
@@ -109,12 +103,14 @@ export class UsersComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (
-        JSON.stringify(result).toLowerCase() !==
-        JSON.stringify(this.filters).toLowerCase()
-      ) {
-        this.filters = result;
-        this.searchUsers();
+      if (result) {
+        if (
+          JSON.stringify(result).toLowerCase() !==
+          JSON.stringify(this.filters).toLowerCase()
+        ) {
+          this.filters = result;
+          this.searchUsers();
+        }
       }
     });
   }

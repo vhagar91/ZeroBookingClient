@@ -4,8 +4,13 @@ import { AdminComponent } from '@app/modules/admin';
 import { TestingModule } from '@testing/utils';
 import { CoreModule } from '@app/core';
 import { MatExpansionModule, MatMenuModule } from '@angular/material';
-import { AvatarModule } from 'ngx-avatar';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { SidemenuComponent } from '@app/modules/admin/layout/core/sidemenu/sidemenu.component';
+import { ToolbarComponent } from '@app/modules/admin/layout/core/toolbar/toolbar.component';
+import { SidemenuItemComponent } from '@app/modules/admin/layout/core/sidemenu-item/sidemenu-item.component';
+import { UserMenuComponent } from '@app/modules/admin/layout/core/user-menu/user-menu.component';
+import { ToolbarNotificationComponent } from '@app/modules/admin/layout/core/toolbar-notification/toolbar-notification.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -18,10 +23,16 @@ describe('AdminComponent', () => {
         TestingModule,
         MatMenuModule,
         MatExpansionModule,
-        AvatarModule,
+        FlexLayoutModule,
         PerfectScrollbarModule
       ],
-      declarations: [AdminComponent]
+      declarations: [
+        AdminComponent,
+        SidemenuComponent,
+        ToolbarComponent,
+        SidemenuItemComponent,
+        UserMenuComponent
+      ]
     }).compileComponents();
   }));
 

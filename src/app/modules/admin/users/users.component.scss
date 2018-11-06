@@ -1,37 +1,128 @@
-/* Structure */
-
-.table {
-  margin-bottom: 0;
+.table-header {
+  background-color: #327ebd;
+  color: white;
+  padding: 0 5px;
 }
-.example-loading-shade {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 56px;
-  right: 0;
-  background: rgba(0, 0, 0, 0.15);
-  z-index: 1;
-  display: flex;
-  align-items: center;
+.table-container {
+  padding: 5px 15px 15px 15px;
+}
+.table-component-holder {
+  border: 1px solid #327ebd;
+  background-color: white;
+}
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+table caption {
+  font-size: 1.5em;
+  margin: 0.5em 0 0.75em;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+table tr {
+  background: #303030;
+  border: 1px solid #ddd;
+  padding: 0.35em;
+}
+table tr:nth-child(odd) td {
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+table tr:nth-child(even) td {
+  background: rgba(145, 151, 187, 0.34);
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+.mat-sort-header-container {
   justify-content: center;
 }
 
-.example-rate-limit-reached {
-  color: #980000;
-  max-width: 360px;
+table th,
+table td {
+  padding: 0.625em;
   text-align: center;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+table th {
+  background: #424242;
+  font-size: 0.85em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+  table caption {
+    font-size: 1.3em;
+  }
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: 0.625em;
+  }
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 0.8em;
+    text-align: right;
+  }
+  table td:before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  table td:last-child {
+    border-bottom: 0;
+  }
+}
+mat-button-toggle-group {
+  cursor: pointer;
 }
 
-/* Column Widths */
-.mat-column-number,
-.mat-column-state {
-  max-width: 64px;
+::ng-deep .mat-sort-header-container {
+  justify-content: center;
+}
+/* Structure */
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
 }
 
-.mat-column-created {
-  max-width: 124px;
+.example-header {
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  font-size: 20px;
 }
 
-:host ::ng-deep .mat-select-value {
-  color: white !important;
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+.widgetHolder {
+  margin: 0 auto;
+  .widgetHolder-content {
+    padding: 20px;
+  }
 }
