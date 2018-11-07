@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ToolbarHelpers } from './toolbar.helpers';
 import { User } from '@app/model/user';
 
 @Component({
@@ -19,7 +18,6 @@ export class ToolbarComponent implements OnInit {
   @Input()
   currentUser: User = null;
 
-  toolbarHelpers = ToolbarHelpers;
   constructor() {}
 
   ngOnInit() {}

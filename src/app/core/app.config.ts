@@ -20,7 +20,8 @@ export const AppConfig: any = {
     admin: 'admin',
     adminUsers: 'users',
     adminSettings: 'settings',
-    adminDashboard: 'dashboard'
+    adminDashboard: 'dashboard',
+    adminListings: 'listings'
   }
 };
 export const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {

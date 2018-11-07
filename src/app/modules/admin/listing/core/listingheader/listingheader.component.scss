@@ -1,0 +1,33 @@
+.header {
+  background: #039be5 url('/assets/bg20.jpg') no-repeat center center fixed;
+  background-size: cover;
+  height: fit-content;
+}
+.special-list {
+  margin-left: 0;
+  margin-right: 0;
+  display: block;
+  color: inherit !important;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  border: medium none;
+  border-radius: 0;
+  padding: 15px;
+}
+.special-list div.item-picture {
+  display: table-cell;
+  padding-right: 10px;
+}
+.special-list div.content {
+  display: table-cell;
+  vertical-align: top;
+  width: 100%;
+  text-transform: capitalize;
+}
+.pull-right {
+  float: right;
+}
+.special-list div.content .item-title {
+  display: block;
+  font-size: 20px;
+}

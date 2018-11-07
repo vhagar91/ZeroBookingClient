@@ -55,6 +55,9 @@ import { SidemenuItemComponent } from '@app/modules/admin/layout/core/sidemenu-i
 import { ToolbarComponent } from '@app/modules/admin/layout/core/toolbar/toolbar.component';
 import { UserMenuComponent } from '@app/modules/admin/layout/core/user-menu/user-menu.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ListingComponent } from './listing/listing.component';
+import { ListingDetailsComponent } from './listing/core/listing.details/listing.details.component';
+import { ListingheaderComponent } from './listing/core/listingheader/listingheader.component';
 
 @NgModule({
   imports: [
@@ -117,7 +120,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     SidemenuComponent,
     SidemenuItemComponent,
     ToolbarComponent,
-    UserMenuComponent
+    UserMenuComponent,
+    ListingComponent,
+    ListingDetailsComponent,
+    ListingheaderComponent
   ],
   exports: [
     SidemenuComponent,

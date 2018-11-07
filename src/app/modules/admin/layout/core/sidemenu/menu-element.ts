@@ -7,6 +7,13 @@ export const menus = [
     chip: false,
     sub: [
       {
+        name: 'zerofee-app.dashboard',
+        link: './dashboard',
+        icon: 'dashboard',
+        chip: false,
+        open: true
+      },
+      {
         name: 'zerofee.users',
         link: './users',
         icon: 'account_box',

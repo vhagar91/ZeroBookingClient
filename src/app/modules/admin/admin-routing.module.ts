@@ -5,10 +5,17 @@ import { UsersComponent } from '@app/modules/admin/users/users.component';
 import { ProfileComponent } from '@app/modules/admin/profile/profile.component';
 import { AppConfig } from '@app/core/app.config';
 import { DashboardComponent } from '@app/modules/admin/dashboard/dashboard.component';
+import { ListingComponent } from '@app/modules/admin/listing/listing.component';
+import { ListingDetailsComponent } from '@app/modules/admin/listing/core/listing.details/listing.details.component';
 
 export const routes: Routes = [
   {
     path: '',
+    component: DashboardComponent,
+    data: { title: 'zerofee-app.dashboard' }
+  },
+  {
+    path: AppConfig.routes.adminDashboard,
     component: DashboardComponent,
     data: { title: 'zerofee-app.dashboard' }
   },
@@ -23,10 +30,20 @@ export const routes: Routes = [
     component: UsersComponent,
     data: { title: 'zerofee-app.title.users' }
   },
-
+  {
+    path: AppConfig.routes.adminListings,
+    component: ListingComponent,
+    data: { title: 'zerofee-app.listings' }
+  },
+  {
+    path: AppConfig.routes.adminListings + '/:id',
+    component: ListingDetailsComponent,
+    data: { title: 'zerofee-app.listing.details' }
+  },
   {
     path: AppConfig.routes.profile + '/:id',
-    component: ProfileComponent
+    component: ProfileComponent,
+    data: { title: 'zerofee-app.user.profile' }
   }
 ];
 

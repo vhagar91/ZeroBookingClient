@@ -1,3 +1,6 @@
+$primary: $mat-grey;
+$accent: $mat-blue-grey;
+$warn: $mat-red;
 $zerofee-app-black-primary: mat-palette($mat-grey, 700, 300, 900);
 $zerofee-app-black-accent: mat-palette($mat-blue-grey, 400);
 $zerofee-app-black-warn: mat-palette($mat-red, 500);
@@ -10,20 +13,11 @@ $zerofee-app-black-theme: mat-dark-theme(
 @import '../app/modules/admin/layout/admin.component';
 @import '../app/modules/admin/layout/core/sidemenu/sidemenu.component.scss';
 @import '../app/modules/admin/layout/core/sidemenu-item/sidemenu-item.component.scss';
+@import '../app/modules/admin/listing/listing.component';
+@import '../app/modules/admin/profile/profile.component';
 @include mat-core();
-$primary: $mat-indigo;
-$accent: $mat-orange;
-$warn: $mat-red;
-$primary-app-primary: mat-palette($primary, 400);
-$primary-app-accent: mat-palette($accent, 900);
-$primary-app-warn: mat-palette($warn);
-$cdk-theme: mat-light-theme(
-  $primary-app-primary,
-  $primary-app-accent,
-  $primary-app-warn
-);
 cdk-sidemenu {
-  $sidemenu-app-primary: mat-palette($primary, 400);
+  $sidemenu-app-primary: mat-palette($primary, 900);
   $sidemenu-app-accent: mat-palette($accent, 900);
   $sidemenu-app-warn: mat-palette($warn);
   $cdk-sidemenu-theme: mat-dark-theme(
@@ -34,7 +28,9 @@ cdk-sidemenu {
   @include mat-list-theme($cdk-sidemenu-theme);
 }
 cdk-sidemenu-item {
-  @include sidemenu-item($cdk-theme, 20px);
+  @include sidemenu-item($zerofee-app-black-theme, 20px);
 }
-@include angular-material-theme($cdk-theme);
-@include auth($cdk-theme);
+@include angular-material-theme($zerofee-app-black-theme);
+@include auth($zerofee-app-black-theme);
+@include dashboard-profile($zerofee-app-black-theme);
+@include sales-list($zerofee-app-black-theme);
