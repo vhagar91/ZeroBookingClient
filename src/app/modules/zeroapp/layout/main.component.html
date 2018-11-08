@@ -8,7 +8,7 @@
          routerLinkActive="active">
         {{item.label | translate}}
       </a>
-      <a mat-list-item href="https://github.com/tomastrajan/zeroapp" target="_blank">
+      <a mat-list-item href="https://github.com/" target="_blank">
         Github
       </a>
     </mat-nav-list>
@@ -73,7 +73,7 @@
         </span>
       </mat-toolbar>
     </div>
-    <perfect-scrollbar [config]="config">
+    <perfect-scrollbar style="height:100%;">
       <div class="content" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path">
         <router-outlet #o="outlet"></router-outlet>
       </div>
@@ -83,28 +83,28 @@
     <div class="footer">
       <div class="row">
         <div class="col-sm-12 links">
-          <a href="https://www.github.com/tomastrajan" target="_blank">
+          <a href="https://www.github.com/" target="_blank">
             <fa-icon [icon]="['fab','github']"></fa-icon>
             <span>Github</span>
           </a>
-          <a href="https://www.medium.com/@tomastrajan" target="_blank">
+          <a href="https://www.medium.com/" target="_blank">
             <fa-icon [icon]="['fab','medium-m']"></fa-icon>
             <span>Medium</span>
           </a>
-          <a href="https://www.twitter.com/tomastrajan" target="_blank">
+          <a href="https://www.twitter.com/" target="_blank">
             <fa-icon [icon]="['fab','twitter']"></fa-icon>
             <span>Twitter</span>
           </a>
-          <a href="https://www.youtube.com/channel/UC7XgRHIVoqnh3U5Vmly9ofQ"
+          <a href="https://www.youtube.com/"
              target="_blank">
             <fa-icon [icon]="['fab','youtube']"></fa-icon>
             <span>Youtube</span>
           </a>
-          <a href="https://www.instagram.com/tomastrajan" target="_blank">
+          <a href="https://www.instagram.com/" target="_blank">
             <fa-icon [icon]="['fab','instagram']"></fa-icon>
             <span>Instagram</span>
           </a>
-          <a href="https://www.slides.com/tomastrajan" target="_blank">
+          <a href="https://www.slides.com/" target="_blank">
             <fa-icon icon="play-circle"></fa-icon>
             <span>Slides</span>
           </a>
@@ -116,7 +116,7 @@
           <br class="d-block d-sm-none">
           <a [matTooltip]="'zerofee-app.footer.changelog' | translate"
              matTooltipPosition="before"
-             href="https://github.com/tomastrajan/zeroapp/blob/master/CHANGELOG.md">
+             href="https://github.com/">
             <fa-icon icon="rocket"></fa-icon>
             {{version}} <span *ngIf="!isProd">[{{envName}}]</span>
           </a>

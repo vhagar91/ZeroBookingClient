@@ -4,6 +4,7 @@ export const environment = {
   appName: 'Zero App',
   envName: 'PROD',
   production: true,
+  BaseUrl: 'http://localhost:8000/',
   test: false,
   i18nPrefix: '/zeroapp',
   versions: {

@@ -1,7 +1,6 @@
 import {
   ActionSearchSuccessUsers,
-  ActionSearchUsers,
-  UsersActions
+  ActionSearchUsers
 } from 'app/modules/admin/users/reducer/users.actions';
 import { UserActionTypes } from 'app/modules/admin/users/reducer/users.actions';
 import {

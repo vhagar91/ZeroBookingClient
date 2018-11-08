@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BaseUrl, login, tokenRefresh } from '@app/core/app.config';
+import { login, tokenRefresh } from '@app/core/app.config';
+import { environment } from '@env/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from '../local-storage/local-storage.service';
@@ -7,7 +8,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
-  static BASE_URL = BaseUrl;
+  static BASE_URL = environment.BaseUrl;
   constructor(
     private http: HttpClient,
     private localStorageService: LocalStorageService

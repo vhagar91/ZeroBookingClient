@@ -3,11 +3,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UsersComponent } from './users.component';
 import {
   MatPaginatorModule,
+  MatProgressBarModule,
   MatProgressSpinnerModule,
   MatTableModule
 } from '@angular/material';
-import { MockStore, TestingModule } from '@testing/utils';
-import { Store } from '@ngrx/store';
+import { TestingModule } from '@testing/utils';
 import { CoreModule } from '@app/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -23,7 +23,8 @@ describe('UsersComponent', () => {
         MatTableModule,
         MatPaginatorModule,
         MatProgressSpinnerModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        MatProgressBarModule
       ],
       declarations: [UsersComponent]
     }).compileComponents();

@@ -1,33 +1,38 @@
 <zerofee-app-listingheader></zerofee-app-listingheader>
 <mat-tab-group mat-stretch-tabs backgroundColor="primary">
+  <mat-tab label="Overview">
+    <ng-template matTabContent>
+      Overview:
+    </ng-template>
+  </mat-tab>
   <mat-tab label="Property">
     <ng-template matTabContent>
-      Detalles:
+      <zerofee-app-property></zerofee-app-property>
     </ng-template>
   </mat-tab>
   <mat-tab label="Pictures">
     <ng-template matTabContent>
-      Fotos:
+      <zerofee-app-pictures></zerofee-app-pictures>
     </ng-template>
   </mat-tab>
   <mat-tab label="Prices">
     <ng-template matTabContent>
-      Precio:
+      <zerofee-app-prices></zerofee-app-prices>
     </ng-template>
   </mat-tab>
   <mat-tab label="Map">
     <ng-template matTabContent>
-      Mapa:
+      <zerofee-app-map></zerofee-app-map>
     </ng-template>
   </mat-tab>
   <mat-tab label="Calendar">
     <ng-template matTabContent>
-      Calendar:
+      <zerofee-app-calendar></zerofee-app-calendar>
     </ng-template>
   </mat-tab>
   <mat-tab label="Reservations">
     <ng-template matTabContent>
-      Calendar:
+      Reservations:
     </ng-template>
   </mat-tab>
 </mat-tab-group>

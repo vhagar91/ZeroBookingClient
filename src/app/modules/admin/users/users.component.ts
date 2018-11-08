@@ -2,13 +2,11 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subject } from 'rxjs';
 import { UserListState } from '@app/modules/admin/users/state/users';
 import { select, Store } from '@ngrx/store';
-
 import { takeUntil } from 'rxjs/operators';
 import { ActionSearchUsers } from '@app/modules/admin/users/reducer/users.actions';
 import { MatDialog, MatPaginator } from '@angular/material';
 import { getUsers } from '@app/modules/admin/users/reducer/users.selector';
 import { getUserListState, State } from '@app/modules/admin/admin.state';
-import { User } from '@app/modules/admin/users/state/user';
 import { AddUserComponent } from '@app/modules/admin/users/dialogs/adduser/adduser.component';
 import { FilterComponent } from '@app/modules/admin/users/dialogs/filter/filter.component';
 import { ResponsiveTableHeaders } from '@app/modules/admin/users/helpers.data';
@@ -22,9 +20,10 @@ export class UsersComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
   pageIndex = 1;
   pageSize = 20;
+  public showLoader = false;
   users: UserListState;
   resultsLength = 0;
-  displayUsers = [];
+  public displayUsers = [];
   filters = {
     username: '',
     email_filter: ''
@@ -88,7 +87,8 @@ export class UsersComponent implements OnInit, OnDestroy {
     };
     this.store.dispatch(new ActionSearchUsers(payload));
   }
-  addNew(user: User) {
+  addNew() {
+    const user = null;
     const dialogRef = this.dialog.open(AddUserComponent, {
       data: { user: user }
     });
@@ -113,5 +113,11 @@ export class UsersComponent implements OnInit, OnDestroy {
         }
       }
     });
+  }
+  reload() {
+    this.showLoader = true;
+    setTimeout(() => {
+      this.showLoader = false;
+    }, 2000);
   }
 }

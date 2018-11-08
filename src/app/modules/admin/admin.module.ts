@@ -9,22 +9,9 @@ import { BreadcrumbComponent } from '@app/admin/breadcrumb/breadcrumb.component'
 import {
   MatDialogModule,
   MatExpansionModule,
-  MatMenuModule,
   MatPaginatorModule,
-  MatTableDataSource,
   MatTableModule,
   MatGridListModule,
-  MatCardModule,
-  MatIconModule,
-  MatButtonModule,
-  MatToolbarModule,
-  MatListModule,
-  MatSortModule,
-  MatInputModule,
-  MatChipsModule,
-  MatFormFieldModule,
-  MatSidenavModule,
-  MatTabsModule,
   MatSliderModule,
   MatProgressBarModule
 } from '@angular/material';
@@ -58,6 +45,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ListingComponent } from './listing/listing.component';
 import { ListingDetailsComponent } from './listing/core/listing.details/listing.details.component';
 import { ListingheaderComponent } from './listing/core/listingheader/listingheader.component';
+import { PropertyComponent } from './listing/core/property/property.component';
+import { PicturesComponent } from './listing/core/pictures/pictures.component';
+import { PricesComponent } from './listing/core/prices/prices.component';
+import { MapComponent } from './listing/core/map/map.component';
+import { CalendarComponent } from './listing/core/calendar/calendar.component';
 
 @NgModule({
   imports: [
@@ -66,18 +58,9 @@ import { ListingheaderComponent } from './listing/core/listingheader/listinghead
     BrowserModule,
     MatTableModule,
     MatPaginatorModule,
-    MatMenuModule,
     MatDialogModule,
     PerfectScrollbarModule,
-    MatListModule,
-    MatButtonModule,
-    MatInputModule,
-    MatChipsModule,
     FlexLayoutModule,
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatSidenavModule,
-    MatTabsModule,
     MatSliderModule,
     MatProgressBarModule,
     // core & shared
@@ -90,12 +73,7 @@ import { ListingheaderComponent } from './listing/core/listingheader/listinghead
     StoreModule.forFeature('admin', adminReducers),
     EffectsModule.forFeature([UsersEffects, ProfileEffects]),
     MatGridListModule,
-    MatCardModule,
-    MatIconModule,
-    MatButtonModule,
-    LayoutModule,
-    MatListModule,
-    MatSortModule
+    LayoutModule
   ],
   providers: [
     UsersService,
@@ -103,11 +81,7 @@ import { ListingheaderComponent } from './listing/core/listingheader/listinghead
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     },
-    ProfileService,
-    {
-      provide: PERFECT_SCROLLBAR_CONFIG,
-      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }
+    ProfileService
   ],
   entryComponents: [AddUserComponent, FilterComponent],
   declarations: [
@@ -123,7 +97,12 @@ import { ListingheaderComponent } from './listing/core/listingheader/listinghead
     UserMenuComponent,
     ListingComponent,
     ListingDetailsComponent,
-    ListingheaderComponent
+    ListingheaderComponent,
+    PropertyComponent,
+    PicturesComponent,
+    PricesComponent,
+    MapComponent,
+    CalendarComponent
   ],
   exports: [
     SidemenuComponent,

@@ -1,13 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { AppState, LocalStorageService } from '../../../../core/index';
-import { EffectsMetadata, getEffectsMetadata } from '@ngrx/effects';
+import { LocalStorageService } from '../../../../core/index';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Action, Store, StoreModule } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AuthEffects, AUTH_KEY } from './auth.effects';
 import { AuthState } from './auth.models';
-import { AuthService } from '../../../../core/auth/auth.service';
 import {
   HttpClientTestingModule,
   HttpTestingController

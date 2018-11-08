@@ -8,6 +8,7 @@ const packageJson = require('../../package.json');
 export const environment = {
   appName: 'Zero App',
   envName: 'DEV',
+  BaseUrl: 'http://localhost:8000/',
   production: false,
   test: false,
   i18nPrefix: '',

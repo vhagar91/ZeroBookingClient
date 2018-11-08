@@ -16,6 +16,7 @@ yarn.lock
 .c9/
 *.launch
 .settings/
+.firebase/
 *.sublime-workspace
 
 # IDE - VSCode

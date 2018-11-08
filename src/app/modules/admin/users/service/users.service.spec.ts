@@ -5,11 +5,11 @@ import {
   HttpClientTestingModule,
   HttpTestingController
 } from '@angular/common/http/testing';
-import { errorHandler } from '@angular/platform-browser/src/browser';
 import { AppErrorHandler } from '@app/core/error-handler/app-error-handler.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { User } from '@app/modules/admin/users/state/user';
-import { BaseUrl, userList } from '@app/core/app.config';
+import { userList } from '@app/core/app.config';
+import { environment } from '@env/environment';
 
 describe('UsersService', () => {
   let httpClient: HttpClient;
@@ -84,7 +84,7 @@ describe('UsersService', () => {
       const params = new HttpParams()
         .append('page', `${pageIndex}`)
         .append('page_size', `${pageSize}`);
-      const queryUrl = `${BaseUrl + userList}?${params}`;
+      const queryUrl = `${environment.BaseUrl + userList}?${params}`;
       const req = httpTestingController.expectOne(queryUrl);
       expect(req.request.method).toEqual('GET');
 
@@ -105,7 +105,7 @@ describe('UsersService', () => {
       const params = new HttpParams()
         .append('page', `${pageIndex}`)
         .append('page_size', `${pageSize}`);
-      const queryUrl = `${BaseUrl + userList}?${params}`;
+      const queryUrl = `${environment.BaseUrl + userList}?${params}`;
       const req = httpTestingController.expectOne(queryUrl);
       req.flush([]); // Respond with no heroes
     });
@@ -128,7 +128,7 @@ describe('UsersService', () => {
       const params = new HttpParams()
         .append('page', `${pageIndex}`)
         .append('page_size', `${pageSize}`);
-      const queryUrl = `${BaseUrl + userList}?${params}`;
+      const queryUrl = `${environment.BaseUrl + userList}?${params}`;
       const requests = httpTestingController.match(queryUrl);
       expect(requests.length).toEqual(3, 'calls to getUsers()');
 

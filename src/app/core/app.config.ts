@@ -2,7 +2,7 @@
 import { InjectionToken } from '@angular/core';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 // URLS
-export const BaseUrl = 'http://localhost:8000/';
+
 export const ApiKey = '00a32714-f553-4564-af67-1025e59573df';
 export const userList = 'api/users/list/';
 export const login = 'api/login/';

@@ -7,6 +7,11 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { CoreModule } from '../../../../../core';
 import { MatExpansionModule, MatMenuModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { CalendarComponent } from '../calendar/calendar.component';
+import { MapComponent } from '../map/map.component';
+import { PropertyComponent } from '../property/property.component';
+import { PricesComponent } from '../prices/prices.component';
+import { PicturesComponent } from '../pictures/pictures.component';
 
 describe('Listing.DetailsComponent', () => {
   let component: ListingDetailsComponent;
@@ -22,7 +27,16 @@ describe('Listing.DetailsComponent', () => {
         FlexLayoutModule,
         PerfectScrollbarModule
       ],
-      declarations: [ListingDetailsComponent, ListingheaderComponent]
+      declarations: [
+        ListingDetailsComponent,
+        ListingheaderComponent,
+        CalendarComponent,
+        MapComponent,
+        PropertyComponent,
+        PricesComponent,
+        ListingDetailsComponent,
+        PicturesComponent
+      ]
     }).compileComponents();
   }));
 

@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
-import { BaseUrl, userList, getAvatar } from '../../../../core/app.config';
+import { userList } from '../../../../core/app.config';
+import { environment } from '@env/environment';
 import { createUser } from '@app/core/app.config';
-import { forEach } from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class UsersService {
@@ -24,11 +23,11 @@ export class UsersService {
       }
     }
 
-    const queryUrl = `${BaseUrl + userList}?${params}`;
+    const queryUrl = `${environment.BaseUrl + userList}?${params}`;
     return this.http.get<any>(queryUrl);
   }
   addUser(user: any): Observable<any> {
-    const queryUrl = `${BaseUrl + createUser}`;
+    const queryUrl = `${environment.BaseUrl + createUser}`;
     return this.http.post<any>(queryUrl, user);
   }
 }

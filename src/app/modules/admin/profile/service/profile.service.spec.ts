@@ -8,13 +8,13 @@ import {
 import { AppErrorHandler } from '@app/core/error-handler/app-error-handler.service';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import {
-  BaseUrl,
   getProfile,
   putProfile,
   putProfilePicture
 } from '@app/core/app.config';
 import { Profile } from '@app/model/profile';
 import { Picture } from '@app/model/picture';
+import { environment } from '@env/environment';
 
 describe('ProfileService', () => {
   let httpClient: HttpClient;
@@ -72,7 +72,7 @@ describe('ProfileService', () => {
         );
 
       // ProfileService should have made one request to GET profile from expected URL
-      const queryUrl = `${BaseUrl + getProfile + userId}`;
+      const queryUrl = `${environment.BaseUrl + getProfile + userId}`;
       const req = httpTestingController.expectOne(queryUrl);
       expect(req.request.method).toEqual('GET');
 
@@ -109,7 +109,10 @@ describe('ProfileService', () => {
       const formData = new FormData(); // Note: FormData values can only be string or File/Blob objects
       formData.append('thumbnail', img);
       formData.append('normal', img);
-      const queryUrl = `${BaseUrl + putProfilePicture + pictureId + '/'}`;
+      const queryUrl = `${environment.BaseUrl +
+        putProfilePicture +
+        pictureId +
+        '/'}`;
       const req = httpTestingController.expectOne(queryUrl);
       expect(req.request.method).toEqual('PUT');
       expect(req.request.body).toEqual(formData);
@@ -149,7 +152,7 @@ describe('ProfileService', () => {
         );
 
       // ProfileServie should have made one request to Patch profile
-      const queryUrl = `${BaseUrl + putProfile + userId + '/'}`;
+      const queryUrl = `${environment.BaseUrl + putProfile + userId + '/'}`;
       const req = httpTestingController.expectOne(queryUrl);
       expect(req.request.method).toEqual('PATCH');
       expect(req.request.body).toEqual(updateProfile);

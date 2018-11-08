@@ -1,13 +1,7 @@
-.table-header {
-  background-color: #327ebd;
-  color: white;
-  padding: 0 5px;
-}
 .table-container {
   padding: 5px 15px 15px 15px;
 }
 .table-component-holder {
-  border: 1px solid #327ebd;
   background-color: white;
 }
 
@@ -100,20 +94,6 @@ mat-button-toggle-group {
 
 ::ng-deep .mat-sort-header-container {
   justify-content: center;
-}
-/* Structure */
-.example-container {
-  display: flex;
-  flex-direction: column;
-  min-width: 300px;
-}
-
-.example-header {
-  min-height: 64px;
-  display: flex;
-  align-items: center;
-  padding-left: 24px;
-  font-size: 20px;
 }
 
 .mat-table {
