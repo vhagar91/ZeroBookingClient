@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -94,13 +94,23 @@ library.add(
 import { BigInputComponent } from './big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action.component';
 import { ProfileComponent } from '../admin/profile/profile.component';
-
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient } from '@angular/common/http';
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
 
-    TranslateModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
     MatFormFieldModule,
     MatButtonModule,
     MatToolbarModule,
@@ -127,9 +137,7 @@ import { ProfileComponent } from '../admin/profile/profile.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-
     TranslateModule,
-
     MatButtonModule,
     MatMenuModule,
     MatTabsModule,
