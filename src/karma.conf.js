@@ -30,13 +30,15 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['ChromeHeadless', 'ChromeTravisCi'],
+    // you can define custom flags
     customLaunchers: {
       ChromeTravisCi: {
-        base: 'Chrome',
+        base: 'ChromeHeadless',
         flags: ['--no-sandbox']
       }
     },
+
     browserNoActivityTimeout: 50000,
     singleRun: !isWatch
   });
