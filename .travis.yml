@@ -18,10 +18,10 @@ before_script:
   - npm install -g firebase-tools
   - npm install -g @angular/cli
 script:
-  # run build script specified in package.json
   - npm run ci
-  # call script for deploying of produced artifacts
-   - ng build --prod
-#  - bash ./.travis-deploy.sh
-after_success:
-  - firebase deploy --token $FIREBASE_TOKEN
+  - ng build --prod
+deploy:
+  provider: firebase
+  token:
+    secure: $FIREBASE_TOKEN
+  project: "zerofee-182e3"
