@@ -1,5 +1,5 @@
 {
-  "zerofee-app.title": "Angular NgRx Material Štartér",
+  "zerofee-app.title": "Uhlová aplikácia NgRx Zero Booking",
   "zerofee-app.title.admin": "Admin Console",
   "zerofee-app.title.short": "Angular Štartér",
   "zerofee-app.header.github": "Github Repotitár Projektu",
@@ -63,10 +63,10 @@
   "zerofee-app.new.user": "Nový užívateľ",
   "zerofee-app.filter": "filter",
   "zerofee-app.dashboard": "prístrojová doska",
-  "zerofee.users": "",
-  "zerofee.filters": "",
-  "zerofee.nothanks": "",
-  "zerofee.ok": "",
-  "zerofee.listings": "",
-  "zerofee-app.listing.details": ""
+  "zerofee.users": "užívatelia",
+  "zerofee.filters": "filtre",
+  "zerofee.nothanks": "Nie ďakujem",
+  "zerofee.ok": "OK",
+  "zerofee.listings": "výpisy",
+  "zerofee-app.listing.details": "Podrobnosti o zozname"
 }

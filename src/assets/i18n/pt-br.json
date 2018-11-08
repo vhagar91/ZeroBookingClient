@@ -1,5 +1,5 @@
 {
-  "zerofee-app.title": "Angular Ngrx Material Início",
+  "zerofee-app.title": "Aplicativo de reserva Angular NgRx Zero",
   "zerofee-app.title.admin": "Admin Console",
   "zerofee-app.title.short": "Angular Starter",
   "zerofee-app.header.github": "Project Github Repository",
@@ -66,10 +66,10 @@
   "zerofee-app.new.user": "Novo usuário",
   "zerofee-app.filter": "Filtro",
   "zerofee-app.dashboard": "painel de controle",
-  "zerofee.users": "",
-  "zerofee.filters": "",
-  "zerofee.nothanks": "",
-  "zerofee.ok": "",
-  "zerofee.listings": "",
-  "zerofee-app.listing.details": ""
+  "zerofee.users": "Comercial",
+  "zerofee.filters": "Filtros",
+  "zerofee.nothanks": "Não, obrigado",
+  "zerofee.ok": "Está bem",
+  "zerofee.listings": "Listagens",
+  "zerofee-app.listing.details": "Detalhes da listagem"
 }

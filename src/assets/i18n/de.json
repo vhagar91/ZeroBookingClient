@@ -1,5 +1,5 @@
 {
-  "zerofee-app.title": "Angular NgRx Material Vorlage",
+  "zerofee-app.title": "Angular NgRx Zero Booking App",
   "zerofee-app.title.admin": "Admin Console",
   "zerofee-app.title.short": "Angular Vorlage",
   "zerofee-app.header.github": "Projekt Github-Repository",
@@ -62,10 +62,10 @@
   "zerofee-app.new.user": "Neuer Benutzer",
   "zerofee-app.filter": "Filter",
   "zerofee-app.dashboard": "Instrumententafel",
-  "zerofee.users": "",
-  "zerofee.filters": "",
-  "zerofee.nothanks": "",
-  "zerofee.ok": "",
-  "zerofee.listings": "",
-  "zerofee-app.listing.details": ""
+  "zerofee.users": "Benutzer",
+  "zerofee.filters": "Filter",
+  "zerofee.nothanks": "Nein Danke",
+  "zerofee.ok": "OK",
+  "zerofee.listings": "Listings",
+  "zerofee-app.listing.details": "Details auflisten"
 }

@@ -1,5 +1,5 @@
 {
-  "zerofee-app.title": "Kit de démarrage Angular NgRx Material",
+  "zerofee-app.title": "Angular NgRx Zero Réservation App",
   "zerofee-app.title.admin": "Admin Console",
   "zerofee-app.title.short": "Kit de démarrage",
   "zerofee-app.header.github": "Dépot Github",
@@ -64,10 +64,10 @@
   "zerofee-app.new.user": "Nouvel utilisateur",
   "zerofee-app.filter": "Filtre",
   "zerofee-app.dashboard": "Tableau de bord",
-  "zerofee.users": "",
-  "zerofee.filters": "",
-  "zerofee.nothanks": "",
-  "zerofee.ok": "",
-  "zerofee.listings": "",
-  "zerofee-app.listing.details": ""
+  "zerofee.users": "Utilisateurs",
+  "zerofee.filters": "Les filtres",
+  "zerofee.nothanks": "Non merci",
+  "zerofee.ok": "D'accord",
+  "zerofee.listings": "Inscriptions",
+  "zerofee-app.listing.details": "Détails de la liste"
 }
