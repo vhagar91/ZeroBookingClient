@@ -4,19 +4,13 @@ import {
   selectSettings,
   SettingsState
 } from '../../../settings/index';
-import {
-  ActionAuthLogin,
-  AnimationsService,
-  AppState,
-  LocalStorageService
-} from '../../../core/index';
-import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+import { ActionAuthLogin, AppState } from '../../../core/index';
 import { select, Store } from '@ngrx/store';
 import browser from 'browser-detect';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 import { FormControl, Validators } from '@angular/forms';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'zerofee-app-login',
@@ -35,10 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<AppState>,
-    private router: Router,
-    private animationService: AnimationsService,
-    private translate: TranslateService,
-    private storageService: LocalStorageService
+    public overlayContainer: OverlayContainer
   ) {}
   private static isIEorEdgeOrSafari() {
     return ['ie', 'edge', 'safari'].includes(browser().name);
@@ -56,7 +47,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     this.subscribeToSettings();
-    this.storageService.testLocalStorage();
+    this.setTheme();
   }
 
   private subscribeToSettings() {
@@ -83,5 +74,16 @@ export class LoginComponent implements OnInit, OnDestroy {
       password: this.password.value
     };
     this.store.dispatch(new ActionAuthLogin(payload));
+  }
+  private setTheme() {
+    this.componentCssClass = 'default-theme';
+    const classList = this.overlayContainer.getContainerElement().classList;
+    const toRemove = Array.from(classList).filter((item: string) =>
+      item.includes('-theme')
+    );
+    if (toRemove.length) {
+      classList.remove(...toRemove);
+    }
+    classList.add('default-theme');
   }
 }

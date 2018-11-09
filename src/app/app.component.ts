@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivationEnd, NavigationEnd, Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 import {
@@ -11,13 +11,11 @@ import {
 import { Subject } from 'rxjs';
 import {
   ActionSettingsChangeAnimationsPageDisabled,
-  NIGHT_MODE_THEME,
   selectSettings,
   SettingsState
 } from '@app/settings';
 import { select, Store } from '@ngrx/store';
 import { TranslateService } from '@ngx-translate/core';
-import { OverlayContainer } from '@angular/cdk/overlay';
 import browser from 'browser-detect';
 
 @Component({
@@ -26,12 +24,9 @@ import browser from 'browser-detect';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  @HostBinding('class')
-  componentCssClass;
   constructor(
     private titleService: TitleService,
     private router: Router,
-    public overlayContainer: OverlayContainer,
     private store: Store<AppState>,
     private animationService: AnimationsService,
     private translate: TranslateService,
@@ -95,7 +90,6 @@ export class AppComponent implements OnInit, OnDestroy {
       .subscribe(settings => {
         if (settings) {
           this.settings = settings;
-          this.setTheme(settings);
           this.setLanguage(settings);
           this.animationService.updateRouteAnimationType(
             settings.pageAnimations,
@@ -103,24 +97,6 @@ export class AppComponent implements OnInit, OnDestroy {
           );
         }
       });
-  }
-
-  private setTheme(settings: SettingsState) {
-    const { theme, autoNightMode } = settings;
-    const hours = new Date().getHours();
-    const effectiveTheme = (autoNightMode && (hours >= 20 || hours <= 6)
-      ? NIGHT_MODE_THEME
-      : theme
-    ).toLowerCase();
-    this.componentCssClass = effectiveTheme;
-    const classList = this.overlayContainer.getContainerElement().classList;
-    const toRemove = Array.from(classList).filter((item: string) =>
-      item.includes('-theme')
-    );
-    if (toRemove.length) {
-      classList.remove(...toRemove);
-    }
-    classList.add(effectiveTheme);
   }
   private setLanguage(settings: SettingsState) {
     const { language } = settings;

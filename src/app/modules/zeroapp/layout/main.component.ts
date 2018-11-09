@@ -1,8 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import browser from 'browser-detect';
 import { OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
 import { Store, select } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
@@ -10,10 +8,8 @@ import { takeUntil } from 'rxjs/operators';
 import {
   ActionAuthLogin,
   ActionAuthLogout,
-  AnimationsService,
   routeAnimations,
-  AppState,
-  LocalStorageService
+  AppState
 } from '../../../core/index';
 import { environment as env } from '../../../../environments/environment';
 
@@ -24,6 +20,7 @@ import {
   ActionSettingsChangeLanguage,
   ActionSettingsChangeAnimationsPageDisabled
 } from '../../../settings/index';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'zerofee-app-main',
@@ -33,7 +30,8 @@ import {
 })
 export class MainComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
-
+  @HostBinding('class')
+  componentCssClass;
   isProd = env.production;
   envName = env.envName;
   version = env.versions.app;
@@ -48,14 +46,11 @@ export class MainComponent implements OnInit, OnDestroy {
 
   settings: SettingsState;
   isAuthenticated: boolean;
-  isHeaderSticky: boolean;
+  isHeaderSticky: true;
 
   constructor(
     private store: Store<AppState>,
-    private router: Router,
-    private animationService: AnimationsService,
-    private translate: TranslateService,
-    private storageService: LocalStorageService
+    public overlayContainer: OverlayContainer
   ) {}
 
   private static isIEorEdgeOrSafari() {
@@ -76,15 +71,23 @@ export class MainComponent implements OnInit, OnDestroy {
       )
       .subscribe(settings => {
         this.settings = settings;
-        this.setStickyHeader(settings);
       });
   }
   ngOnInit(): void {
     this.subscribeToSettings();
-    this.storageService.testLocalStorage();
-    this.translate.setDefaultLang('en');
+    this.setTheme();
   }
-
+  private setTheme() {
+    this.componentCssClass = 'default-theme';
+    const classList = this.overlayContainer.getContainerElement().classList;
+    const toRemove = Array.from(classList).filter((item: string) =>
+      item.includes('-theme')
+    );
+    if (toRemove.length) {
+      classList.remove(...toRemove);
+    }
+    classList.add('default-theme');
+  }
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
@@ -105,8 +108,5 @@ export class MainComponent implements OnInit, OnDestroy {
   onLanguageSelect({ value: language }) {
     this.store.dispatch(new ActionSettingsChangeLanguage({ language }));
     this.store.dispatch(new ActionSettingsPersist({ settings: this.settings }));
-  }
-  private setStickyHeader(settings: SettingsState) {
-    this.isHeaderSticky = settings.stickyHeader;
   }
 }

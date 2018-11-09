@@ -75,7 +75,7 @@ export class UsersComponent implements OnInit, OnDestroy {
       );
     this.searchUsers();
   }
-  searchUsers(reset: boolean = false): void {
+  searchUsers(reset = false): void {
     if (reset) {
       this.pageIndex = 1;
       this.pageSize = 20;

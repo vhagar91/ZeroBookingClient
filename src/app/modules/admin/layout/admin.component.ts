@@ -6,32 +6,17 @@ import {
   OnDestroy,
   OnInit
 } from '@angular/core';
-import { Router } from '@angular/router';
 import { environment as env } from '../../../../environments/environment';
-import { TranslateService } from '@ngx-translate/core';
-import {
-  AnimationsService,
-  LocalStorageService,
-  routeAnimations,
-  selectAuth
-} from '../../../core/index';
+import { routeAnimations, selectAuth } from '../../../core/index';
 import { Observable, Subject } from 'rxjs';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import browser from 'browser-detect';
-import {
-  ActionSettingsChangeAnimationsPageDisabled,
-  NIGHT_MODE_THEME,
-  selectSettings,
-  SettingsState
-} from '../../../settings/index';
 import { select, Store } from '@ngrx/store';
 import { map, takeUntil } from 'rxjs/operators';
-
 import { AppState } from '../../../core/index';
-import { AppConfig } from '../../../core/app.config';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { User } from '@app/model/user';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { SettingsState } from '@app/settings';
 
 @Component({
   selector: 'zerofee-app-admin',
@@ -43,16 +28,12 @@ export class AdminComponent implements OnInit, OnDestroy, OnChanges {
   @Input()
   isVisible = true;
   visibility = 'shown';
-
   sideNavOpened = true;
   matDrawerOpened = false;
   matDrawerShow = true;
   sideNavMode = 'side';
 
   private unsubscribe$: Subject<void> = new Subject<void>();
-  isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
-    .pipe(map(result => result.matches));
   @HostBinding('class')
   componentCssClass;
   version = env.versions.app;
@@ -66,24 +47,15 @@ export class AdminComponent implements OnInit, OnDestroy, OnChanges {
     private media: ObservableMedia,
     private breakpointObserver: BreakpointObserver,
     public overlayContainer: OverlayContainer,
-    private store: Store<AppState>,
-    private router: Router,
-    private animationService: AnimationsService,
-    private translate: TranslateService,
-    private storageService: LocalStorageService
+    private store: Store<AppState>
   ) {}
-
-  private static isIEorEdgeOrSafari() {
-    return ['ie', 'edge', 'safari'].includes(browser().name);
-  }
 
   ngOnInit(): void {
     this.media.subscribe((mediaChange: MediaChange) => {
       this.toggleView();
     });
-    this.subscribeToSettings();
+    this.setTheme();
     this.subscribeToIsAuthenticated();
-    this.storageService.testLocalStorage();
   }
   ngOnChanges() {
     this.visibility = this.isVisible ? 'shown' : 'hidden';
@@ -106,32 +78,7 @@ export class AdminComponent implements OnInit, OnDestroy, OnChanges {
       });
   }
 
-  private subscribeToSettings() {
-    if (AdminComponent.isIEorEdgeOrSafari()) {
-      this.store.dispatch(
-        new ActionSettingsChangeAnimationsPageDisabled({
-          pageAnimationsDisabled: true
-        })
-      );
-    }
-    this.store
-      .pipe(
-        select(selectSettings),
-        takeUntil(this.unsubscribe$)
-      )
-      .subscribe(settings => {
-        this.settings = settings;
-        this.setTheme(settings);
-      });
-  }
-
-  private setTheme(settings: SettingsState) {
-    const { theme, autoNightMode } = settings;
-    const hours = new Date().getHours();
-    const effectiveTheme = (autoNightMode && (hours >= 20 || hours <= 6)
-      ? NIGHT_MODE_THEME
-      : theme
-    ).toLowerCase();
+  private setTheme() {
     this.componentCssClass = 'black-theme';
     const classList = this.overlayContainer.getContainerElement().classList;
     const toRemove = Array.from(classList).filter((item: string) =>
@@ -140,7 +87,7 @@ export class AdminComponent implements OnInit, OnDestroy, OnChanges {
     if (toRemove.length) {
       classList.remove(...toRemove);
     }
-    classList.add(effectiveTheme);
+    classList.add('black-theme');
   }
 
   toggleView() {
