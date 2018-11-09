@@ -93,13 +93,15 @@ export class AppComponent implements OnInit, OnDestroy {
         takeUntil(this.unsubscribe$)
       )
       .subscribe(settings => {
-        this.settings = settings;
-        this.setTheme(settings);
-        this.setLanguage(settings);
-        this.animationService.updateRouteAnimationType(
-          settings.pageAnimations,
-          settings.elementsAnimations
-        );
+        if (settings) {
+          this.settings = settings;
+          this.setTheme(settings);
+          this.setLanguage(settings);
+          this.animationService.updateRouteAnimationType(
+            settings.pageAnimations,
+            settings.elementsAnimations
+          );
+        }
       });
   }
 

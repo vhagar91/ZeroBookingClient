@@ -4,7 +4,8 @@ export const environment = {
   appName: 'Zero App',
   envName: 'PROD',
   production: true,
-  BaseUrl: 'http://localhost:8000/',
+  BaseUrl: 'https://zerofeeapi.herokuapp.com/',
+  apiKey: 'fd3e3acc-c99d-48ed-80d5-12e749f4dbe2',
   test: false,
   i18nPrefix: '/zeroapp',
   versions: {

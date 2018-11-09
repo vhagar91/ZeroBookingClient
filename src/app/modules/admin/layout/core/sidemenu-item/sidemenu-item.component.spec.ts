@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SidemenuItemComponent } from './sidemenu-item.component';
 import { CoreModule } from '@app/core';
 import { MatExpansionModule, MatMenuModule } from '@angular/material';

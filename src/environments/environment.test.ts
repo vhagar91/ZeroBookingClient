@@ -5,6 +5,7 @@ export const environment = {
   envName: 'TEST',
   production: false,
   BaseUrl: 'http://localhost:8000/',
+  apiKey: '00a32714-f553-4564-af67-1025e59573df',
   test: true,
   i18nPrefix: '',
   versions: {

@@ -22,7 +22,7 @@ import {
   tap
 } from 'rxjs/operators';
 import { AuthService } from '@app/core/auth/auth.service';
-import { ApiKey } from '@app/core/app.config';
+import { environment } from '@env/environment';
 import { AppState } from '@app/core';
 import { Store } from '@ngrx/store';
 import { error } from 'util';
@@ -70,7 +70,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     const newRequest = request.clone({
       setHeaders: { Authorization: `Bearer ${token}` }
     });
-    return newRequest.clone({ setParams: { apikey: ApiKey } });
+    return newRequest.clone({ setParams: { apikey: environment.apiKey } });
   }
 
   private handle401Error(req: HttpRequest<any>, next: HttpHandler) {
