@@ -20,8 +20,4 @@ before_script:
 script:
   - ng test
   - ng build --prod
-deploy:
-  provider: firebase
-  token:
-    secure: $FIREBASE_TOKEN
-  project: "zerofee-182e3"
+  - firebase deploy --token $FIREBASE_TOKEN
