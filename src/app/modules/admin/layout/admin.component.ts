@@ -120,10 +120,8 @@ export class AdminComponent implements OnInit, OnDestroy, OnChanges {
         takeUntil(this.unsubscribe$)
       )
       .subscribe(settings => {
-        if (this.settings) {
-          this.settings = settings;
-          this.setTheme(settings);
-        }
+        this.settings = settings;
+        this.setTheme(settings);
       });
   }
 
