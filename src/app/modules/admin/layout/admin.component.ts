@@ -99,8 +99,10 @@ export class AdminComponent implements OnInit, OnDestroy, OnChanges {
         takeUntil(this.unsubscribe$)
       )
       .subscribe(auth => {
-        this.isAuthenticated = auth.isAuthenticated;
-        this.user = auth.user;
+        if (auth) {
+          this.isAuthenticated = auth.isAuthenticated;
+          this.user = auth.user;
+        }
       });
   }
 
@@ -118,8 +120,10 @@ export class AdminComponent implements OnInit, OnDestroy, OnChanges {
         takeUntil(this.unsubscribe$)
       )
       .subscribe(settings => {
-        this.settings = settings;
-        this.setTheme(settings);
+        if (this.settings) {
+          this.settings = settings;
+          this.setTheme(settings);
+        }
       });
   }
 
