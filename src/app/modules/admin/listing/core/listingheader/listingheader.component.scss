@@ -1,5 +1,5 @@
 .header {
-  background-image: -webkit-linear-gradient(45deg, #212121 75%, #616161 25%);
+  background-image: -webkit-linear-gradient(45deg, #303030 75%, #616161 25%);
   background-size: cover;
   height: fit-content;
 }
@@ -31,4 +31,17 @@
 .special-list div.content .item-title {
   display: block;
   font-size: 20px;
+}
+@media screen and (max-width: 500px) {
+  .special-list div.item-picture {
+    display: none;
+  }
+  .special-list div.content {
+    display: table-footer-group;
+    margin-top: 0;
+  }
+  .pull-right {
+    float: none;
+    margin-left: 80%;
+  }
 }

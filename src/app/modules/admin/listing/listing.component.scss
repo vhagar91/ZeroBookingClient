@@ -1,7 +1,7 @@
 @mixin sales-list($theme) {
   .sales-list {
     margin: 10px 5px;
-    background: grey;
+    background: rgba(145, 151, 187, 0.34);
   }
   .pull-right {
     flex: 1 1 auto;
