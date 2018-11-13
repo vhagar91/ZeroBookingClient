@@ -50,6 +50,8 @@ import { PicturesComponent } from './listing/core/pictures/pictures.component';
 import { PricesComponent } from './listing/core/prices/prices.component';
 import { MapComponent } from './listing/core/map/map.component';
 import { CalendarComponent } from './listing/core/calendar/calendar.component';
+import { ListingEffects } from '@app/modules/admin/listing/reducer/listing.effects';
+import { ListingsService } from '@app/modules/admin/listing/service/listings.service';
 
 @NgModule({
   imports: [
@@ -71,7 +73,7 @@ import { CalendarComponent } from './listing/core/calendar/calendar.component';
     StaticRoutingModule,
     // store
     StoreModule.forFeature('admin', adminReducers),
-    EffectsModule.forFeature([UsersEffects, ProfileEffects]),
+    EffectsModule.forFeature([UsersEffects, ProfileEffects, ListingEffects]),
     MatGridListModule,
     LayoutModule
   ],
@@ -81,7 +83,8 @@ import { CalendarComponent } from './listing/core/calendar/calendar.component';
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     },
-    ProfileService
+    ProfileService,
+    ListingsService
   ],
   entryComponents: [AddUserComponent, FilterComponent],
   declarations: [

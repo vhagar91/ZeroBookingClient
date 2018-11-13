@@ -18,6 +18,7 @@ import { AdminGuard } from '@app/modules/admin/admin.guard';
     // features
     StaticModule,
     AdminModule,
+    // core & shared
     SharedModule,
     // app
     AppRoutingModule

@@ -9,13 +9,9 @@ import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 import { Router } from '@angular/router';
 import { ProfileService } from '@app/modules/admin/profile/service/profile.service';
-import {
-  ActionSearchUsers,
-  UserActionTypes
-} from '@app/modules/admin/users/reducer/users.actions';
 
 @Injectable()
 export class ProfileEffects {

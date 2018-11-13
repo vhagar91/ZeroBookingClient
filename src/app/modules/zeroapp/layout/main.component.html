@@ -39,7 +39,7 @@
         </span>
 
         <button mat-button mat-stroked-button color="accent" *ngIf="!isAuthenticated" (click)="onLoginClick()">
-          {{ 'zerofee-app.menu.login' | translate }}
+          {{ 100  | Exchange  }}
         </button>
 
         <button *ngIf="isAuthenticated"
@@ -62,6 +62,7 @@
            href="https://github.com/tomastrajan/zeroapp"
            target="_blank">
           <fa-icon [icon]="['fab','github']"></fa-icon>
+
         </a>
 
         <span>

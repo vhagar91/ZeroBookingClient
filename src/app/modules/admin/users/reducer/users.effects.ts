@@ -3,13 +3,6 @@ import { Router } from '@angular/router';
 import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import {
-  ActionAuthLogin,
-  ActionAuthLogout,
-  AuthActionTypes,
-  LogInFailure,
-  LogInSuccess
-} from './auth.actions';
 import { Observable, of } from 'rxjs';
 import { UsersService } from '../service/users.service';
 import {

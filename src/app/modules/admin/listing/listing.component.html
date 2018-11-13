@@ -29,34 +29,55 @@
                     [bufferValue]="'10'">
   </mat-progress-bar>
   <mat-list >
-    <mat-list-item (click)="seeDetails()" *ngFor="let sale of sales">
+    <mat-list-item (click)="seeDetails()" *ngFor="let listing of displayListings">
 
-      <img  matListAvatar [src]="sale.companyIcon" alt="Image of {{sale.name}}">
-      <h3  > {{sale.companyName}} </h3>
+      <h3  > {{listing.nickname}} </h3>
       <span class="pull-right"></span>
-      <h3  > {{sale.companyName}} </h3>
+      <h3  > {{listing.publicName}} </h3>
 
       <span class="pull-right"></span>
-      <h3  > {{sale.companyName}} </h3>
+      <h3 [ngSwitch]="listing.roomType">
+        <div *ngSwitchCase="0">
+          No Set
+        </div>
+        <div *ngSwitchCase="1">
+          Room
+        </div>
+        <div *ngSwitchCase="2">
+          Full Property
+        </div>
+      </h3>
       <span class="pull-right"></span>
-      <h3  > {{sale.companyName}} </h3>
+      <h3 [ngSwitch]="listing.propertyType">
+        <div *ngSwitchCase="0">
+          No Set
+        </div>
+        <div *ngSwitchCase="1">
+          APARTMENT
+        </div>
+        <div *ngSwitchCase="2">
+          HOME
+        </div>
+        <div *ngSwitchCase="3">
+          Villa
+        </div>
+        <div *ngSwitchCase="4">
+          Penthouse
+        </div>
+
+      </h3>
       <span class="pull-right"></span>
-      <mat-chip-list    >
-        <mat-chip  *ngIf="sale.star" color="primary" selected="true" >
-          {{sale.star}} &nbsp; <mat-icon>attach_money</mat-icon>
+      <mat-chip-list>
+        <mat-chip  *ngIf="listing.isActive" color="accent" selected="true" >
+        Active
         </mat-chip>
-        <mat-chip *ngIf="sale.watch"  color="warn" selected="true" >
-          {{sale.watch}}  &nbsp;<mat-icon>attach_money</mat-icon>
-        </mat-chip>
-        <mat-chip *ngIf="sale.fork"  color="accent" selected="true" >
-          {{sale.fork}}  &nbsp;<mat-icon>attach_money</mat-icon>
+        <mat-chip *ngIf="!listing.isActive"  color="warn" selected="true" >
+          Inactive  &nbsp;
         </mat-chip>
       </mat-chip-list>
     </mat-list-item>
   </mat-list>
-  <mat-paginator [length]="100"
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator>
+  <mat-paginator [length]="resultsLength" [pageSizeOptions]="[10, 20, 30]"  showFirstLastButtons (page)="$event" ></mat-paginator>
+
 
 </div>

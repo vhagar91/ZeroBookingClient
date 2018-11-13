@@ -7,7 +7,7 @@ export const environment = {
   BaseUrl: 'https://zerofeeapi.herokuapp.com/',
   apiKey: 'fd3e3acc-c99d-48ed-80d5-12e749f4dbe2',
   test: false,
-  i18nPrefix: '/zeroapp',
+  i18nPrefix: '',
   versions: {
     app: packageJson.version,
     angular: packageJson.dependencies['@angular/core'],

@@ -1,14 +1,12 @@
 import { NgModule, Optional, SkipSelf, ErrorHandler } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-
 import { environment } from '@env/environment';
-
 import { LocalStorageService } from './local-storage/local-storage.service';
 import { AuthEffects } from './auth/auth.effects';
 import { AuthGuardService } from './auth/auth-guard.service';
@@ -25,9 +23,9 @@ import { CustomSerializer } from './router/custom-serializer';
 import { AuthService } from '@app/core/auth/auth.service';
 import { Error } from 'tslint/lib/error';
 import { BreadcrumbComponent } from '../admin/breadcrumb/breadcrumb.component';
-import { RouterModule } from '@angular/router';
 import { LoaderService } from '@app/core/loader/loader.service';
-import { LoaderComponent } from '@app/core/loader/loader.component';
+import { CurrencyCustomPipe } from './pipes/currency.pipe';
+import { CurrencyService } from '@app/core/currency-exchange/currency.service';
 
 @NgModule({
   imports: [
@@ -54,7 +52,7 @@ import { LoaderComponent } from '@app/core/loader/loader.component';
       }
     })
   ],
-  declarations: [],
+  declarations: [CurrencyCustomPipe],
   providers: [
     LocalStorageService,
     AuthGuardService,
@@ -62,11 +60,13 @@ import { LoaderComponent } from '@app/core/loader/loader.component';
     httpInterceptorProviders,
     TitleService,
     LoaderService,
+    CurrencyPipe,
+    CurrencyService,
     AuthService,
     { provide: ErrorHandler, useClass: AppErrorHandler },
     { provide: RouterStateSerializer, useClass: CustomSerializer }
   ],
-  exports: [TranslateModule]
+  exports: [TranslateModule, CurrencyCustomPipe]
 })
 export class CoreModule {
   constructor(

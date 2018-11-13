@@ -132,7 +132,7 @@ describe('UsersService', () => {
       const requests = httpTestingController.match(queryUrl);
       expect(requests.length).toEqual(3, 'calls to getUsers()');
 
-      // Respond to each request with different mock hero results
+      // Respond to each request with different mock user results
       requests[0].flush([]);
       requests[1].flush([{ id: 1, username: 'bob' }]);
       requests[2].flush(expectedUsers);

@@ -4,19 +4,13 @@ import {
   HttpInterceptor,
   HttpHandler,
   HttpRequest,
-  HttpErrorResponse,
-  HttpSentEvent,
-  HttpHeaderResponse,
-  HttpProgressEvent,
-  HttpResponse,
-  HttpUserEvent
+  HttpErrorResponse
 } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import {
   catchError,
   filter,
   finalize,
-  map,
   switchMap,
   take,
   tap
@@ -25,7 +19,6 @@ import { AuthService } from '@app/core/auth/auth.service';
 import { environment } from '@env/environment';
 import { AppState } from '@app/core';
 import { Store } from '@ngrx/store';
-import { error } from 'util';
 import { ActionSearchUsers } from '@app/modules/admin/users/reducer/users.actions';
 import { ActionAuthLogout } from '@app/core/auth/auth.actions';
 
@@ -67,10 +60,14 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     token: string
   ): HttpRequest<any> {
-    const newRequest = request.clone({
-      setHeaders: { Authorization: `Bearer ${token}` }
-    });
-    return newRequest.clone({ setParams: { apikey: environment.apiKey } });
+    if (request.url.includes('ratesapi')) {
+      return request;
+    } else {
+      const newRequest = request.clone({
+        setHeaders: { Authorization: `Bearer ${token}` }
+      });
+      return newRequest.clone({ setParams: { apikey: environment.apiKey } });
+    }
   }
 
   private handle401Error(req: HttpRequest<any>, next: HttpHandler) {

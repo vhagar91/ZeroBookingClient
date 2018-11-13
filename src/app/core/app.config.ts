@@ -10,6 +10,7 @@ export const getProfile = 'api/users/profile/';
 export const putProfilePicture = 'api/users/avatar/';
 export const putProfile = 'api/users/profile/';
 export const createUser = 'api/users/new/';
+export const listingsList = 'api/listings/list/';
 // ExtraConfigs
 export const AppConfig: any = {
   routes: {

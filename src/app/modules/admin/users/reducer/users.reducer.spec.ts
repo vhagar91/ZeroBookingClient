@@ -1,4 +1,3 @@
-import { ActionAuthLogin, ActionAuthLogout } from './auth.actions';
 import {
   initialState,
   usersReducer
