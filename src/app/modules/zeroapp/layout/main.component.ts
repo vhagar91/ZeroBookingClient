@@ -18,8 +18,9 @@ import {
   SettingsState,
   ActionSettingsPersist,
   ActionSettingsChangeLanguage,
-  ActionSettingsChangeAnimationsPageDisabled
-} from '../../../settings/index';
+  ActionSettingsChangeAnimationsPageDisabled,
+  ActionSettingsChangeCurrency
+} from '@app/settings';
 import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
@@ -38,6 +39,7 @@ export class MainComponent implements OnInit, OnDestroy {
   year = new Date().getFullYear();
   logo = require('../../../../assets/logo.png');
   languages = ['en', 'de', 'sk', 'fr', 'es', 'pt-br'];
+  currencies = ['USD', 'EUR'];
   navigation = [{ link: './features', label: 'zerofee-app.menu.features' }];
   navigationSideMenu = [
     ...this.navigation,
@@ -107,6 +109,14 @@ export class MainComponent implements OnInit, OnDestroy {
 
   onLanguageSelect({ value: language }) {
     this.store.dispatch(new ActionSettingsChangeLanguage({ language }));
+    this.store.dispatch(new ActionSettingsPersist({ settings: this.settings }));
+  }
+  onCurrencySelect({ value: currency }) {
+    const payload = {
+      from: currency,
+      to: this.currencies
+    };
+    this.store.dispatch(new ActionSettingsChangeCurrency(payload));
     this.store.dispatch(new ActionSettingsPersist({ settings: this.settings }));
   }
 }

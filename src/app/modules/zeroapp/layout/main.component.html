@@ -39,7 +39,7 @@
         </span>
 
         <button mat-button mat-stroked-button color="accent" *ngIf="!isAuthenticated" (click)="onLoginClick()">
-          {{ 100  | Exchange  }}
+          {{ 100  | Exchange:'USD':settings?.currency:settings?.rates}}
         </button>
 
         <button *ngIf="isAuthenticated"
@@ -64,7 +64,13 @@
           <fa-icon [icon]="['fab','github']"></fa-icon>
 
         </a>
-
+        <span>
+          <mat-select style="width: 57px" [ngModel]="settings?.currency" (selectionChange)="onCurrencySelect($event)" >
+            <mat-option *ngFor="let c of currencies" [value]="c">
+              {{ c }}
+            </mat-option>
+          </mat-select>
+        </span>
         <span>
           <mat-select [ngModel]="settings?.language" (selectionChange)="onLanguageSelect($event)">
             <mat-option *ngFor="let l of languages" [value]="l">
@@ -72,6 +78,7 @@
             </mat-option>
           </mat-select>
         </span>
+
       </mat-toolbar>
     </div>
     <perfect-scrollbar style="height:100%;">

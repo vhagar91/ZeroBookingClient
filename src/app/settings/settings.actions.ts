@@ -1,9 +1,11 @@
 import { Action } from '@ngrx/store';
 
-import { Language, SettingsState } from './settings.model';
+import { Currency, Language, SettingsState } from './settings.model';
 
 export enum SettingsActionTypes {
   CHANGE_LANGUAGE = '[Settings] Change Language',
+  CHANGE_CURRENCY = '[Settings] Change Currency',
+  CHANGE_CURRENCY_SUCCESS = '[Settings] Change Currency SUCCESS',
   CHANGE_THEME = '[Settings] Change Theme',
   CHANGE_AUTO_NIGHT_AUTO_MODE = '[Settings] Change Auto Night Mode',
   CHANGE_STICKY_HEADER = '[Settings] Change Sticky Header',
@@ -17,6 +19,16 @@ export class ActionSettingsChangeLanguage implements Action {
   readonly type = SettingsActionTypes.CHANGE_LANGUAGE;
 
   constructor(readonly payload: { language: Language }) {}
+}
+export class ActionSettingsChangeCurrency implements Action {
+  readonly type = SettingsActionTypes.CHANGE_CURRENCY;
+
+  constructor(public payload: any) {}
+}
+export class ActionSettingsChangeCurrencySuccess implements Action {
+  readonly type = SettingsActionTypes.CHANGE_CURRENCY_SUCCESS;
+
+  constructor(public payload: any) {}
 }
 
 export class ActionSettingsChangeTheme implements Action {
@@ -69,4 +81,6 @@ export type SettingsActions =
   | ActionSettingsChangeAnimationsPageDisabled
   | ActionSettingsChangeAnimationsElements
   | ActionSettingsChangeAutoNightMode
+  | ActionSettingsChangeCurrency
+  | ActionSettingsChangeCurrencySuccess
   | ActionSettingsChangeStickyHeader;

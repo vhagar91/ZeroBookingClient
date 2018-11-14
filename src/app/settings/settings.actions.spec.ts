@@ -85,6 +85,8 @@ describe('Settings Actions', () => {
         autoNightMode: true,
         elementsAnimations: true,
         language: 'en',
+        currency: 'USD',
+        rates: { USD: 1.24 },
         theme: NIGHT_MODE_THEME,
         pageAnimations: true,
         pageAnimationsDisabled: true,

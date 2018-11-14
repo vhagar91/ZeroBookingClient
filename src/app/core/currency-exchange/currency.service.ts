@@ -7,7 +7,7 @@ export class CurrencyService {
   url = 'https://ratesapi.io/api/latest';
 
   constructor(private http: HttpClient) {}
-  Exchange(amount: number, from: string, to: string): Observable<any> {
+  Exchange(from: string, to: string): Observable<any> {
     const params = new HttpParams()
       .append('base', `${from}`)
       .append('symbols', `${to}`);

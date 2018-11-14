@@ -3,6 +3,8 @@ import { SettingsActions, SettingsActionTypes } from './settings.actions';
 
 export const initialState: SettingsState = {
   language: 'en',
+  currency: 'EUR',
+  rates: { USD: 1.24 },
   theme: 'DEFAULT-THEME',
   autoNightMode: false,
   stickyHeader: true,
@@ -23,14 +25,19 @@ export function settingsReducer(
     case SettingsActionTypes.CHANGE_ANIMATIONS_PAGE:
     case SettingsActionTypes.CHANGE_ANIMATIONS_ELEMENTS:
       return { ...state, ...action.payload };
-
+    case SettingsActionTypes.CHANGE_CURRENCY_SUCCESS:
+      return {
+        ...state,
+        currency: action.payload.base,
+        rates: action.payload.rates
+      };
     case SettingsActionTypes.CHANGE_ANIMATIONS_PAGE_DISABLED:
       return {
         ...state,
         pageAnimations: false,
         pageAnimationsDisabled: action.payload.pageAnimationsDisabled
       };
-
+    case SettingsActionTypes.CHANGE_CURRENCY:
     default:
       return state;
   }

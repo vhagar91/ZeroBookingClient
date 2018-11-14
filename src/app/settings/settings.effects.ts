@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Action } from '@ngrx/store';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { tap } from 'rxjs/operators';
-
+import { map, switchMap, tap } from 'rxjs/operators';
 import { LocalStorageService, AnimationsService } from '@app/core';
-
-import { ActionSettingsPersist, SettingsActionTypes } from './settings.actions';
+import {
+  ActionSettingsChangeCurrency,
+  ActionSettingsChangeCurrencySuccess,
+  ActionSettingsPersist,
+  SettingsActionTypes
+} from './settings.actions';
+import { CurrencyService } from '@app/core/currency-exchange/currency.service';
 
 export const SETTINGS_KEY = 'SETTINGS';
 
@@ -14,7 +18,8 @@ export class SettingsEffects {
   constructor(
     private actions$: Actions<Action>,
     private localStorageService: LocalStorageService,
-    private animationsService: AnimationsService
+    private animationsService: AnimationsService,
+    private changeCurrencyService: CurrencyService
   ) {}
 
   @Effect({ dispatch: false })
@@ -29,5 +34,16 @@ export class SettingsEffects {
         elementsAnimations
       );
     })
+  );
+  @Effect()
+  changeCurrency = this.actions$.pipe(
+    ofType<ActionSettingsChangeCurrency>(SettingsActionTypes.CHANGE_CURRENCY),
+    tap(action => console.log(action)),
+    map(action => action),
+    switchMap(action =>
+      this.changeCurrencyService
+        .Exchange(action.payload.from, action.payload.to)
+        .pipe(map(resp => new ActionSettingsChangeCurrencySuccess(resp)))
+    )
   );
 }

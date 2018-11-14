@@ -5,18 +5,31 @@ import { EMPTY } from 'rxjs';
 import { ActionSettingsPersist } from './settings.actions';
 import { SettingsEffects, SETTINGS_KEY } from './settings.effects';
 import { SettingsState } from './settings.model';
+import { CurrencyService } from '@app/core/currency-exchange/currency.service';
+import { TestBed } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { StoreModule } from '@ngrx/store';
+import { UsersService } from '@app/modules/admin/users/service/users.service';
+import { provideMockActions } from '@ngrx/effects/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SettingsEffects', () => {
   let localStorageService: jasmine.SpyObj<LocalStorageService>;
   let animationsService: jasmine.SpyObj<AnimationsService>;
+  let currencyService: CurrencyService;
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [StoreModule.forRoot({}), HttpClientTestingModule],
+      providers: [CurrencyService, HttpClientTestingModule]
+    });
     localStorageService = jasmine.createSpyObj('LocalStorageService', [
       'setItem'
     ]);
     animationsService = jasmine.createSpyObj('AnimationsService', [
       'updateRouteAnimationType'
     ]);
+    currencyService = TestBed.get(CurrencyService);
   });
 
   describe('persistSettings', () => {
@@ -25,7 +38,8 @@ describe('SettingsEffects', () => {
       const effect = new SettingsEffects(
         actions,
         localStorageService,
-        animationsService
+        animationsService,
+        currencyService
       );
       const metadata = getEffectsMetadata(effect);
 
@@ -36,6 +50,8 @@ describe('SettingsEffects', () => {
   it('should call methods on AnimationsService and LocalStorageService for PERSIST action', () => {
     const settings: SettingsState = {
       language: 'en',
+      currency: 'USD',
+      rates: { USD: 1.24 },
       pageAnimations: true,
       elementsAnimations: true,
       theme: 'default',
@@ -49,7 +65,8 @@ describe('SettingsEffects', () => {
     const effect = new SettingsEffects(
       actions,
       localStorageService,
-      animationsService
+      animationsService,
+      currencyService
     );
 
     effect.persistSettings.subscribe(() => {

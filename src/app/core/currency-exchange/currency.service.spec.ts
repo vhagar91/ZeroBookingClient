@@ -66,7 +66,7 @@ describe('UsersService', () => {
       const from = 'USD';
       const to = 'EUR';
       currencyService
-        .Exchange(100, 'USD', 'EUR')
+        .Exchange('USD', 'EUR')
         .subscribe(
           response =>
             expect(response).toEqual(expected, 'should return expected'),
