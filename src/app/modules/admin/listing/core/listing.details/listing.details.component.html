@@ -7,7 +7,7 @@
   </mat-tab>
   <mat-tab label="Property">
     <ng-template matTabContent>
-      <zerofee-app-property></zerofee-app-property>
+      <zerofee-app-property [generalData]="generalForm" [listingId]="selectedListings.pk"></zerofee-app-property>
     </ng-template>
   </mat-tab>
   <mat-tab label="Pictures">

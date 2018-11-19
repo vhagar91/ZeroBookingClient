@@ -8,7 +8,8 @@ import {
   ActionSearchListings,
   ActionSearchFailListings,
   ActionSearchSuccessListings,
-  ListingActionTypes
+  ListingActionTypes,
+  ActionSelectSuccessListing
 } from '@app/modules/admin/listing/reducer/listing.actions';
 
 @Injectable()
@@ -19,7 +20,7 @@ export class ListingEffects {
     private listingService: ListingsService
   ) {}
   @Effect()
-  searchUsers = this.actions$.pipe(
+  searchListings = this.actions$.pipe(
     // filter out the actions, except '[Customers Page] Get'
     ofType<ActionSearchListings>(ListingActionTypes.SEARCH),
     tap(action => console.log(action)),
@@ -32,7 +33,33 @@ export class ListingEffects {
           action.payload.filters
         )
         .pipe(
-          map(users => new ActionSearchSuccessListings(users)),
+          map(listing => new ActionSearchSuccessListings(listing)),
+          catchError(err => of(new ActionSearchFailListings(err)))
+        )
+    )
+  );
+  @Effect()
+  selectListing = this.actions$.pipe(
+    ofType<ActionSearchListings>(ListingActionTypes.SELECT_LISTING),
+    tap(action => console.log(action)),
+    map(action => action),
+    switchMap(action =>
+      this.listingService.getListing(action.payload.id).pipe(
+        map(listing => new ActionSelectSuccessListing(listing)),
+        catchError(err => of(new ActionSearchFailListings(err)))
+      )
+    )
+  );
+  @Effect()
+  updateGeneralListing = this.actions$.pipe(
+    ofType<ActionSearchListings>(ListingActionTypes.UPDATE_LISTING),
+    tap(action => console.log(action)),
+    map(action => action),
+    switchMap(action =>
+      this.listingService
+        .updateGeneral(action.payload.pk, action.payload.data)
+        .pipe(
+          map(listing => new ActionSelectSuccessListing(listing)),
           catchError(err => of(new ActionSearchFailListings(err)))
         )
     )

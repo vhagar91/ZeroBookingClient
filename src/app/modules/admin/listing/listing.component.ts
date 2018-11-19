@@ -38,9 +38,9 @@ export class ListingComponent implements OnInit, OnDestroy {
       this.showLoader = false;
     }, 2000);
   }
-  seeDetails(id: number = 1): void {
+  seeDetails(id: number): void {
     this.router.navigate([
-      AppConfig.routes.admin + '/' + AppConfig.routes.adminListings + '/' + 1
+      AppConfig.routes.admin + '/' + AppConfig.routes.adminListings + '/' + id
     ]);
   }
   searchListings(reset = false): void {

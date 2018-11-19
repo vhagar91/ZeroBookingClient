@@ -45,7 +45,7 @@ describe('ListingService', () => {
       listingService = TestBed.get(ListingsService);
       expectedListings = [
         {
-          id: '1',
+          pk: '1',
           nickname: 'A',
           publicName: 'a@mail.com',
           roomType: 1,
@@ -53,7 +53,7 @@ describe('ListingService', () => {
           isActive: true
         },
         {
-          id: '2',
+          pk: '2',
           nickname: 'A',
           publicName: 'a@mail.com',
           roomType: 1,

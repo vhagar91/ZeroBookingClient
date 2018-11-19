@@ -2,11 +2,91 @@
 
   <div class="mat-headline" style="margin: 20px; border-bottom: 1px solid #dddddd;">
     GENERAL
-
   </div>
 
   <div fxLayout="row" fxLayout.xs="column">
-    asdasd
+    <form *ngIf="generalData" [formGroup]="generalData" (ngSubmit)="onSubmitGeneral()" fxLayout="column" fxFlex="100" >
+      <div class="row">
+
+        <mat-form-field class="col-md-6" color="warn" appearance="outline" >
+          <mat-label>Public Name</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="publicName" >
+          <mat-icon matSuffix>book</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-6" color="warn" appearance="outline">
+          <mat-label>NickName</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="nickname">
+          <mat-icon matSuffix>bookmark</mat-icon>
+        </mat-form-field>
+
+      </div>
+      <div class="row">
+
+      <mat-form-field class="col-md-4" color="warn" appearance="outline" >
+        <mat-label>Accommodates</mat-label>
+        <input type="number" min="1" matInput placeholder="Placeholder" formControlName="accommodates">
+        <mat-icon matSuffix>accessibility_new</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4" color="warn" appearance="outline">
+        <mat-label>Bedrooms</mat-label>
+        <input type="number" min="1" matInput placeholder="Placeholder" formControlName="bedrooms" >
+        <mat-icon matSuffix>compare_arrows</mat-icon>
+      </mat-form-field>
+
+      <mat-form-field class="col-md-4" color="warn" appearance="outline">
+        <mat-label>Beds</mat-label>
+        <input type="number" min="1" matInput placeholder="Placeholder" formControlName="beds">
+        <mat-icon matSuffix>airline_seat_individual_suite</mat-icon>
+      </mat-form-field>
+
+    </div>
+      <div class="row">
+
+        <mat-form-field class="col-md-6" color="warn" appearance="outline" >
+          <mat-label>Check In</mat-label>
+          <input type="time" matInput placeholder="Placeholder" formControlName="checkInTime" >
+          <mat-icon matSuffix>alarm_on</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-6" color="warn" appearance="outline">
+          <mat-label>Check Out</mat-label>
+          <input type="time" matInput placeholder="Placeholder" formControlName="checkOutTime" >
+          <mat-icon matSuffix>alarm_off</mat-icon>
+        </mat-form-field>
+
+
+      </div>
+      <div class="row">
+
+        <mat-form-field class="col-md-6" appearance="outline" >
+          <mat-label>Property Type</mat-label>
+          <mat-select placeholder="Select" formControlName="propertyType">
+            <mat-option *ngFor="let type of propertyTypes" [value]="type.value">
+              {{type.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-6"  appearance="outline">
+          <mat-label>Room Type</mat-label>
+          <mat-select placeholder="Select" formControlName="roomType">
+            <mat-option *ngFor="let type of roomsTypes" [value]="type.value">
+              {{type.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </div>
+
+
+      <button mat-raised-button type="submit"  color="warn"  class="btn btn-primary float-right">Update</button>
+
+
+
+    </form>
   </div>
 </div>
 <div fxLayout="column" fxLayout.xs="column"  style="background-color: white;padding: 10px;margin: 20px">
@@ -26,7 +106,29 @@
   </div>
 
   <div fxLayout="row" fxLayout.xs="column">
-    asdasd
+    <form  fxLayout="column" fxFlex="100" >
+      <div class="row">
+
+        <mat-form-field class="col-md-6" color="warn" appearance="outline" >
+          <mat-label>Min Nights Stay</mat-label>
+          <input matInput placeholder="Placeholder" >
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-6" color="warn" appearance="outline">
+          <mat-label>Max Nights Stay</mat-label>
+          <input matInput placeholder="Placeholder">
+          <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        </mat-form-field>
+
+      </div>
+
+
+      <button mat-raised-button type="submit"  color="warn"  class="btn btn-primary float-right">Update</button>
+
+
+
+    </form>
   </div>
 </div>
 <div fxLayout="column" fxLayout.xs="column"  style="background-color: white;padding: 10px;margin: 20px">
@@ -36,7 +138,24 @@
   </div>
 
   <div fxLayout="row" fxLayout.xs="column">
-    asdasd
+    <form  fxLayout="column" fxFlex="100" >
+      <div class="row">
+
+        <mat-form-field class="col" color="warn" appearance="outline" >
+          <mat-label>Description</mat-label>
+          <textarea matInput placeholder="Placeholder"></textarea>
+
+        </mat-form-field>
+
+
+      </div>
+
+
+      <button mat-raised-button type="submit"  color="warn"  class="btn btn-primary float-right">Update</button>
+
+
+
+    </form>
   </div>
 </div>
 

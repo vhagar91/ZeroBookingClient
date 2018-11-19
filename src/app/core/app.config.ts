@@ -11,6 +11,8 @@ export const putProfilePicture = 'api/users/avatar/';
 export const putProfile = 'api/users/profile/';
 export const createUser = 'api/users/new/';
 export const listingsList = 'api/listings/list/';
+export const listingsGet = 'api/listings/listing/';
+export const listingsUpdateGeneral = 'api/listings/general/';
 // ExtraConfigs
 export const AppConfig: any = {
   routes: {

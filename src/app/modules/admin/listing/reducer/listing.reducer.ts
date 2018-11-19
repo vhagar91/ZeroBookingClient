@@ -5,7 +5,8 @@ import { ListingActionTypes } from '@app/modules/admin/listing/reducer/listing.a
 export const initialState: ListingsListState = {
   listings: null,
   page: 1,
-  total: null
+  total: null,
+  selected: null
 };
 
 export function listingsReducer(
@@ -29,6 +30,11 @@ export function listingsReducer(
       };
     case ListingActionTypes.SEARCH_FAIL:
       return state;
+    case ListingActionTypes.SELECT_SUCCESS_LISTING:
+      return {
+        ...state,
+        selected: action.payload
+      };
     default:
       return state;
   }

@@ -1,7 +1,7 @@
 import { Picture } from '@app/model/picture';
 
 export class Listing {
-  id?: string;
+  pk?: string;
   nickname?: string;
   publicName?: string;
   roomType?: number;

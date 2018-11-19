@@ -29,7 +29,7 @@
                     [bufferValue]="'10'">
   </mat-progress-bar>
   <mat-list >
-    <mat-list-item (click)="seeDetails()" *ngFor="let listing of displayListings">
+    <mat-list-item  *ngFor="let listing of displayListings" (click)="seeDetails(listing.pk)">
 
       <h3  > {{listing.nickname}} </h3>
       <span class="pull-right"></span>

@@ -1,8 +1,16 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
-import { listingsList } from '@app/core/app.config';
+import {
+  getProfile,
+  listingsGet,
+  listingsList,
+  listingsUpdateGeneral,
+  putProfile
+} from '@app/core/app.config';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Profile } from '@app/model/profile';
+import { SelectedListing } from '@app/modules/admin/listing/state/selectedListing';
 @Injectable()
 export class ListingsService {
   constructor(private http: HttpClient) {}
@@ -24,5 +32,17 @@ export class ListingsService {
 
     const queryUrl = `${environment.BaseUrl + listingsList}?${params}`;
     return this.http.get<any>(queryUrl);
+  }
+
+  getListing(pk: number): Observable<any> {
+    const queryUrl = `${environment.BaseUrl + listingsGet + pk}`;
+    return this.http.get<any>(queryUrl);
+  }
+  updateGeneral(pk: number, generalData: any): Observable<any> {
+    const queryUrl = `${environment.BaseUrl +
+      listingsUpdateGeneral +
+      pk +
+      '/'}`;
+    return this.http.patch<any>(queryUrl, generalData);
   }
 }
