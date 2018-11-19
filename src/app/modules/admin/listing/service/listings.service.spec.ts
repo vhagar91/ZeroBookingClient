@@ -7,8 +7,9 @@ import {
 import { AppErrorHandler } from '@app/core/error-handler/app-error-handler.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Listing } from '@app/modules/admin/listing/state/listing';
-import { listingsList } from '@app/core/app.config';
+import { listingsGet, listingsList } from '@app/core/app.config';
 import { environment } from '@env/environment';
+import { SelectedListing } from '@app/modules/admin/listing/state/selectedListing';
 
 describe('ListingService', () => {
   let httpClient: HttpClient;
@@ -139,5 +140,78 @@ describe('ListingService', () => {
     });
   });
 
+  describe('#getListing', () => {
+    let expectedListing: SelectedListing;
+
+    beforeEach(() => {
+      listingService = TestBed.get(ListingsService);
+      expectedListing = {
+        pk: '1',
+        isActive: false,
+        nickname: 'TestCasa',
+        publicName: 'Test',
+        beds: 1,
+        roomType: 1,
+        propertyType: 1,
+        accommodates: 1,
+        address: null,
+        bedrooms: 1,
+        checkInTime: null,
+        checkOutTime: null,
+        cost: 0,
+        currency: 'EUR',
+        description: 'No',
+        maxNights: 1,
+        minNights: 1
+      };
+    });
+
+    it('should return expected listing(called once)', () => {
+      const pk = 1;
+      listingService
+        .getListing(pk)
+        .subscribe(
+          listing =>
+            expect(listing).toEqual(
+              expectedListing,
+              'should return expected listing'
+            ),
+          fail
+        );
+
+      // ListingService should have made one request to GET listings from expected URL
+
+      const queryUrl = `${environment.BaseUrl + listingsGet + pk}`;
+      const req = httpTestingController.expectOne(queryUrl);
+      expect(req.request.method).toEqual('GET');
+
+      // Respond with the mock listings
+      req.flush(expectedListing);
+    });
+
+    it('should return expected listings (called multiple times)', () => {
+      listingService.getListing(1).subscribe();
+      listingService.getListing(1).subscribe();
+      listingService
+        .getListing(1)
+        .subscribe(
+          listing =>
+            expect(listing).toEqual(
+              expectedListing,
+              'should return expected listings'
+            ),
+          fail
+        );
+      const pk = 1;
+      const queryUrl = `${environment.BaseUrl + listingsGet + pk}`;
+      const requests = httpTestingController.match(queryUrl);
+      expect(requests.length).toEqual(3, 'calls to getListing()');
+
+      // Respond to each request with different mock listing results
+      requests[0].flush([]);
+      requests[1].flush([{ pk: '1', nickname: 'bob' }]);
+      requests[2].flush(expectedListing);
+    });
+  });
   // TODO: test other UsersService methods
 });
