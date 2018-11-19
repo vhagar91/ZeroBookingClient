@@ -106,18 +106,18 @@
   </div>
 
   <div fxLayout="row" fxLayout.xs="column">
-    <form  fxLayout="column" fxFlex="100" >
+    <form *ngIf="termsData" [formGroup]="termsData"  (ngSubmit)="onSubmitTerms()" fxLayout="column" fxFlex="100" >
       <div class="row">
 
         <mat-form-field class="col-md-6" color="warn" appearance="outline" >
           <mat-label>Min Nights Stay</mat-label>
-          <input matInput placeholder="Placeholder" >
+          <input matInput type="number" min="1" placeholder="Placeholder" formControlName="minNights">
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
         <mat-form-field class="col-md-6" color="warn" appearance="outline">
           <mat-label>Max Nights Stay</mat-label>
-          <input matInput placeholder="Placeholder">
+          <input matInput type="number" min="1" placeholder="Placeholder" formControlName="maxNights">
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
@@ -138,12 +138,12 @@
   </div>
 
   <div fxLayout="row" fxLayout.xs="column">
-    <form  fxLayout="column" fxFlex="100" >
+    <form *ngIf="descriptionData" [formGroup]="descriptionData" (ngSubmit)="onSubmitDescription()" fxLayout="column" fxFlex="100" >
       <div class="row">
 
         <mat-form-field class="col" color="warn" appearance="outline" >
           <mat-label>Description</mat-label>
-          <textarea matInput placeholder="Placeholder"></textarea>
+          <textarea matInput placeholder="Placeholder" formControlName="description"></textarea>
 
         </mat-form-field>
 

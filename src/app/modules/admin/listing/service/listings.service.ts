@@ -5,6 +5,7 @@ import {
   listingsGet,
   listingsList,
   listingsUpdateGeneral,
+  listingsUpdateTerms,
   putProfile
 } from '@app/core/app.config';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -44,5 +45,9 @@ export class ListingsService {
       pk +
       '/'}`;
     return this.http.patch<any>(queryUrl, generalData);
+  }
+  updateTerms(pk: number, termsData: any): Observable<any> {
+    const queryUrl = `${environment.BaseUrl + listingsUpdateTerms + pk + '/'}`;
+    return this.http.patch<any>(queryUrl, termsData);
   }
 }

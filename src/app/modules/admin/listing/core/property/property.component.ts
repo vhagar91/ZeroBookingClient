@@ -2,7 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { State } from '@app/modules/admin/admin.state';
 import { Store } from '@ngrx/store';
-import { ActionUpdateListing } from '@app/modules/admin/listing/reducer/listing.actions';
+import {
+  ActionUpdateDescriptionSuccess,
+  ActionUpdateListing,
+  ActionUpdateListingDescription,
+  ActionUpdateTerms
+} from '@app/modules/admin/listing/reducer/listing.actions';
 
 @Component({
   selector: 'zerofee-app-property',
@@ -12,6 +17,10 @@ import { ActionUpdateListing } from '@app/modules/admin/listing/reducer/listing.
 export class PropertyComponent implements OnInit {
   @Input()
   generalData: FormGroup;
+  @Input()
+  termsData: FormGroup;
+  @Input()
+  descriptionData: FormGroup;
   @Input()
   listingId: number = null;
   propertyTypes: any[];
@@ -50,5 +59,23 @@ export class PropertyComponent implements OnInit {
       data: updatedData
     };
     this.store.dispatch(new ActionUpdateListing(payload));
+  }
+  onSubmitDescription() {
+    const updatedData = this.descriptionData.value;
+    console.log(updatedData);
+    const payload = {
+      pk: this.listingId,
+      data: updatedData
+    };
+    this.store.dispatch(new ActionUpdateListingDescription(payload));
+  }
+  onSubmitTerms() {
+    const updatedData = this.termsData.value;
+    console.log(updatedData);
+    const payload = {
+      pk: this.listingId,
+      data: updatedData
+    };
+    this.store.dispatch(new ActionUpdateTerms(payload));
   }
 }

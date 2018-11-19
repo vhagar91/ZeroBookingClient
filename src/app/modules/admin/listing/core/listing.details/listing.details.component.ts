@@ -17,6 +17,8 @@ export class ListingDetailsComponent implements OnInit {
   private unsubscribe$: Subject<void> = new Subject<void>();
   public selectedListings: SelectedListing;
   generalForm: FormGroup;
+  termsForm: FormGroup;
+  descriptionForm: FormGroup;
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store<State>
@@ -60,6 +62,22 @@ export class ListingDetailsComponent implements OnInit {
         [<any>Validators.required]
       )
     });
+    this.termsForm = new FormGroup({
+      minNights: new FormControl(
+        this.selectedListings ? this.selectedListings.minNights : '',
+        [<any>Validators.required, Validators.min(1)]
+      ),
+      maxNights: new FormControl(
+        this.selectedListings ? this.selectedListings.maxNights : '',
+        [<any>Validators.required, Validators.min(1)]
+      )
+    });
+    this.descriptionForm = new FormGroup({
+      description: new FormControl(
+        this.selectedListings ? this.selectedListings.description : '',
+        [<any>Validators.required]
+      )
+    });
   }
 
   ngOnInit() {
@@ -76,6 +94,8 @@ export class ListingDetailsComponent implements OnInit {
           if (listings) {
             this.selectedListings = listings.selected;
             this.setGeneralForm();
+            this.setTermsForm();
+            this.setDescriptionForm();
           }
         },
         error1 => {}
@@ -107,6 +127,19 @@ export class ListingDetailsComponent implements OnInit {
         ? this.selectedListings.propertyType
         : '',
       roomType: this.selectedListings ? this.selectedListings.roomType : ''
+    });
+  }
+  setTermsForm() {
+    this.termsForm.patchValue({
+      maxNights: this.selectedListings ? this.selectedListings.maxNights : '',
+      minNights: this.selectedListings ? this.selectedListings.minNights : ''
+    });
+  }
+  setDescriptionForm() {
+    this.descriptionForm.patchValue({
+      description: this.selectedListings
+        ? this.selectedListings.description
+        : ''
     });
   }
 }

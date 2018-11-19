@@ -9,7 +9,12 @@ import {
   ActionSearchFailListings,
   ActionSearchSuccessListings,
   ListingActionTypes,
-  ActionSelectSuccessListing
+  ActionSelectSuccessListing,
+  ActionUpdateDescriptionSuccess,
+  ActionUpdateListing,
+  ActionUpdateListingDescription,
+  ActionUpdateTerms,
+  ActionUpdateTermsSuccess
 } from '@app/modules/admin/listing/reducer/listing.actions';
 
 @Injectable()
@@ -52,7 +57,7 @@ export class ListingEffects {
   );
   @Effect()
   updateGeneralListing = this.actions$.pipe(
-    ofType<ActionSearchListings>(ListingActionTypes.UPDATE_LISTING),
+    ofType<ActionUpdateListing>(ListingActionTypes.UPDATE_LISTING),
     tap(action => console.log(action)),
     map(action => action),
     switchMap(action =>
@@ -60,6 +65,36 @@ export class ListingEffects {
         .updateGeneral(action.payload.pk, action.payload.data)
         .pipe(
           map(listing => new ActionSelectSuccessListing(listing)),
+          catchError(err => of(new ActionSearchFailListings(err)))
+        )
+    )
+  );
+  @Effect()
+  updateDescriptionListing = this.actions$.pipe(
+    ofType<ActionUpdateListingDescription>(
+      ListingActionTypes.UPDATE_LISTING_DESCRIPTION
+    ),
+    tap(action => console.log(action)),
+    map(action => action),
+    switchMap(action =>
+      this.listingService
+        .updateGeneral(action.payload.pk, action.payload.data)
+        .pipe(
+          map(listing => new ActionUpdateDescriptionSuccess(listing)),
+          catchError(err => of(new ActionSearchFailListings(err)))
+        )
+    )
+  );
+  @Effect()
+  updateTermsListing = this.actions$.pipe(
+    ofType<ActionUpdateTerms>(ListingActionTypes.UPDATE_LISTING_TERMS),
+    tap(action => console.log(action)),
+    map(action => action),
+    switchMap(action =>
+      this.listingService
+        .updateTerms(action.payload.pk, action.payload.data)
+        .pipe(
+          map(listing => new ActionUpdateTermsSuccess(listing)),
           catchError(err => of(new ActionSearchFailListings(err)))
         )
     )

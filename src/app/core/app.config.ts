@@ -13,6 +13,7 @@ export const createUser = 'api/users/new/';
 export const listingsList = 'api/listings/list/';
 export const listingsGet = 'api/listings/listing/';
 export const listingsUpdateGeneral = 'api/listings/general/';
+export const listingsUpdateTerms = 'api/listings/terms/';
 // ExtraConfigs
 export const AppConfig: any = {
   routes: {

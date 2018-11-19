@@ -28,12 +28,29 @@ export function listingsReducer(
         page: state.page + 1,
         total: action.payload.count
       };
+    case ListingActionTypes.UPDATE_LISTING_DESCRIPTION_SUCCESS:
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          description: action.payload.description
+        }
+      };
     case ListingActionTypes.SEARCH_FAIL:
       return state;
     case ListingActionTypes.SELECT_SUCCESS_LISTING:
       return {
         ...state,
         selected: action.payload
+      };
+    case ListingActionTypes.UPDATE_LISTING_TERMS_SUCCESS:
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          minNights: action.payload.min,
+          maxNights: action.payload.max
+        }
       };
     default:
       return state;
