@@ -17,12 +17,12 @@
   </mat-tab>
   <mat-tab label="Prices">
     <ng-template matTabContent>
-      <zerofee-app-prices></zerofee-app-prices>
+      <zerofee-app-prices [priceData]="priceForm" [listingId]="selectedListings.pk"></zerofee-app-prices>
     </ng-template>
   </mat-tab>
   <mat-tab label="Contact">
     <ng-template matTabContent>
-      <zerofee-app-map></zerofee-app-map>
+      <zerofee-app-map [addressData]="addressForm" [listingId]="selectedListings.pk"></zerofee-app-map>
     </ng-template>
   </mat-tab>
   <mat-tab label="Calendar">

@@ -7,7 +7,12 @@ import {
 import { AppErrorHandler } from '@app/core/error-handler/app-error-handler.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Listing } from '@app/modules/admin/listing/state/listing';
-import { listingsGet, listingsList } from '@app/core/app.config';
+import {
+  listingsGet,
+  listingsList,
+  listingsUpdateGeneral,
+  listingsUpdateTerms
+} from '@app/core/app.config';
 import { environment } from '@env/environment';
 import { SelectedListing } from '@app/modules/admin/listing/state/selectedListing';
 
@@ -158,8 +163,7 @@ describe('ListingService', () => {
         bedrooms: 1,
         checkInTime: null,
         checkOutTime: null,
-        cost: 0,
-        currency: 'EUR',
+        price: null,
         description: 'No',
         maxNights: 1,
         minNights: 1
@@ -213,5 +217,108 @@ describe('ListingService', () => {
       requests[2].flush(expectedListing);
     });
   });
-  // TODO: test other UsersService methods
+
+  describe('#updateGeneral', () => {
+    let expectedListing: SelectedListing;
+
+    beforeEach(() => {
+      listingService = TestBed.get(ListingsService);
+      expectedListing = {
+        pk: '1',
+        isActive: false,
+        nickname: 'TestCasa',
+        publicName: 'Test',
+        beds: 1,
+        roomType: 1,
+        propertyType: 1,
+        accommodates: 1,
+        address: null,
+        bedrooms: 1,
+        checkInTime: null,
+        checkOutTime: null,
+        price: null,
+        description: 'No',
+        maxNights: 1,
+        minNights: 1
+      };
+    });
+
+    it('should return updated listing(called once)', () => {
+      const pk = 1;
+      listingService
+        .updateGeneral(pk, expectedListing)
+        .subscribe(
+          listing =>
+            expect(listing).toEqual(
+              expectedListing,
+              'should return expected listing'
+            ),
+          fail
+        );
+
+      // ListingService should have made one request to GET listings from expected URL
+
+      const queryUrl = `${environment.BaseUrl +
+        listingsUpdateGeneral +
+        pk +
+        '/'}`;
+      const req = httpTestingController.expectOne(queryUrl);
+      expect(req.request.method).toEqual('PATCH');
+
+      // Respond with the mock listings
+      req.flush(expectedListing);
+    });
+  });
+  describe('#updateTerms', () => {
+    let expectedListing: SelectedListing;
+
+    beforeEach(() => {
+      listingService = TestBed.get(ListingsService);
+      expectedListing = {
+        pk: '1',
+        isActive: false,
+        nickname: 'TestCasa',
+        publicName: 'Test',
+        beds: 1,
+        roomType: 1,
+        propertyType: 1,
+        accommodates: 1,
+        address: null,
+        bedrooms: 1,
+        checkInTime: null,
+        checkOutTime: null,
+        price: null,
+        description: 'No',
+        maxNights: 1,
+        minNights: 1
+      };
+    });
+
+    it('should return updated listing(called once)', () => {
+      const pk = 1;
+      listingService
+        .updateTerms(pk, expectedListing)
+        .subscribe(
+          listing =>
+            expect(listing).toEqual(
+              expectedListing,
+              'should return expected listing'
+            ),
+          fail
+        );
+
+      // ListingService should have made one request to GET listings from expected URL
+
+      const queryUrl = `${environment.BaseUrl +
+        listingsUpdateTerms +
+        pk +
+        '/'}`;
+      const req = httpTestingController.expectOne(queryUrl);
+      expect(req.request.method).toEqual('PATCH');
+
+      // Respond with the mock listings
+      req.flush(expectedListing);
+    });
+  });
+  // TODO: test other ListingService methods
 });

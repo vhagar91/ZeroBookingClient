@@ -19,6 +19,8 @@ export class ListingDetailsComponent implements OnInit {
   generalForm: FormGroup;
   termsForm: FormGroup;
   descriptionForm: FormGroup;
+  addressForm: FormGroup;
+  priceForm: FormGroup;
   constructor(
     private activatedRoute: ActivatedRoute,
     private store: Store<State>
@@ -78,6 +80,50 @@ export class ListingDetailsComponent implements OnInit {
         [<any>Validators.required]
       )
     });
+    this.addressForm = new FormGroup({
+      full: new FormControl(
+        this.selectedListings ? this.selectedListings.address.full : '',
+        [<any>Validators.required]
+      ),
+      country: new FormControl(
+        this.selectedListings ? this.selectedListings.address.country : '',
+        [<any>Validators.required]
+      ),
+      city: new FormControl(
+        this.selectedListings ? this.selectedListings.address.city : '',
+        [<any>Validators.required]
+      ),
+      street: new FormControl(
+        this.selectedListings ? this.selectedListings.address.street : '',
+        [<any>Validators.required]
+      ),
+      lat: new FormControl(
+        this.selectedListings ? this.selectedListings.address.lat : '',
+        [<any>Validators.required]
+      ),
+      lng: new FormControl(
+        this.selectedListings ? this.selectedListings.address.lng : '',
+        [<any>Validators.required]
+      )
+    });
+    this.priceForm = new FormGroup({
+      currency: new FormControl(
+        this.selectedListings ? this.selectedListings.price.currency : '',
+        [<any>Validators.required]
+      ),
+      basePrice: new FormControl(
+        this.selectedListings ? this.selectedListings.price.basePrice : '',
+        [<any>Validators.required]
+      ),
+      extraPersonFee: new FormControl(
+        this.selectedListings ? this.selectedListings.price.extraPersonFee : '',
+        [<any>Validators.required]
+      ),
+      breakfastFee: new FormControl(
+        this.selectedListings ? this.selectedListings.price.breakfastFee : '',
+        [<any>Validators.required]
+      )
+    });
   }
 
   ngOnInit() {
@@ -96,6 +142,8 @@ export class ListingDetailsComponent implements OnInit {
             this.setGeneralForm();
             this.setTermsForm();
             this.setDescriptionForm();
+            this.setAddressForm();
+            this.setPriceForm();
           }
         },
         error1 => {}
@@ -139,6 +187,34 @@ export class ListingDetailsComponent implements OnInit {
     this.descriptionForm.patchValue({
       description: this.selectedListings
         ? this.selectedListings.description
+        : ''
+    });
+  }
+  setAddressForm() {
+    this.addressForm.patchValue({
+      full: this.selectedListings ? this.selectedListings.address.full : '',
+      country: this.selectedListings
+        ? this.selectedListings.address.country
+        : '',
+      city: this.selectedListings ? this.selectedListings.address.city : '',
+      street: this.selectedListings ? this.selectedListings.address.street : '',
+      lng: this.selectedListings ? this.selectedListings.address.lng : '',
+      lat: this.selectedListings ? this.selectedListings.address.lat : ''
+    });
+  }
+  setPriceForm() {
+    this.priceForm.patchValue({
+      currency: this.selectedListings
+        ? this.selectedListings.price.currency
+        : '',
+      basePrice: this.selectedListings
+        ? this.selectedListings.price.basePrice
+        : '',
+      extraPersonFee: this.selectedListings
+        ? this.selectedListings.price.extraPersonFee
+        : '',
+      breakfastFee: this.selectedListings
+        ? this.selectedListings.price.breakfastFee
         : ''
     });
   }

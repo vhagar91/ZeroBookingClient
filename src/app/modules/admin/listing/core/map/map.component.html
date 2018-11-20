@@ -1,3 +1,65 @@
-<p>
-  map works!
-</p>
+<div fxLayout="column" fxLayout.xs="column"  style="background-color: white;padding: 10px; margin: 20px">
+
+  <div class="mat-headline" style="margin: 20px; border-bottom: 1px solid #dddddd;">
+    Address
+  </div>
+
+  <div fxLayout="row" fxLayout.xs="column">
+    <form *ngIf="addressData" [formGroup]="addressData" (ngSubmit)="onSubmitAddress()" fxLayout="column" fxFlex="100" >
+      <div class="row">
+
+        <mat-form-field class="col" color="warn" appearance="outline" >
+          <mat-label>Full Address</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="full" >
+          <mat-icon matSuffix>book</mat-icon>
+        </mat-form-field>
+
+
+      </div>
+      <div class="row">
+
+        <mat-form-field class="col-md-4" color="warn" appearance="outline" >
+          <mat-label>Country</mat-label>
+          <input  matInput placeholder="Placeholder" formControlName="country">
+          <mat-icon matSuffix>accessibility_new</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4" color="warn" appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="Placeholder" formControlName="city" >
+          <mat-icon matSuffix>compare_arrows</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4" color="warn" appearance="outline">
+          <mat-label>Street</mat-label>
+          <input  matInput placeholder="Placeholder" formControlName="street">
+          <mat-icon matSuffix>airline_seat_individual_suite</mat-icon>
+        </mat-form-field>
+
+      </div>
+      <div class="row">
+
+        <mat-form-field class="col-md-6" color="warn" appearance="outline" >
+          <mat-label>Latitud</mat-label>
+          <input  matInput placeholder="Placeholder" formControlName="lat" >
+          <mat-icon matSuffix>alarm_on</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-6" color="warn" appearance="outline">
+          <mat-label>Longitud</mat-label>
+          <input  matInput placeholder="Placeholder" formControlName="lng" >
+          <mat-icon matSuffix>alarm_off</mat-icon>
+        </mat-form-field>
+
+
+      </div>
+
+
+      <button mat-raised-button type="submit"  color="warn"  class="btn btn-primary float-right">Update</button>
+
+
+
+    </form>
+  </div>
+</div>
+

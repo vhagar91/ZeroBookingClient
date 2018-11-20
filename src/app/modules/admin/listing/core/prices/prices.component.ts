@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { State } from '@app/modules/admin/admin.state';
+import { FormGroup } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Currency } from '@app/model/currency';
+import { ActionUpdatePrices } from '@app/modules/admin/listing/reducer/listing.actions';
 
 @Component({
   selector: 'zerofee-app-prices',
@@ -6,7 +11,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./prices.component.scss']
 })
 export class PricesComponent implements OnInit {
-  constructor() {}
+  @Input()
+  priceData: FormGroup;
+  @Input()
+  listingId: number = null;
+  currencies: Currency[];
+  constructor(private store: Store<State>) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.currencies = [{ id: 1, name: 'Euro', code: 'EUR' }];
+  }
+  onSubmitPrices() {
+    const updatedData = this.priceData.value;
+    console.log(updatedData);
+    const payload = {
+      pk: this.listingId,
+      data: updatedData
+    };
+    this.store.dispatch(new ActionUpdatePrices(payload));
+  }
 }

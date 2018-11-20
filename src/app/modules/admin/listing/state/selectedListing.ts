@@ -1,4 +1,5 @@
 import { Address } from '@app/model/address';
+import { Price } from '@app/model/price';
 
 export class SelectedListing {
   pk?: string;
@@ -12,8 +13,7 @@ export class SelectedListing {
   beds?: number;
   checkInTime?: string;
   checkOutTime?: string;
-  cost?: number;
-  currency?: string;
+  price?: Price;
   minNights?: number;
   maxNights?: number;
   address?: Address;

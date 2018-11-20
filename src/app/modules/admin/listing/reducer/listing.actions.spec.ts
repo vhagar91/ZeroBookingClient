@@ -4,7 +4,8 @@ import {
   ListingActionTypes,
   ActionUpdateListing,
   ActionSelectListing,
-  ActionSelectSuccessListing
+  ActionSelectSuccessListing,
+  ActionUpdateTerms
 } from '@app/modules/admin/listing/reducer/listing.actions';
 
 describe('Listings Actions', () => {
@@ -27,5 +28,9 @@ describe('Listings Actions', () => {
   it('should create ActionUpdateLisitingSuccess action', () => {
     const action = new ActionSelectSuccessListing('');
     expect(action.type).toEqual(ListingActionTypes.SELECT_SUCCESS_LISTING);
+  });
+  it('should create ActionUpdateTerms action', () => {
+    const action = new ActionUpdateTerms('');
+    expect(action.type).toEqual(ListingActionTypes.UPDATE_LISTING_TERMS);
   });
 });

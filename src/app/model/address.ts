@@ -4,6 +4,6 @@ export class Address {
   street?: string;
   city?: string;
   country?: string;
-  lnt?: number;
+  lng?: number;
   lat?: number;
 }

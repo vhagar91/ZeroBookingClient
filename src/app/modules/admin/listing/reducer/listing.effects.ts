@@ -14,7 +14,11 @@ import {
   ActionUpdateListing,
   ActionUpdateListingDescription,
   ActionUpdateTerms,
-  ActionUpdateTermsSuccess
+  ActionUpdateTermsSuccess,
+  ActionUpdateAddress,
+  ActionUpdateAddressSuccess,
+  ActionUpdatePrices,
+  ActionUpdatePricesSuccess
 } from '@app/modules/admin/listing/reducer/listing.actions';
 
 @Injectable()
@@ -99,7 +103,34 @@ export class ListingEffects {
         )
     )
   );
-
+  @Effect()
+  updateAddressListing = this.actions$.pipe(
+    ofType<ActionUpdateAddress>(ListingActionTypes.UPDATE_LISTING_ADDRESS),
+    tap(action => console.log(action)),
+    map(action => action),
+    switchMap(action =>
+      this.listingService
+        .updateAddress(action.payload.pk, action.payload.data)
+        .pipe(
+          map(listing => new ActionUpdateAddressSuccess(listing)),
+          catchError(err => of(new ActionSearchFailListings(err)))
+        )
+    )
+  );
+  @Effect()
+  updatePricesListing = this.actions$.pipe(
+    ofType<ActionUpdatePrices>(ListingActionTypes.UPDATE_LISTING_PRICES),
+    tap(action => console.log(action)),
+    map(action => action),
+    switchMap(action =>
+      this.listingService
+        .updatePrices(action.payload.pk, action.payload.data)
+        .pipe(
+          map(listing => new ActionUpdatePricesSuccess(listing)),
+          catchError(err => of(new ActionSearchFailListings(err)))
+        )
+    )
+  );
   @Effect({ dispatch: false })
   SearchFailure: Observable<any> = this.actions$.pipe(
     ofType(ListingActionTypes.SEARCH_FAIL),

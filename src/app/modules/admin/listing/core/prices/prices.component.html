@@ -1,3 +1,52 @@
-<p>
-  prices works!
-</p>
+<div fxLayout="column" fxLayout.xs="column"  style="background-color: white;padding: 10px; margin: 20px">
+
+  <div class="mat-headline" style="margin: 20px; border-bottom: 1px solid #dddddd;">
+    Prices
+  </div>
+
+  <div fxLayout="row" fxLayout.xs="column">
+    <form *ngIf="priceData" [formGroup]="priceData" (ngSubmit)="onSubmitPrices()" fxLayout="column" fxFlex="100" >
+      <div class="row">
+
+        <mat-form-field class="col-md-6" appearance="outline" >
+          <mat-label>Currency</mat-label>
+          <mat-select placeholder="Select" formControlName="currency">
+            <mat-option *ngFor="let cur of currencies" [value]="cur.id">
+              {{cur.code}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </div>
+      <div class="row">
+
+        <mat-form-field class="col-md-4" color="warn" appearance="outline" >
+          <mat-label>Base Price</mat-label>
+          <input  matInput type="number" min="0" placeholder="Placeholder" formControlName="basePrice">
+          <mat-icon matSuffix>attach_money</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4" color="warn" appearance="outline">
+          <mat-label>Extra Person Fee</mat-label>
+          <input matInput type="number" min="0" placeholder="Placeholder" formControlName="extraPersonFee" >
+          <mat-icon matSuffix>attach_money</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4" color="warn" appearance="outline">
+          <mat-label>Breakfast</mat-label>
+          <input  matInput type="number" min="0" placeholder="Placeholder" formControlName="breakfastFee">
+          <mat-icon matSuffix>attach_money</mat-icon>
+        </mat-form-field>
+
+      </div>
+
+
+      <button mat-raised-button type="submit"  color="warn"  class="btn btn-primary float-right">Update</button>
+
+
+
+    </form>
+  </div>
+</div>
+

@@ -52,6 +52,22 @@ export function listingsReducer(
           maxNights: action.payload.max
         }
       };
+    case ListingActionTypes.UPDATE_LISTING_ADDRESS_SUCCESS:
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          address: action.payload
+        }
+      };
+    case ListingActionTypes.UPDATE_LISTING_PRICES_SUCCESS:
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          price: action.payload
+        }
+      };
     default:
       return state;
   }
