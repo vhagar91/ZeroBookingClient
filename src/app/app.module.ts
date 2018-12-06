@@ -15,6 +15,7 @@ import { AdminGuard } from '@app/modules/admin/admin.guard';
     // angular
     BrowserAnimationsModule,
     BrowserModule,
+
     // features
     StaticModule,
     AdminModule,

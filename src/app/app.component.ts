@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivationEnd, NavigationEnd, Router } from '@angular/router';
-import { takeUntil } from 'rxjs/operators';
+import { filter, takeUntil } from 'rxjs/operators';
 import {
   AnimationsService,
   AppState,
@@ -43,6 +43,10 @@ export class AppComponent implements OnInit, OnDestroy {
     // (<any>window).ga('set', 'page', event.urlAfterRedirects);
     // (<any>window).ga('send', 'pageview');
   }
+  private static scrollToTop(event: NavigationEnd) {
+    const element = document.querySelector('mat-sidenav-content') || window;
+    element.scrollTo(0, 0);
+  }
   ngOnInit() {
     this.translate.setDefaultLang('en');
     this.subscribeToSettings();
@@ -62,6 +66,7 @@ export class AppComponent implements OnInit, OnDestroy {
       }
       if (event instanceof NavigationEnd) {
         AppComponent.trackPageView(event);
+        AppComponent.scrollToTop(event);
       }
     });
   }

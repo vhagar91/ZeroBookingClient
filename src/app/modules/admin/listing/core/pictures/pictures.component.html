@@ -1,11 +1,29 @@
 <div fxLayout="column" fxLayout.xs="column"  style="background-color: white;padding: 10px; margin: 20px">
 
-  <div class="mat-headline" style="margin: 20px; border-bottom: 1px solid #dddddd;">
+  <div class="mat-headline row" style="margin: 20px; border-bottom: 1px solid #dddddd;">
     Pictures
+    <span class="pull-right"></span>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>photo_album</mat-icon>
+        <span>{{'zerofee-app.new.picture'|translate}}</span>
+      </button>
+    </mat-menu>
   </div>
 
   <div fxLayout="row" fxLayout.xs="column">
-    asdasd
+    <div class="grid">
+      <mat-card class="grid-item" *ngFor="let item of items ; let i = index">
+        <img class="grid-image" mat-card-image  [src]="item.data.thumb"  alt="Photo of a">
+        <mat-card-actions>
+          <button mat-button>Delete</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
   </div>
 </div>
 

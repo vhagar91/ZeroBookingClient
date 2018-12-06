@@ -13,7 +13,8 @@ import {
   MatTableModule,
   MatGridListModule,
   MatSliderModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatCardModule
 } from '@angular/material';
 
 import { UsersComponent } from '@app/modules/admin/users/users.component';
@@ -29,6 +30,7 @@ import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarModule
 } from 'ngx-perfect-scrollbar';
+import { GALLERY_CONFIG } from '@ngx-gallery/core';
 import { DEFAULT_PERFECT_SCROLLBAR_CONFIG } from '@app/core/app.config';
 import { ProfileComponent } from '@app/modules/admin/profile/profile.component';
 import { ProfileEffects } from '@app/modules/admin/profile/reducer/profile.effects';
@@ -52,6 +54,7 @@ import { MapComponent } from './listing/core/map/map.component';
 import { CalendarComponent } from './listing/core/calendar/calendar.component';
 import { ListingEffects } from '@app/modules/admin/listing/reducer/listing.effects';
 import { ListingsService } from '@app/modules/admin/listing/service/listings.service';
+import { GalleryModule } from '@ngx-gallery/core';
 
 @NgModule({
   imports: [
@@ -65,10 +68,15 @@ import { ListingsService } from '@app/modules/admin/listing/service/listings.ser
     FlexLayoutModule,
     MatSliderModule,
     MatProgressBarModule,
+    MatCardModule,
+
     // core & shared
     CoreModule,
     SharedModule,
     MatExpansionModule,
+
+    // Galery
+    GalleryModule,
     // app
     StaticRoutingModule,
     // store
@@ -84,7 +92,14 @@ import { ListingsService } from '@app/modules/admin/listing/service/listings.ser
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     },
     ProfileService,
-    ListingsService
+    ListingsService,
+    {
+      provide: GALLERY_CONFIG,
+      useValue: {
+        dots: true,
+        imageSize: 'cover'
+      }
+    }
   ],
   entryComponents: [AddUserComponent, FilterComponent],
   declarations: [

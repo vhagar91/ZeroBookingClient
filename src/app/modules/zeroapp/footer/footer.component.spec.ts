@@ -1,22 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PicturesComponent } from './pictures.component';
-import { TestingModule } from '@testing/utils';
+import { FooterComponent } from './footer.component';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { CoreModule } from '@app/core';
+import { TestingModule } from '@testing/utils';
 
-describe('PicturesComponent', () => {
-  let component: PicturesComponent;
-  let fixture: ComponentFixture<PicturesComponent>;
+describe('FooterComponent', () => {
+  let component: FooterComponent;
+  let fixture: ComponentFixture<FooterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [CoreModule, TestingModule],
-      declarations: [PicturesComponent]
+      declarations: [FooterComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PicturesComponent);
+    fixture = TestBed.createComponent(FooterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

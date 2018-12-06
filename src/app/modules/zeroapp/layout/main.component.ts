@@ -33,10 +33,7 @@ export class MainComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
   @HostBinding('class')
   componentCssClass;
-  isProd = env.production;
-  envName = env.envName;
   version = env.versions.app;
-  year = new Date().getFullYear();
   logo = require('../../../../assets/logo.png');
   languages = ['en', 'de', 'sk', 'fr', 'es', 'pt-br'];
   currencies = ['USD', 'EUR'];

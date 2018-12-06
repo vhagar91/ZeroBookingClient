@@ -1,5 +1,5 @@
 {
-  "zerofee-app.title": "Angular NgRx Zero Booking App",
+  "zerofee-app.title": "Zero Fee Booking",
   "zerofee-app.title.admin": "Admin Console",
   "zerofee-app.title.short": "Angular Starter",
   "zerofee-app.header.github": "Project Github Repository",
@@ -72,5 +72,7 @@
   "zerofee.nothanks": "No thanks",
   "zerofee.ok": "OK",
   "zerofee.listings": "Listings",
-  "zerofee-app.listing.details": "Listing Details"
+  "zerofee-app.listing.details": "Listing Details",
+  "zerofee-app.new.main.picture": "Main Picture",
+  "zerofee-app.new.picture": "New Picture"
 }

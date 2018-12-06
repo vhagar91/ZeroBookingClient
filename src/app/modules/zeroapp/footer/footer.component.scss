@@ -1,0 +1,236 @@
+/*=Footer
+-----------------------------------------------------------------------------------*/
+#footer-widget-area.wide_footer,
+.sub_footer_content.wide_footer {
+  max-width: 100%;
+  padding: 0px 10px 0px 10px;
+}
+#colophon {
+  background-color: #3e4453;
+  color: #9da5b9;
+  display: inline-block;
+  width: 100%;
+}
+
+.footer_back_repeat {
+  background-repeat: repeat;
+}
+
+.footer_back_repeat_x {
+  background-repeat: repeat-x;
+}
+
+.footer_back_repeat_y {
+  background-repeat: repeat-y;
+}
+
+.footer_back_repeat_no {
+  background-repeat: no-repeat;
+}
+
+#fourth .xoxo {
+  margin-right: 0px;
+}
+
+#colophon a,
+#colophon li a {
+  color: #9da5b9;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+}
+
+#colophon .widget-container li:hover,
+#colophon .widget-container li:hover a {
+  color: #b881fc;
+  text-decoration: none;
+}
+
+#colophon .widget-container.multiple_currency_widget li:hover,
+#colophon .widget-container.multiple_currency_widget li:hover a {
+  color: #4d5567;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+#colophon .widget-container li:hover:before {
+  color: #b881fc;
+  text-decoration: none;
+}
+
+#colophon .xoxo {
+  padding-top: 55px;
+  padding-bottom: 25px;
+  float: left;
+}
+
+.widget-title-footer {
+  font-size: 14px;
+  color: #9da5b9;
+  line-height: 1.6em;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+}
+
+#colophon .widget-container li {
+  margin-bottom: 10px;
+  padding-bottom: 0px;
+  border: none;
+  vertical-align: top;
+  line-height: 22px;
+}
+
+#colophon li a {
+  border: none;
+  font-size: 14px;
+}
+
+.islive {
+  right: 15px;
+  bottom: 45px;
+}
+
+.copyright {
+  padding-top: 13px;
+  float: left;
+}
+
+.sub_footer {
+  width: 100%;
+  height: 46px;
+  background-color: #313643;
+  color: #9da5b9;
+  font-size: 14px;
+}
+
+.sub_footer_content {
+  width: 100%;
+  max-width: 1170px;
+  margin: 0px auto;
+}
+
+.subfooter_menu {
+  float: right;
+  margin-top: 13px;
+  text-align: right;
+}
+
+#colophon .subfooter_menu a {
+  font-size: 14px;
+  padding-bottom: 0px;
+  color: #9da5b9;
+}
+
+#colophon .subfooter_menu a:hover {
+  color: #b881fc;
+}
+
+.subfooter_menu li {
+  display: inline;
+  font-size: 13px;
+  margin-left: 26px;
+}
+#colophon ul,
+#primary ul {
+  list-style: none;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6em;
+}
+/*=social_sidebar_internal
+-------------------------------------------------*/
+.social_sidebar {
+  margin-bottom: 30px;
+}
+
+.social_sidebar_internal img {
+  margin: 0px 9px 9px 0px;
+  width: 40px;
+}
+
+.top_bar .social_sidebar {
+  margin-bottom: 0px;
+}
+
+#colophon .social_sidebar_internal a,
+#primary .social_sidebar_internal a {
+  width: 45px;
+  height: 45px;
+  padding: 10px 0px;
+  color: #f0f0f0;
+  margin: 0px 10px 10px 0px;
+  text-align: center;
+  display: inline-block;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  border-radius: 50%;
+  font-size: 30px;
+}
+
+#colophon .social_sidebar_internal a {
+  background-color: #323840;
+}
+
+.contact_sidebar_wrap fa-icon {
+  margin-right: 13px;
+  width: 13px;
+}
+
+#colophon .social_sidebar_internal a:hover,
+#primary .social_sidebar_internal a:hover {
+  background-color: #b881fc;
+  color: #fff;
+}
+#colophon .social_sidebar_internal fa-icon,
+#primary .social_sidebar_internal fa-icon {
+  font-size: 19px;
+  color: #a6b3bb;
+}
+
+#colophon .social_sidebar_internal a:hover fa-icon,
+#primary .social_sidebar_internal a:hover fa-icon {
+  color: #fff;
+}
+
+#colophon .social_sidebar_internal a:hover {
+  color: #fff;
+}
+@media only screen and (max-width: 991px) {
+  .sub_footer {
+    height: 100%;
+    float: left;
+  }
+  .sub_footer_content {
+    width: 100%;
+    padding: 0 20px;
+    max-width: 100%;
+  }
+  .subfooter_menu {
+    float: left;
+    margin-right: 0;
+    margin-top: 0;
+    text-align: left;
+    margin-left: 0;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .subfooter_menu li {
+    margin-left: 0;
+  }
+  #colophon .xoxo {
+    padding-top: 0;
+  }
+  .col-md-4 {
+    width: 100%;
+    float: none;
+  }
+  #footer-widget-area {
+    padding: 0 7px 0px;
+  }
+  #colophon {
+    padding-top: 15px;
+  }
+}

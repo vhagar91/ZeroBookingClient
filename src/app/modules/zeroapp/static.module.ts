@@ -12,6 +12,7 @@ import { Error404PageComponent } from '@app/shared/error404-page/error404-page.c
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { DEFAULT_PERFECT_SCROLLBAR_CONFIG } from '@app/core/app.config';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { DEFAULT_PERFECT_SCROLLBAR_CONFIG } from '@app/core/app.config';
     AboutComponent,
     FeaturesComponent,
     MainComponent,
-    Error404PageComponent
+    Error404PageComponent,
+    FooterComponent
   ],
   providers: [
     {

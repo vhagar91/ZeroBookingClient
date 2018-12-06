@@ -18,6 +18,7 @@
 
 
     <div class="toolbar" [style.position]="isHeaderSticky ? 'fixed' : 'inherit'" [class.mat-elevation-z4]="isHeaderSticky">
+
       <mat-toolbar color="primary">
         <button mat-icon-button class="d-md-none" (click)="sidenav.open()">
           <fa-icon icon="bars"></fa-icon>
@@ -80,57 +81,16 @@
         </span>
 
       </mat-toolbar>
+
     </div>
+
     <perfect-scrollbar style="height:100%;">
-      <div class="content" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path">
+       <div class="content" [@routeAnimations]="o.isActivated && o.activatedRoute.routeConfig.path">
         <router-outlet #o="outlet"></router-outlet>
       </div>
 
 
-
-    <div class="footer">
-      <div class="row">
-        <div class="col-sm-12 links">
-          <a href="https://www.github.com/" target="_blank">
-            <fa-icon [icon]="['fab','github']"></fa-icon>
-            <span>Github</span>
-          </a>
-          <a href="https://www.medium.com/" target="_blank">
-            <fa-icon [icon]="['fab','medium-m']"></fa-icon>
-            <span>Medium</span>
-          </a>
-          <a href="https://www.twitter.com/" target="_blank">
-            <fa-icon [icon]="['fab','twitter']"></fa-icon>
-            <span>Twitter</span>
-          </a>
-          <a href="https://www.youtube.com/"
-             target="_blank">
-            <fa-icon [icon]="['fab','youtube']"></fa-icon>
-            <span>Youtube</span>
-          </a>
-          <a href="https://www.instagram.com/" target="_blank">
-            <fa-icon [icon]="['fab','instagram']"></fa-icon>
-            <span>Instagram</span>
-          </a>
-          <a href="https://www.slides.com/" target="_blank">
-            <fa-icon icon="play-circle"></fa-icon>
-            <span>Slides</span>
-          </a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12 signature">
-          &#169; <span class="year" data-testid="footer-year">{{year}}</span> - Vhagar
-          <br class="d-block d-sm-none">
-          <a [matTooltip]="'zerofee-app.footer.changelog' | translate"
-             matTooltipPosition="before"
-             href="https://github.com/">
-            <fa-icon icon="rocket"></fa-icon>
-            {{version}} <span *ngIf="!isProd">[{{envName}}]</span>
-          </a>
-        </div>
-      </div>
-    </div>
+      <zerofee-app-footer></zerofee-app-footer>
     </perfect-scrollbar>
   </div>
 

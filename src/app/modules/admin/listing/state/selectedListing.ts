@@ -1,6 +1,6 @@
 import { Address } from '@app/model/address';
 import { Price } from '@app/model/price';
-
+import { PictureListing } from '@app/model/pictureListing';
 export class SelectedListing {
   pk?: string;
   nickname?: string;
@@ -18,4 +18,5 @@ export class SelectedListing {
   maxNights?: number;
   address?: Address;
   description?: string;
+  gallery?: PictureListing[];
 }
