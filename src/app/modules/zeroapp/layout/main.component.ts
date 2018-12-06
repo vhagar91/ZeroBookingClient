@@ -1,4 +1,4 @@
-import { Component, HostBinding, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit, ViewChild } from '@angular/core';
 import browser from 'browser-detect';
 import { OnDestroy } from '@angular/core';
 import { Store, select } from '@ngrx/store';
@@ -22,6 +22,8 @@ import {
   ActionSettingsChangeCurrency
 } from '@app/settings';
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { NavigationEnd, Router } from '@angular/router';
+import { PerfectScrollbarComponent } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'zerofee-app-main',
@@ -42,18 +44,32 @@ export class MainComponent implements OnInit, OnDestroy {
     ...this.navigation,
     { link: 'settings', label: 'zerofee-app.menu.settings' }
   ];
-
+  @ViewChild(PerfectScrollbarComponent)
+  componentRef?: PerfectScrollbarComponent;
   settings: SettingsState;
   isAuthenticated: boolean;
   isHeaderSticky: true;
 
   constructor(
     private store: Store<AppState>,
-    public overlayContainer: OverlayContainer
+    public overlayContainer: OverlayContainer,
+    private router: Router
   ) {}
 
   private static isIEorEdgeOrSafari() {
     return ['ie', 'edge', 'safari'].includes(browser().name);
+  }
+  public scrollToTop(): void {
+    if (this.componentRef && this.componentRef.directiveRef) {
+      this.componentRef.directiveRef.scrollToTop();
+    }
+  }
+  private subscribeToRouterEvents() {
+    this.router.events.pipe(takeUntil(this.unsubscribe$)).subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.scrollToTop();
+      }
+    });
   }
   private subscribeToSettings() {
     if (MainComponent.isIEorEdgeOrSafari()) {
@@ -74,6 +90,7 @@ export class MainComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     this.subscribeToSettings();
+    this.subscribeToRouterEvents();
     this.setTheme();
   }
   private setTheme() {
