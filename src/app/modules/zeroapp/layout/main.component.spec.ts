@@ -1,5 +1,4 @@
 import { TestBed, async } from '@angular/core/testing';
-
 import { TestingModule } from '@testing/utils';
 import { CoreModule } from '@app/core';
 import { MainComponent } from '@app/modules/zeroapp/layout/main.component';

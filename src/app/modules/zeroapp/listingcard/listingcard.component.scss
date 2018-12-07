@@ -1,0 +1,119 @@
+.property_listing {
+  position: relative;
+  margin-bottom: 30px;
+  font-size: 13px;
+  cursor: pointer;
+  overflow: hidden;
+  background-color: #fff;
+  padding-bottom: 15px;
+  max-width: 400px;
+  border: 1px solid #f1f3f7;
+  transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+}
+.listing-unit-img-wrapper {
+  position: relative;
+  z-index: 98;
+  background-color: #000;
+}
+.status_verified {
+  color: #fff;
+  background-color: #b881fc;
+}
+.property_status {
+  position: absolute;
+  padding: 1px 25px;
+  z-index: 99;
+  font-size: 12px;
+  right: 15px;
+  top: 15px;
+}
+.title-container {
+  width: 100%;
+  position: relative;
+  z-index: 99;
+}
+.price_unit_wrapper {
+  position: absolute;
+  z-index: 10;
+  right: 15px;
+  top: 23px;
+}
+.price_unit {
+  float: left;
+  padding: 0;
+  display: inline;
+  color: #b881fc;
+  font-size: 20px;
+  opacity: 1;
+  font-family: open-sans;
+  font-family: open sans, sans-serif;
+  font-weight: 700;
+}
+.category_name {
+  display: inline-block;
+  font-weight: 400;
+  position: relative;
+  color: #fff;
+  z-index: 10;
+  font-size: 18px;
+  text-align: left;
+  padding: 24px 15px 0;
+  width: 100%;
+}
+.property_listing a {
+  text-decoration: none;
+}
+
+.listing_title_unit {
+  padding-right: 72px;
+}
+.listing_title a,
+#primary .listing_title_unit,
+.listing_title_unit {
+  margin-bottom: 15px;
+  display: inline-block;
+  line-height: 1.1em;
+  font-size: 18px;
+  font-weight: 600;
+  color: #4d5567;
+  margin-right: 60px;
+  width: 100%;
+}
+.category_tagline,
+.category_tagline a {
+  color: #8a8f9a;
+  font-size: 14px;
+  display: flex;
+  margin-bottom: 2px;
+}
+
+.property_unit_action {
+  display: inline-block;
+  margin-bottom: 10px;
+  position: absolute;
+  bottom: -16px;
+  top: auto;
+  right: 7px;
+  z-index: 99;
+}
+
+.icon-fav fa-icon {
+  font-size: 19px !important;
+}
+.icon-fav:hover {
+  opacity: 1;
+}
+.icon-fav {
+  color: #fff;
+  opacity: 0.2;
+}
+
+.property_listing:hover {
+  border-color: #b881fc !important;
+}
+.category_tagline mat-icon {
+  margin-right: 10px;
+}

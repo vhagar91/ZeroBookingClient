@@ -13,6 +13,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { DEFAULT_PERFECT_SCROLLBAR_CONFIG } from '@app/core/app.config';
 import { FooterComponent } from './footer/footer.component';
+import { ListingcardComponent } from './listingcard/listingcard.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { FooterComponent } from './footer/footer.component';
     FeaturesComponent,
     MainComponent,
     Error404PageComponent,
-    FooterComponent
+    FooterComponent,
+    ListingcardComponent
   ],
   providers: [
     {

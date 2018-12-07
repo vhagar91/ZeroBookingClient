@@ -38,7 +38,7 @@ export class MainComponent implements OnInit, OnDestroy {
   version = env.versions.app;
   logo = require('../../../../assets/logo.png');
   languages = ['en', 'de', 'sk', 'fr', 'es', 'pt-br'];
-  currencies = ['USD', 'EUR'];
+  currencies = ['USD', 'EUR', 'GBP'];
   navigation = [{ link: './features', label: 'zerofee-app.menu.features' }];
   navigationSideMenu = [
     ...this.navigation,

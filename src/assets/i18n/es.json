@@ -68,6 +68,7 @@
   "zerofee.ok": "DE ACUERDO",
   "zerofee.listings": "Listados",
   "zerofee-app.listing.details": "Detalles del Listado",
-  "zerofee-app.new.main.picture": "",
-  "zerofee-app.new.picture": ""
+  "zerofee-app.new.main.picture": "Imagen principal",
+  "zerofee-app.new.picture": "Nueva imagen",
+  "zerofee-app.features.components": "Componentes"
 }

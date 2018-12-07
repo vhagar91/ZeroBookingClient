@@ -1,0 +1,33 @@
+<mat-card class="property_listing">
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content class="title-container">
+    <div class="title-container">
+      <div class="price_unit_wrapper">
+        <div class="price_unit">  {{ 300  | Exchange:'USD':settings?.currency:settings?.rates}}</div>
+      </div>
+
+      <div class="category_name">
+        <a itemprop="url" href="../properties/great-villa-to-rent/index.html" class="listing_title_unit">
+          <span itemprop="name"> Great Villa to Rent </span>
+        </a><div class="category_tagline">
+        <mat-icon>place</mat-icon>
+        <a href="../area/brightwood/index.html" rel="tag">Brightwood</a>,
+        <a href="../city/philadelphia/index.html" rel="tag">Philadelphia</a>
+      </div>
+        <div class="category_tagline">
+          <mat-icon>folder_open</mat-icon>
+          <a href="../listings/villa/index.html" rel="tag">Villa</a>
+          / <a href="../action/entire-home/index.html" rel="tag">Entire home</a>
+        </div>
+        <div class="property_unit_action">
+      <span class="icon-fav " data-original-title="add to favorites">
+        <button mat-mini-fab color="warn">
+       <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+        </button>
+      </span>
+        </div>
+      </div>
+
+    </div>
+  </mat-card-content>
+</mat-card>
