@@ -5,4 +5,5 @@ export interface Feature {
   github?: string;
   documentation: string;
   medium?: string;
+  show?: boolean;
 }
