@@ -12,7 +12,14 @@ import {
 import { BehaviorSubject } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CurrencyCustomPipe } from '@app/core/pipes/currency.pipe';
+import { Pipe, PipeTransform } from '@angular/core';
 
+@Pipe({ name: 'Exchange' })
+export class MockPipe implements PipeTransform {
+  transform(value: any, from: string, to: string, rates: any): number {
+    return value;
+  }
+}
 @Injectable()
 export class MockStore<T> extends Store<T> {
   private stateSubject = new BehaviorSubject<T>({} as T);
@@ -30,14 +37,7 @@ export class MockStore<T> extends Store<T> {
     this.stateSubject.next(nextState);
   }
 }
-import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'Exchange' })
-class MockPipe implements PipeTransform {
-  transform(value: any, from: string, to: string, rates: any): number {
-    return value;
-  }
-}
 export function provideMockStore() {
   return {
     provide: Store,
