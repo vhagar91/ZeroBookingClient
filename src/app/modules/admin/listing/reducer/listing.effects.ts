@@ -18,7 +18,9 @@ import {
   ActionUpdateAddress,
   ActionUpdateAddressSuccess,
   ActionUpdatePrices,
-  ActionUpdatePricesSuccess
+  ActionUpdatePricesSuccess,
+  ActionGetListingGallerySuccess,
+  ActionGetListingGallery
 } from '@app/modules/admin/listing/reducer/listing.actions';
 
 @Injectable()
@@ -144,5 +146,16 @@ export class ListingEffects {
         }
       }
     })
+  );
+  @Effect()
+  getGallery = this.actions$.pipe(
+    ofType<ActionGetListingGallery>(ListingActionTypes.GET_LISTING_GALLERY),
+    map(action => action),
+    switchMap(action =>
+      this.listingService.getGallery(action.payload).pipe(
+        map(gallery => new ActionGetListingGallerySuccess(gallery)),
+        catchError(err => of(new ActionSearchFailListings(err)))
+      )
+    )
   );
 }

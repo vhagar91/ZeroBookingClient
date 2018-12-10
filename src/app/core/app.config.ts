@@ -16,6 +16,7 @@ export const listingsUpdateGeneral = 'api/listings/general/';
 export const listingsUpdateTerms = 'api/listings/terms/';
 export const listingsUpdateAddress = 'api/listings/address/';
 export const listingsUpdatePrices = 'api/listings/prices/';
+export const listingsGetGallery = 'api/listings/gallery/';
 // ExtraConfigs
 export const AppConfig: any = {
   routes: {

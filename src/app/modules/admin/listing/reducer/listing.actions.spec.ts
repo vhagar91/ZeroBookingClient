@@ -33,4 +33,8 @@ describe('Listings Actions', () => {
     const action = new ActionUpdateTerms('');
     expect(action.type).toEqual(ListingActionTypes.UPDATE_LISTING_TERMS);
   });
+  it('should create ActionSelectListing action', () => {
+    const action = new ActionSelectListing('');
+    expect(action.type).toEqual(ListingActionTypes.SELECT_LISTING);
+  });
 });

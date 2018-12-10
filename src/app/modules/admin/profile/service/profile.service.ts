@@ -28,9 +28,6 @@ export class ProfileService {
     return this.http.put<any>(queryUrl, formData);
   }
   updateProfile(userId: number, profile: Profile): Observable<any> {
-    // const formData = new FormData(); // Note: FormData values can only be string or File/Blob objects
-    // formData.append('thumbnail', img);
-    // formData.append('normal', img);
     const queryUrl = `${environment.BaseUrl + putProfile + userId + '/'}`;
     return this.http.patch<any>(queryUrl, profile);
   }

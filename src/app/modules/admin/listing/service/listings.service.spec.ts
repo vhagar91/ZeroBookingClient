@@ -9,6 +9,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Listing } from '@app/modules/admin/listing/state/listing';
 import {
   listingsGet,
+  listingsGetGallery,
   listingsList,
   listingsUpdateGeneral,
   listingsUpdateTerms
@@ -239,7 +240,8 @@ describe('ListingService', () => {
         price: null,
         description: 'No',
         maxNights: 1,
-        minNights: 1
+        minNights: 1,
+        gallery: null
       };
     });
 
@@ -290,7 +292,8 @@ describe('ListingService', () => {
         price: null,
         description: 'No',
         maxNights: 1,
-        minNights: 1
+        minNights: 1,
+        gallery: null
       };
     });
 
@@ -315,6 +318,55 @@ describe('ListingService', () => {
         '/'}`;
       const req = httpTestingController.expectOne(queryUrl);
       expect(req.request.method).toEqual('PATCH');
+
+      // Respond with the mock listings
+      req.flush(expectedListing);
+    });
+  });
+  describe('#getGallery', () => {
+    let expectedListing: SelectedListing;
+
+    beforeEach(() => {
+      listingService = TestBed.get(ListingsService);
+      expectedListing = {
+        pk: '1',
+        isActive: false,
+        nickname: 'TestCasa',
+        publicName: 'Test',
+        beds: 1,
+        roomType: 1,
+        propertyType: 1,
+        accommodates: 1,
+        address: null,
+        bedrooms: 1,
+        checkInTime: null,
+        checkOutTime: null,
+        price: null,
+        description: 'No',
+        maxNights: 1,
+        minNights: 1,
+        gallery: null
+      };
+    });
+
+    it('should return the gallery list of photos (called once)', () => {
+      const pk = 1;
+      listingService
+        .getGallery(pk)
+        .subscribe(
+          gallery =>
+            expect(gallery).toEqual(
+              expectedListing,
+              'should return expected gallery'
+            ),
+          fail
+        );
+
+      // ListingService should have made one request to GET gallery from expected URL
+
+      const queryUrl = `${environment.BaseUrl + listingsGetGallery + pk + '/'}`;
+      const req = httpTestingController.expectOne(queryUrl);
+      expect(req.request.method).toEqual('GET');
 
       // Respond with the mock listings
       req.flush(expectedListing);

@@ -68,6 +68,14 @@ export function listingsReducer(
           price: action.payload
         }
       };
+    case ListingActionTypes.GET_LISTING_GALLERY_SUCCESS:
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          gallery: action.payload.gallery
+        }
+      };
     default:
       return state;
   }

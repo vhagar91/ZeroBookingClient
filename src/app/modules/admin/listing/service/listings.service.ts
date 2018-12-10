@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import {
   listingsGet,
+  listingsGetGallery,
   listingsList,
   listingsUpdateAddress,
   listingsUpdateGeneral,
@@ -58,5 +59,9 @@ export class ListingsService {
   updatePrices(pk: number, pricesData: any): Observable<any> {
     const queryUrl = `${environment.BaseUrl + listingsUpdatePrices + pk + '/'}`;
     return this.http.patch<any>(queryUrl, pricesData);
+  }
+  getGallery(pk: number): Observable<any> {
+    const queryUrl = `${environment.BaseUrl + listingsGetGallery + pk + '/'}`;
+    return this.http.get<any>(queryUrl);
   }
 }

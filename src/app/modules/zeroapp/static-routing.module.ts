@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AboutComponent } from './about/about.component';
 import { FeaturesComponent } from './features/features.component';
-import { SettingsContainerComponent } from '../../settings/index';
 import { Error404PageComponent } from '../../shared/error404-page/error404-page.component';
 import { AppConfig } from '../../core/app.config';
 
