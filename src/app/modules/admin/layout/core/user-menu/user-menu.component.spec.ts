@@ -14,7 +14,6 @@ describe('UserMenuComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CoreModule,
         TestingModule,
         MatMenuModule,
         MatExpansionModule,
