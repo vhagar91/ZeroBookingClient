@@ -2,7 +2,7 @@
   <div fxLayout="column" >
     <div fxLayout="row" fxLayoutAlign="space-around center"  >
       <div  class="banner">
-        <img width="100" [style.borderRadius]="'50%'" [src]="profile?.picture.thumbnail || 'assets/images/noavatar.png'">
+        <img width="100" [style.borderRadius]="'50%'" [src]="profile?.picture.thumbnail || '../../../assets/images/default_user_small.png'">
         <input
           style="display: none"
           type="file" accept="image/*" (change)="onFileChanged($event)"

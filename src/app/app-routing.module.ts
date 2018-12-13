@@ -10,7 +10,7 @@ import { MainComponent } from '@app/modules/zeroapp/layout/main.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home/about',
+    redirectTo: 'home/main',
     pathMatch: 'full'
   },
   {

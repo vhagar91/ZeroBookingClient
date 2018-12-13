@@ -5,6 +5,7 @@
   "zerofee-app.header.github": "Dépot Github",
   "zerofee-app.footer.changelog": "Afficher le journal des changements",
   "zerofee-app.menu.about": "À propos",
+  "zerofee-app.menu.home": "",
   "zerofee-app.menu.features": "Fonctionnalités",
   "zerofee-app.menu.examples": "Exemples",
   "zerofee-app.menu.settings": "Paramètres",

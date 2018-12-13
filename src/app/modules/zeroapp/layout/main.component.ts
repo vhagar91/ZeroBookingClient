@@ -24,6 +24,7 @@ import {
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { NavigationEnd, Router } from '@angular/router';
 import { PerfectScrollbarComponent } from 'ngx-perfect-scrollbar';
+import { selectAuth } from '@app/core';
 
 @Component({
   selector: 'zerofee-app-main',
@@ -39,7 +40,10 @@ export class MainComponent implements OnInit, OnDestroy {
   logo = require('../../../../assets/logo.png');
   languages = ['en', 'de', 'sk', 'fr', 'es', 'pt-br'];
   currencies = ['USD', 'EUR', 'GBP'];
-  navigation = [{ link: './features', label: 'zerofee-app.menu.features' }];
+  navigation = [
+    { link: './features', label: 'zerofee-app.menu.features' },
+    { link: './about', label: 'zerofee-app.menu.about' }
+  ];
   navigationSideMenu = [
     ...this.navigation,
     { link: 'settings', label: 'zerofee-app.menu.settings' }
@@ -88,9 +92,22 @@ export class MainComponent implements OnInit, OnDestroy {
         this.settings = settings;
       });
   }
+  private subscribeToIsAuthenticated() {
+    this.store
+      .pipe(
+        select(selectAuth),
+        takeUntil(this.unsubscribe$)
+      )
+      .subscribe(auth => {
+        if (auth) {
+          this.isAuthenticated = auth.isAuthenticated;
+        }
+      });
+  }
   ngOnInit(): void {
     this.subscribeToSettings();
     this.subscribeToRouterEvents();
+    this.subscribeToIsAuthenticated();
     this.setTheme();
   }
   private setTheme() {

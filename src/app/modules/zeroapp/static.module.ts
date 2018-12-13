@@ -14,6 +14,10 @@ import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { DEFAULT_PERFECT_SCROLLBAR_CONFIG } from '@app/core/app.config';
 import { FooterComponent } from './footer/footer.component';
 import { ListingcardComponent } from './listingcard/listingcard.component';
+import { HomeComponent } from './home/home.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { HeaderComponent } from './home/header/header.component';
+import { SearchboxComponent } from './home/searchbox/searchbox.component';
 
 @NgModule({
   imports: [
@@ -23,6 +27,7 @@ import { ListingcardComponent } from './listingcard/listingcard.component';
     // core & shared
     CoreModule,
     SharedModule,
+    FlexLayoutModule,
     // features
     SettingsModule,
     PerfectScrollbarModule,
@@ -35,7 +40,10 @@ import { ListingcardComponent } from './listingcard/listingcard.component';
     MainComponent,
     Error404PageComponent,
     FooterComponent,
-    ListingcardComponent
+    ListingcardComponent,
+    HomeComponent,
+    HeaderComponent,
+    SearchboxComponent
   ],
   providers: [
     {

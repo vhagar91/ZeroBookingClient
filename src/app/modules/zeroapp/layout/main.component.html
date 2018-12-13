@@ -8,9 +8,6 @@
          routerLinkActive="active">
         {{item.label | translate}}
       </a>
-      <a mat-list-item href="https://github.com/" target="_blank">
-        Github
-      </a>
     </mat-nav-list>
   </mat-sidenav>
 
@@ -39,10 +36,6 @@
           </button>
         </span>
 
-        <button mat-button mat-stroked-button color="accent" *ngIf="!isAuthenticated" (click)="onLoginClick()">
-          {{ 100  | Exchange:'USD':settings?.currency:settings?.rates}}
-        </button>
-
         <button *ngIf="isAuthenticated"
                 mat-icon-button
                 [matMenuTriggerFor]="toolbarUserMenu">
@@ -54,17 +47,6 @@
             <span>{{ 'zerofee-app.menu.logout' | translate }}</span>
           </button>
         </mat-menu>
-
-
-        <a [matTooltip]="'zerofee-app.header.github' | translate"
-           matTooltipPosition="before"
-           mat-icon-button
-           class="link d-none d-sm-inline"
-           href="https://github.com/tomastrajan/zeroapp"
-           target="_blank">
-          <fa-icon [icon]="['fab','github']"></fa-icon>
-
-        </a>
         <span>
           <mat-select style="width: 57px" [ngModel]="settings?.currency" (selectionChange)="onCurrencySelect($event)" >
             <mat-option *ngFor="let c of currencies" [value]="c">
