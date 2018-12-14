@@ -1,6 +1,7 @@
 Demo: https://zerofee-182e3.firebaseapp.com
+
 **Note**
-Client Example using Angular 7 and Ngrx whit Admin Dashboard
+In Development
 ## Usage
 
 Tasks                    | Description
