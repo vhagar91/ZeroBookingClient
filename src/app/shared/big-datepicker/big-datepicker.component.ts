@@ -14,7 +14,6 @@ import {
 export class BigDatepickerComponent implements OnInit {
   @Input()
   placeholder: string;
-
   @Input()
   value = '';
   @Input()
