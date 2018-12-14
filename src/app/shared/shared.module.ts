@@ -93,6 +93,7 @@ library.add(
 
 import { BigInputComponent } from './big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action.component';
+import { BigDatepickerComponent } from './big-datepicker/big-datepicker.component';
 
 @NgModule({
   imports: [
@@ -118,10 +119,15 @@ import { BigInputActionComponent } from './big-input/big-input-action.component'
     MatSnackBarModule,
     MatSlideToggleModule,
     MatDividerModule,
+    MatDatepickerModule,
 
     FontAwesomeModule
   ],
-  declarations: [BigInputComponent, BigInputActionComponent],
+  declarations: [
+    BigInputComponent,
+    BigInputActionComponent,
+    BigDatepickerComponent
+  ],
   exports: [
     CommonModule,
     FormsModule,
@@ -153,7 +159,8 @@ import { BigInputActionComponent } from './big-input/big-input-action.component'
     FontAwesomeModule,
 
     BigInputComponent,
-    BigInputActionComponent
+    BigInputActionComponent,
+    BigDatepickerComponent
   ]
 })
 export class SharedModule {}

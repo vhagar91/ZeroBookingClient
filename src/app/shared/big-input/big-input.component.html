@@ -1,7 +1,9 @@
 <mat-card class="big-input" [ngClass]="{ 'has-focus': hasFocus }">
-  <input (focus)="hasFocus = true"  (blur)="hasFocus = false"
+  <input matInput (focus)="hasFocus = true"  (blur)="hasFocus = false"
          [value]="value"
          [placeholder]="placeholder"
          [disabled]="disabled" />
+  <mat-icon matSuffix>mode_edit</mat-icon>
   <ng-content></ng-content>
 </mat-card>
+

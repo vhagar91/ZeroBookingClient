@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { TestingModule } from '../../../../testing/utils';
 import { HeaderComponent } from './header/header.component';
 import { SearchboxComponent } from '@app/modules/zeroapp/home/searchbox/searchbox.component';
+import { SharedModule } from '@app/shared';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
