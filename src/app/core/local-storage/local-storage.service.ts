@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 const APP_PREFIX = 'zerofee-app-';
 
 @Injectable()
 export class LocalStorageService {
-  constructor() {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   static loadInitialState() {
     return Object.keys(localStorage).reduce((state: any, storageKey) => {
@@ -39,30 +39,38 @@ export class LocalStorageService {
   }
 
   setItem(key: string, value: any) {
-    localStorage.setItem(`${APP_PREFIX}${key}`, JSON.stringify(value));
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem(`${APP_PREFIX}${key}`, JSON.stringify(value));
+    }
   }
 
   getItem(key: string) {
-    return JSON.parse(localStorage.getItem(`${APP_PREFIX}${key}`));
+    if (isPlatformBrowser(this.platformId)) {
+      return JSON.parse(localStorage.getItem(`${APP_PREFIX}${key}`));
+    }
   }
 
   removeItem(key: string) {
-    localStorage.removeItem(`${APP_PREFIX}${key}`);
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.removeItem(`${APP_PREFIX}${key}`);
+    }
   }
 
   /** Tests that localStorage exists, can be written to, and read from. */
   testLocalStorage() {
-    const testValue = 'testValue';
-    const testKey = 'testKey';
-    let retrievedValue: string;
-    const errorMessage = 'localStorage did not return expected value';
+    if (isPlatformBrowser(this.platformId)) {
+      const testValue = 'testValue';
+      const testKey = 'testKey';
+      let retrievedValue: string;
+      const errorMessage = 'localStorage did not return expected value';
 
-    this.setItem(testKey, testValue);
-    retrievedValue = this.getItem(testKey);
-    this.removeItem(testKey);
+      this.setItem(testKey, testValue);
+      retrievedValue = this.getItem(testKey);
+      this.removeItem(testKey);
 
-    if (retrievedValue !== testValue) {
-      throw new Error(errorMessage);
+      if (retrievedValue !== testValue) {
+        throw new Error(errorMessage);
+      }
     }
   }
 }
