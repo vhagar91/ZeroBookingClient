@@ -7,6 +7,7 @@ export enum ListingActionTypes {
   SELECT_LISTING = '[Listing] Select',
   SELECT_SUCCESS_LISTING = '[Listing] Select Success',
   UPDATE_LISTING = '[Listing] UPDATE GENERAL',
+  UPDATE_LISTING_SUCCESS = '[Listing] UPDATE GENERAL SUCCESS',
   UPDATE_LISTING_DESCRIPTION = '[Listing] UPDATE DESCRIPTION',
   UPDATE_LISTING_TERMS = '[Listing] UPDATE TERMS',
   UPDATE_LISTING_ADDRESS = '[Listing] UPDATE ADDRESS',
@@ -22,6 +23,10 @@ export enum ListingActionTypes {
 export class ActionSearchListings implements Action {
   constructor(public payload: any) {}
   readonly type = ListingActionTypes.SEARCH;
+}
+export class ActionUpdateGeneralSuccess implements Action {
+  constructor(public payload: any) {}
+  readonly type = ListingActionTypes.UPDATE_LISTING_SUCCESS;
 }
 export class ActionUpdateListingDescription implements Action {
   constructor(public payload: any) {}
@@ -99,4 +104,5 @@ export type ListingActions =
   | ActionUpdatePricesSuccess
   | ActionSearchFailListings
   | ActionGetListingGallery
+  | ActionUpdateGeneralSuccess
   | ActionGetListingGallerySuccess;

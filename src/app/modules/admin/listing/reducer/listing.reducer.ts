@@ -76,6 +76,22 @@ export function listingsReducer(
           gallery: action.payload.gallery
         }
       };
+    case ListingActionTypes.UPDATE_LISTING_SUCCESS:
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          publicName: action.payload.publicName,
+          nickname: action.payload.nickname,
+          accommodates: action.payload.accommodates,
+          bedrooms: action.payload.bedrooms,
+          beds: action.payload.beds,
+          checkInTime: action.payload.checkInTime,
+          checkOutTime: action.payload.checkOutTime,
+          propertyType: action.payload.propertyType,
+          roomType: action.payload.roomType
+        }
+      };
     default:
       return state;
   }

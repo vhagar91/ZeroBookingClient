@@ -20,7 +20,8 @@ import {
   ActionUpdatePrices,
   ActionUpdatePricesSuccess,
   ActionGetListingGallerySuccess,
-  ActionGetListingGallery
+  ActionGetListingGallery,
+  ActionUpdateGeneralSuccess
 } from '@app/modules/admin/listing/reducer/listing.actions';
 
 @Injectable()
@@ -70,7 +71,7 @@ export class ListingEffects {
       this.listingService
         .updateGeneral(action.payload.pk, action.payload.data)
         .pipe(
-          map(listing => new ActionSelectSuccessListing(listing)),
+          map(listing => new ActionUpdateGeneralSuccess(listing)),
           catchError(err => of(new ActionSearchFailListings(err)))
         )
     )
