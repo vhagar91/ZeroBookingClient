@@ -1,4 +1,4 @@
-import { Title } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -7,10 +7,11 @@ import { filter } from 'rxjs/operators';
 import { environment as env } from '@env/environment';
 
 @Injectable()
-export class TitleService {
+export class SeoService {
   constructor(
     private translateService: TranslateService,
-    private title: Title
+    private title: Title,
+    private meta: Meta
   ) {}
 
   setTitle(
@@ -33,5 +34,26 @@ export class TitleService {
     } else {
       this.title.setTitle(env.appName);
     }
+  }
+  setMetaTags(
+    snapshot: ActivatedRouteSnapshot,
+    lazyTranslateService?: TranslateService
+  ) {
+    this.setTitle(snapshot);
+    this.meta.addTags([
+      { name: 'robots', content: 'INDEX, FOLLOW' },
+      {
+        name: 'description',
+        content:
+          'Book accommodation among the more than 2000 offers of Casas Particulares in Cuba. The best way to know Cuba is living it.'
+      },
+      { name: 'author', content: 'ABCD' },
+      { name: 'keywords', content: 'TypeScript, Angular' },
+      { name: 'date', content: '2018-06-02', scheme: 'YYYY-MM-DD' },
+      { httpEquiv: 'Content-Type', content: 'text/html' },
+      { property: 'og:title', content: 'My Text' },
+      { property: 'og:type', content: 'website' },
+      { charset: 'UTF-8' }
+    ]);
   }
 }

@@ -15,7 +15,7 @@ export const routes: Routes = [
   {
     path: 'main',
     component: HomeComponent,
-    data: { title: 'zerofee-app.menu.home' }
+    data: { title: 'zerofee-app.title' }
   },
   {
     path: 'about',

@@ -11,7 +11,7 @@ import { LocalStorageService } from './local-storage/local-storage.service';
 import { AuthEffects } from './auth/auth.effects';
 import { AuthGuardService } from './auth/auth-guard.service';
 import { AnimationsService } from './animations/animations.service';
-import { TitleService } from './title/title.service';
+import { SeoService } from './seo/seo.service';
 import { reducers, metaReducers } from './core.state';
 import { AppErrorHandler } from './error-handler/app-error-handler.service';
 import { httpInterceptorProviders } from '@app/core/http-interceptors';
@@ -58,7 +58,7 @@ import { CurrencyService } from '@app/core/currency-exchange/currency.service';
     AuthGuardService,
     AnimationsService,
     httpInterceptorProviders,
-    TitleService,
+    SeoService,
     LoaderService,
     CurrencyPipe,
     CurrencyService,

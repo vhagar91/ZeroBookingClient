@@ -6,7 +6,7 @@ import {
   AppState,
   LocalStorageService,
   selectAuth,
-  TitleService
+  SeoService
 } from '@app/core';
 import { Subject } from 'rxjs';
 import {
@@ -25,7 +25,7 @@ import browser from 'browser-detect';
 })
 export class AppComponent implements OnInit, OnDestroy {
   constructor(
-    private titleService: TitleService,
+    private seoService: SeoService,
     private router: Router,
     private store: Store<AppState>,
     private animationService: AnimationsService,
@@ -58,7 +58,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private subscribeToRouterEvents() {
     this.router.events.pipe(takeUntil(this.unsubscribe$)).subscribe(event => {
       if (event instanceof ActivationEnd) {
-        this.titleService.setTitle(event.snapshot);
+        this.seoService.setMetaTags(event.snapshot);
       }
       if (event instanceof NavigationEnd) {
         AppComponent.trackPageView(event);
