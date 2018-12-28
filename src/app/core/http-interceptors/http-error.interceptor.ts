@@ -19,7 +19,6 @@ import { AuthService } from '@app/core/auth/auth.service';
 import { environment } from '@env/environment';
 import { AppState } from '@app/core';
 import { Store } from '@ngrx/store';
-import { ActionSearchUsers } from '@app/modules/admin/users/reducer/users.actions';
 import { ActionAuthLogout } from '@app/core/auth/auth.actions';
 
 /** Passes HttpErrorResponse to application-wide error handler */
@@ -79,13 +78,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       return (
         this.authService.refreshToken().subscribe(newToken => {
           if (newToken) {
-            const newpayload = {
-              pageIndex: 1
-            };
-            this.store.dispatch(new ActionSearchUsers(newpayload));
+          } else {
+            // If we don't get a new token, we are in trouble so logout.
+            this.store.dispatch(new ActionAuthLogout());
           }
-          // If we don't get a new token, we are in trouble so logout.
-          this.store.dispatch(new ActionAuthLogout());
         }),
         catchError(this.handleError),
         finalize(() => {

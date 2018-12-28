@@ -47,12 +47,15 @@ export class SeoService {
         content:
           'Book accommodation among the more than 2000 offers of Casas Particulares in Cuba. The best way to know Cuba is living it.'
       },
-      { name: 'author', content: 'ABCD' },
-      { name: 'keywords', content: 'TypeScript, Angular' },
+      { name: 'author', content: 'Vhagar' },
+      {
+        name: 'keywords',
+        content: 'Booking,Casa,Particular,Accommodation,Room,Apartment'
+      },
       { name: 'date', content: '2018-06-02', scheme: 'YYYY-MM-DD' },
       { httpEquiv: 'Content-Type', content: 'text/html' },
-      { property: 'og:title', content: 'My Text' },
-      { property: 'og:type', content: 'website' },
+      { property: 'og:title', content: 'RD Tec' },
+      { property: 'og:type', content: 'Developers' },
       { charset: 'UTF-8' }
     ]);
   }

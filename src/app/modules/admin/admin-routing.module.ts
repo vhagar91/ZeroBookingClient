@@ -33,7 +33,7 @@ export const routes: Routes = [
   {
     path: AppConfig.routes.adminListings,
     component: ListingComponent,
-    data: { title: 'zerofee-app.listings' }
+    data: { title: 'zerofee.listings' }
   },
   {
     path: AppConfig.routes.adminListings + '/:id',
