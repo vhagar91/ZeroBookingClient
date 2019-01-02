@@ -25,7 +25,6 @@
 .property_status {
   position: absolute;
   padding: 1px 25px;
-  z-index: 99;
   font-size: 12px;
   right: 15px;
   top: 15px;
@@ -33,11 +32,9 @@
 .title-container {
   width: 100%;
   position: relative;
-  z-index: 99;
 }
 .price_unit_wrapper {
   position: absolute;
-  z-index: 10;
   right: 15px;
   top: 23px;
 }
@@ -57,7 +54,6 @@
   font-weight: 400;
   position: relative;
   color: #fff;
-  z-index: 10;
   font-size: 18px;
   text-align: left;
   padding: 24px 15px 0;
@@ -97,7 +93,6 @@
   bottom: -16px;
   top: auto;
   right: 7px;
-  z-index: 99;
 }
 
 .icon-fav fa-icon {

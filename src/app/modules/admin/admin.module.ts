@@ -55,6 +55,7 @@ import { CalendarComponent } from './listing/core/calendar/calendar.component';
 import { ListingEffects } from '@app/modules/admin/listing/reducer/listing.effects';
 import { ListingsService } from '@app/modules/admin/listing/service/listings.service';
 import { GalleryModule } from '@ngx-gallery/core';
+import { AddpicturesComponent } from './listing/core/addpictures/addpictures.component';
 
 @NgModule({
   imports: [
@@ -101,7 +102,7 @@ import { GalleryModule } from '@ngx-gallery/core';
       }
     }
   ],
-  entryComponents: [AddUserComponent, FilterComponent],
+  entryComponents: [AddUserComponent, FilterComponent, AddpicturesComponent],
   declarations: [
     AdminComponent,
     UsersComponent,
@@ -120,7 +121,8 @@ import { GalleryModule } from '@ngx-gallery/core';
     PicturesComponent,
     PricesComponent,
     MapComponent,
-    CalendarComponent
+    CalendarComponent,
+    AddpicturesComponent
   ],
   exports: [
     SidemenuComponent,

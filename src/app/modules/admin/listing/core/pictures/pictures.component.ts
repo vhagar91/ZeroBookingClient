@@ -5,6 +5,9 @@ import { select, Store } from '@ngrx/store';
 import { PictureListing } from '@app/model/pictureListing';
 import { Subject } from 'rxjs';
 import { ActionGetListingGallery } from '@app/modules/admin/listing/reducer/listing.actions';
+import { AddUserComponent } from '@app/modules/admin/users/dialogs/adduser/adduser.component';
+import { MatDialog } from '@angular/material';
+import { AddpicturesComponent } from '@app/modules/admin/listing/core/addpictures/addpictures.component';
 
 @Component({
   selector: 'zerofee-app-pictures',
@@ -16,7 +19,7 @@ export class PicturesComponent implements OnInit, OnDestroy {
   gallery: PictureListing[];
   @Input()
   listingId: number = null;
-  constructor(private store: Store<State>) {}
+  constructor(private store: Store<State>, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.subscribeToGallery();
@@ -43,5 +46,14 @@ export class PicturesComponent implements OnInit, OnDestroy {
   }
   selectGallery(): void {
     this.store.dispatch(new ActionGetListingGallery(this.listingId));
+  }
+  addPictures() {
+    const dialogRef = this.dialog.open(AddpicturesComponent, {
+      data: { listing: this.listingId }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.selectGallery();
+    });
   }
 }

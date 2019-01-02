@@ -94,7 +94,18 @@ library.add(
 import { BigInputComponent } from './big-input/big-input.component';
 import { BigInputActionComponent } from './big-input/big-input-action.component';
 import { BigDatepickerComponent } from './big-datepicker/big-datepicker.component';
-
+import {
+  DROPZONE_CONFIG,
+  DropzoneConfigInterface,
+  DropzoneModule
+} from 'ngx-dropzone-wrapper';
+import { environment } from '@env/environment';
+const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
+  // Change this to your upload POST address:
+  url: environment.BaseUrl,
+  maxFilesize: 50,
+  acceptedFiles: 'image/*'
+};
 @NgModule({
   imports: [
     CommonModule,
@@ -121,7 +132,8 @@ import { BigDatepickerComponent } from './big-datepicker/big-datepicker.componen
     MatDividerModule,
     MatDatepickerModule,
 
-    FontAwesomeModule
+    FontAwesomeModule,
+    DropzoneModule
   ],
   declarations: [
     BigInputComponent,
@@ -160,7 +172,14 @@ import { BigDatepickerComponent } from './big-datepicker/big-datepicker.componen
 
     BigInputComponent,
     BigInputActionComponent,
-    BigDatepickerComponent
+    BigDatepickerComponent,
+    DropzoneModule
+  ],
+  providers: [
+    {
+      provide: DROPZONE_CONFIG,
+      useValue: DEFAULT_DROPZONE_CONFIG
+    }
   ]
 })
 export class SharedModule {}

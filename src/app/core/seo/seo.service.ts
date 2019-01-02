@@ -35,18 +35,40 @@ export class SeoService {
       this.title.setTitle(env.appName);
     }
   }
+  setDescription(
+    snapshot: ActivatedRouteSnapshot,
+    lazyTranslateService?: TranslateService
+  ) {
+    let lastChild = snapshot;
+    while (lastChild.children.length) {
+      lastChild = lastChild.children[0];
+    }
+    const { description } = lastChild.data;
+    const translate = lazyTranslateService || this.translateService;
+    if (description) {
+      translate
+        .get(description)
+        .pipe(filter(translatedTitle => translatedTitle !== description))
+        .subscribe(translatedTitle =>
+          this.meta.addTag({ name: 'description', content: translatedTitle })
+        );
+    } else {
+      this.meta.addTag({
+        name: 'description',
+        content:
+          'Book accommodation among the more than 2000 offers of Casas Particulares in Cuba. The best way to know Cuba is living it.'
+      });
+    }
+  }
   setMetaTags(
     snapshot: ActivatedRouteSnapshot,
     lazyTranslateService?: TranslateService
   ) {
     this.setTitle(snapshot);
+    this.setDescription(snapshot);
     this.meta.addTags([
       { name: 'robots', content: 'INDEX, FOLLOW' },
-      {
-        name: 'description',
-        content:
-          'Book accommodation among the more than 2000 offers of Casas Particulares in Cuba. The best way to know Cuba is living it.'
-      },
+
       { name: 'author', content: 'Vhagar' },
       {
         name: 'keywords',
