@@ -23,7 +23,6 @@ export class PricesComponent implements OnInit {
   }
   onSubmitPrices() {
     const updatedData = this.priceData.value;
-    console.log(updatedData);
     const payload = {
       pk: this.listingId,
       data: updatedData
