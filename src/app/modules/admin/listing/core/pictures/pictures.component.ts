@@ -4,7 +4,11 @@ import { getListingListState, State } from '@app/modules/admin/admin.state';
 import { select, Store } from '@ngrx/store';
 import { PictureListing } from '@app/model/pictureListing';
 import { Subject } from 'rxjs';
-import { ActionGetListingGallery } from '@app/modules/admin/listing/reducer/listing.actions';
+import {
+  ActionDeleteListingPicture,
+  ActionGetListingGallery,
+  ActionUpdateListingPicture
+} from '@app/modules/admin/listing/reducer/listing.actions';
 import { AddUserComponent } from '@app/modules/admin/users/dialogs/adduser/adduser.component';
 import { MatDialog } from '@angular/material';
 import { AddpicturesComponent } from '@app/modules/admin/listing/core/addpictures/addpictures.component';
@@ -55,5 +59,18 @@ export class PicturesComponent implements OnInit, OnDestroy {
     dialogRef.afterClosed().subscribe(result => {
       this.selectGallery();
     });
+  }
+  makePortrait(pk: any) {
+    const payload = {
+      pk: pk,
+      data: { is_portrait: true }
+    };
+    this.store.dispatch(new ActionUpdateListingPicture(payload));
+  }
+  deletePicture(pk: any) {
+    const payload = {
+      pk: pk
+    };
+    this.store.dispatch(new ActionDeleteListingPicture(payload));
   }
 }

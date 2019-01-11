@@ -21,7 +21,10 @@ import {
   ActionUpdatePricesSuccess,
   ActionGetListingGallerySuccess,
   ActionGetListingGallery,
-  ActionUpdateGeneralSuccess
+  ActionUpdateGeneralSuccess,
+  ActionUpdateListingPicture,
+  ActionUpdateListingPictureSuccess,
+  ActionDeleteListingPictureSuccess
 } from '@app/modules/admin/listing/reducer/listing.actions';
 
 @Injectable()
@@ -123,7 +126,6 @@ export class ListingEffects {
   @Effect()
   updatePricesListing = this.actions$.pipe(
     ofType<ActionUpdatePrices>(ListingActionTypes.UPDATE_LISTING_PRICES),
-    tap(action => console.log(action)),
     map(action => action),
     switchMap(action =>
       this.listingService
@@ -155,6 +157,32 @@ export class ListingEffects {
     switchMap(action =>
       this.listingService.getGallery(action.payload).pipe(
         map(gallery => new ActionGetListingGallerySuccess(gallery)),
+        catchError(err => of(new ActionSearchFailListings(err)))
+      )
+    )
+  );
+  @Effect()
+  makePicturePortrait = this.actions$.pipe(
+    ofType<ActionUpdateListingPicture>(
+      ListingActionTypes.UPDATE_LISTING_PICTURE
+    ),
+    map(action => action),
+    switchMap(action =>
+      this.listingService.updatePicture(action.payload).pipe(
+        map(picture => new ActionUpdateListingPictureSuccess(picture)),
+        catchError(err => of(new ActionSearchFailListings(err)))
+      )
+    )
+  );
+  @Effect()
+  deletePicture = this.actions$.pipe(
+    ofType<ActionUpdateListingPicture>(
+      ListingActionTypes.DELETE_LISTING_PICTURE
+    ),
+    map(action => action),
+    switchMap(action =>
+      this.listingService.deletePicture(action.payload).pipe(
+        map(picture => new ActionDeleteListingPictureSuccess(action)),
         catchError(err => of(new ActionSearchFailListings(err)))
       )
     )

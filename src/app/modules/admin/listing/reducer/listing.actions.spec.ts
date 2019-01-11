@@ -5,7 +5,9 @@ import {
   ActionUpdateListing,
   ActionSelectListing,
   ActionSelectSuccessListing,
-  ActionUpdateTerms
+  ActionUpdateTerms,
+  ActionUpdateListingPicture,
+  ActionUpdateListingPictureSuccess
 } from '@app/modules/admin/listing/reducer/listing.actions';
 
 describe('Listings Actions', () => {
@@ -36,5 +38,15 @@ describe('Listings Actions', () => {
   it('should create ActionSelectListing action', () => {
     const action = new ActionSelectListing('');
     expect(action.type).toEqual(ListingActionTypes.SELECT_LISTING);
+  });
+  it('should create ActionUpdateListingPicture action', () => {
+    const action = new ActionUpdateListingPicture('');
+    expect(action.type).toEqual(ListingActionTypes.UPDATE_LISTING_PICTURE);
+  });
+  it('should create ActionUpdateListingPictureSuccess action', () => {
+    const action = new ActionUpdateListingPictureSuccess('');
+    expect(action.type).toEqual(
+      ListingActionTypes.UPDATE_LISTING_PICTURE_SUCCESS
+    );
   });
 });

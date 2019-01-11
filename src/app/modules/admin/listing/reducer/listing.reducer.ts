@@ -1,6 +1,7 @@
 import { ListingActions } from '@app/modules/admin/listing/reducer/listing.actions';
 import { ListingsListState } from '@app/modules/admin/listing/state/listings';
 import { ListingActionTypes } from '@app/modules/admin/listing/reducer/listing.actions';
+import { PictureListing } from '@app/model/pictureListing';
 
 export const initialState: ListingsListState = {
   listings: null,
@@ -90,6 +91,34 @@ export function listingsReducer(
           checkOutTime: action.payload.checkOutTime,
           propertyType: action.payload.propertyType,
           roomType: action.payload.roomType
+        }
+      };
+    case ListingActionTypes.DELETE_LISTING_PICTURE_SUCCESS:
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          gallery: state.selected.gallery.filter(picture => {
+            if (picture.id !== action.payload.payload.pk) return picture; // return all the items not matching the action.id
+          })
+        }
+      };
+    case ListingActionTypes.UPDATE_LISTING_PICTURE_SUCCESS:
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          gallery: state.selected.gallery.map(Picture => {
+            // Only call sub reducer if the incoming actions id matches
+            if (Picture.id === action.payload.id) {
+              return action.payload;
+            }
+
+            return {
+              ...Picture,
+              is_portrait: false
+            };
+          })
         }
       };
     default:

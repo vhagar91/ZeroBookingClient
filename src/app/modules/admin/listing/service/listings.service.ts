@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 import { environment } from '@env/environment';
 import {
+  listingDeletePicture,
   listingsGet,
   listingsGetGallery,
   listingsList,
   listingsUpdateAddress,
   listingsUpdateGeneral,
   listingsUpdatePrices,
-  listingsUpdateTerms
+  listingsUpdateTerms,
+  listingUpdatePicture
 } from '@app/core/app.config';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -63,5 +65,19 @@ export class ListingsService {
   getGallery(pk: number): Observable<any> {
     const queryUrl = `${environment.BaseUrl + listingsGetGallery + pk + '/'}`;
     return this.http.get<any>(queryUrl);
+  }
+  updatePicture(newData: any): Observable<any> {
+    const queryUrl = `${environment.BaseUrl +
+      listingUpdatePicture +
+      newData.pk +
+      '/'}`;
+    return this.http.patch<any>(queryUrl, newData.data);
+  }
+  deletePicture(newData: any): Observable<any> {
+    const queryUrl = `${environment.BaseUrl +
+      listingDeletePicture +
+      newData.pk +
+      '/'}`;
+    return this.http.delete<any>(queryUrl);
   }
 }

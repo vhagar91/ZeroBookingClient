@@ -43,7 +43,7 @@ describe('ListingService', () => {
   it('should be created', () => {
     expect(ListingsService).toBeTruthy();
   });
-  /// HeroService method tests begin ///
+  /// ListingService method tests begin ///
 
   describe('#getListings', () => {
     let expectedListings: Listing[];
