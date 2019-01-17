@@ -7,25 +7,27 @@ import { SettingsEffects, SETTINGS_KEY } from './settings.effects';
 import { SettingsState } from './settings.model';
 import { CurrencyService } from '@app/core/currency-exchange/currency.service';
 import { TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
-import { UsersService } from '@app/modules/admin/users/service/users.service';
-import { provideMockActions } from '@ngrx/effects/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('SettingsEffects', () => {
-  let localStorageService: jasmine.SpyObj<LocalStorageService>;
+  let localStorageService: LocalStorageService;
   let animationsService: jasmine.SpyObj<AnimationsService>;
   let currencyService: CurrencyService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [StoreModule.forRoot({}), HttpClientTestingModule],
-      providers: [CurrencyService, HttpClientTestingModule]
+      providers: [
+        CurrencyService,
+        HttpClientTestingModule,
+        {
+          provide: LocalStorageService,
+          useValue: jasmine.createSpyObj('LocalStorageService', ['setItem'])
+        }
+      ]
     });
-    localStorageService = jasmine.createSpyObj('LocalStorageService', [
-      'setItem'
-    ]);
+    localStorageService = TestBed.get(LocalStorageService);
     animationsService = jasmine.createSpyObj('AnimationsService', [
       'updateRouteAnimationType'
     ]);
