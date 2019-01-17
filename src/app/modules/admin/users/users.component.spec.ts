@@ -13,14 +13,19 @@ import {
   MatProgressSpinnerModule,
   MatTableModule
 } from '@angular/material';
-import { TestingModule } from '@testing/utils';
+import { MockStore, TestingModule } from '@testing/utils';
 import { CoreModule } from '@app/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { By } from '@angular/platform-browser';
+import { ActionSearchUsers } from '@app/modules/admin/users/reducer/users.actions';
+import { UserListState } from '@app/modules/admin/users/state/users';
+import { State, Store } from '@ngrx/store';
 
 describe('UsersComponent', () => {
   let component: UsersComponent;
   let fixture: ComponentFixture<UsersComponent>;
+  let store: MockStore<State<any>>;
+  let dispatchSpy: jasmine.Spy;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -39,11 +44,23 @@ describe('UsersComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(UsersComponent);
     component = fixture.componentInstance;
+    store = TestBed.get(Store);
+    dispatchSpy = spyOn(store, 'dispatch').and.callThrough();
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+  it('should dispatch an action to load users when created', () => {
+    const action = new ActionSearchUsers({
+      pageIndex: 1,
+      pageSize: 20,
+      filters: { username: '', email_filter: '' }
+    });
+
+    expect(dispatchSpy).toHaveBeenCalledTimes(1);
+    expect(dispatchSpy).toHaveBeenCalledWith(action);
   });
   describe('#UserMatMenu', () => {
     beforeEach(() => {

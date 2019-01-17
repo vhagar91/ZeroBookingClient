@@ -11,7 +11,6 @@ import {
 } from '@ngrx/store';
 import { BehaviorSubject } from 'rxjs';
 import { RouterTestingModule } from '@angular/router/testing';
-import { CurrencyCustomPipe } from '@app/core/pipes/currency.pipe';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'Exchange' })
