@@ -26,6 +26,7 @@ import { BreadcrumbComponent } from '../admin/breadcrumb/breadcrumb.component';
 import { LoaderService } from '@app/core/loader/loader.service';
 import { CurrencyCustomPipe } from './pipes/currency.pipe';
 import { CurrencyService } from '@app/core/currency-exchange/currency.service';
+import { NotificationService } from '@app/core/notifications/notification.service';
 
 @NgModule({
   imports: [
@@ -54,6 +55,7 @@ import { CurrencyService } from '@app/core/currency-exchange/currency.service';
   ],
   declarations: [CurrencyCustomPipe],
   providers: [
+    NotificationService,
     LocalStorageService,
     AuthGuardService,
     AnimationsService,

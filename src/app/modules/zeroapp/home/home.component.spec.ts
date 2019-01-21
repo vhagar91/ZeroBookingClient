@@ -5,6 +5,7 @@ import { TestingModule } from '../../../../testing/utils';
 import { HeaderComponent } from './header/header.component';
 import { SearchboxComponent } from '@app/modules/zeroapp/home/searchbox/searchbox.component';
 import { SharedModule } from '@app/shared';
+import { NotificationService } from '@app/core/notifications/notification.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -13,6 +14,7 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [TestingModule],
+      providers: [NotificationService],
       declarations: [HomeComponent, HeaderComponent, SearchboxComponent]
     }).compileComponents();
   }));

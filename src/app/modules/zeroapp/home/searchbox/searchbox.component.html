@@ -9,18 +9,18 @@
   <div id='infoi'>
     <form class="mat-dialog-content" >
       <p>
-        <zerofee-app-big-input placeholder="Location"></zerofee-app-big-input>
+        <zerofee-app-big-input placeholder="Location" [value]="searchLocation" (keyup)="onLocationChange($event.target.value)" ></zerofee-app-big-input>
       </p>
       <p>
-        <zerofee-app-big-datepicker placeholder="From"></zerofee-app-big-datepicker>
+        <zerofee-app-big-datepicker placeholder="From"  [value]="fromDate"  (onchange)="onDateChange($event.target.value)"></zerofee-app-big-datepicker>
       </p>
       <p>
         <zerofee-app-big-datepicker  placeholder="To"></zerofee-app-big-datepicker>
       </p>
       <p>
-        <zerofee-app-big-input  placeholder="Guests"></zerofee-app-big-input>
+        <zerofee-app-big-input  placeholder="Guests" [value]="guests" (keyup)="onGuestsChange($event.target.value)"></zerofee-app-big-input>
       </p>
-      <button mat-raised-button type="submit"  color="warn"  class="btn btn-primary full">SEARCH</button>
+      <button mat-raised-button type="submit"  color="warn"  class="btn btn-primary full">SEARCH  {{guests}}</button>
     </form>
   </div>
   </div>
