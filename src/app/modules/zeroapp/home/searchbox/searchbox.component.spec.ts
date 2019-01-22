@@ -31,14 +31,19 @@ describe('SearchboxComponent', () => {
 
     expect(component.searchLocation).toBe('new location');
   });
-  it('should modify location on onGuestsChange', () => {
+  it('should modify guests on onGuestsChange', () => {
     component.onGuestsChange('3');
 
     expect(component.guests).toBe('3');
   });
-  it('should modify location on onDateChange', () => {
+  it('should modify FromDate on onDateChange', () => {
     component.onDateChange('1/18/2019');
 
     expect(component.fromDate).toBe('1/18/2019');
+  });
+  it('should modify toDate on onDateToChange', () => {
+    component.onDateToChange('1/18/2019');
+
+    expect(component.toDate).toBe('1/18/2019');
   });
 });

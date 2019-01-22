@@ -10,6 +10,7 @@ import { NotificationService } from '@app/core/notifications/notification.servic
 })
 export class SearchboxComponent implements OnInit {
   fromDate = '';
+  toDate = '';
   searchLocation = '';
   guests = '';
   constructor(
@@ -30,6 +31,9 @@ export class SearchboxComponent implements OnInit {
   // }
   onDateChange(date: string) {
     this.fromDate = date;
+  }
+  onDateToChange(date: string) {
+    this.toDate = date;
   }
   onLocationChange(location: string) {
     this.searchLocation = location;

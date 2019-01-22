@@ -1,5 +1,5 @@
 <div class="toolbar-user-container">
-	<button mat-button (click)="isOpen = !isOpen" class="toolbar-user-btn" [class.open]="isOpen" [ngStyle.xs]="{'min-width': '70px'}">
+	<button id="menu" mat-button (click)="isOpen = !isOpen" class="toolbar-user-btn" [class.open]="isOpen" [ngStyle.xs]="{'min-width': '70px'}">
   		<span fxLayout="row" fxLayoutAlign="start center">
     		<img class="avatar" [src]="currentUser?.avatar || ''">
     		<span class="name" fxHide fxShow.gt-xs>{{currentUser?.name || 'No name'}}</span>
@@ -12,7 +12,7 @@
     	<div class="content">
       		<mat-nav-list>
       			<mat-list-item >
-      				<a matLine (click)="editProfile()">Profile</a>
+      				<a matLine id="edit" (click)="editProfile()">Profile</a>
 				    <button mat-icon-button >
 				       <mat-icon>account_circle</mat-icon>
 				    </button>
@@ -33,7 +33,7 @@
       			<mat-divider></mat-divider>
 
       			<mat-list-item>
-      				<a matLine (click)="onLogoutClick()" >{{'zerofee-app.menu.logout'|translate}}</a>
+      				<a matLine id="logout" (click)="onLogoutClick()" >{{'zerofee-app.menu.logout'|translate}}</a>
 				    <button mat-icon-button>
 				       <mat-icon>exit_to_app</mat-icon>
 				    </button>

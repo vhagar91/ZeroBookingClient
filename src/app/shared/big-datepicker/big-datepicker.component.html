@@ -1,7 +1,7 @@
 <mat-card class="big-input" [ngClass]="{ 'has-focus': hasFocus }">
-  <input matInput [matDatepicker]="picker" [value]="value" (focus)="hasFocus = true"  (blur)="hasFocus = false"
+  <input matInput [matDatepicker]="picker" (focus)="hasFocus = true"  (blur)="hasFocus = false"
          [placeholder]="placeholder"
-         [disabled]="disabled">
+         [disabled]="disabled" (dateChange)="notifyParent($event)">
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker touchUi #picker></mat-datepicker>
   <ng-content></ng-content>
