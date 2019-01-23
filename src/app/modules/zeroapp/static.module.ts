@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { SettingsModule } from '@app/settings';
 import { CoreModule } from '@app/core';
-import { Error404PageComponent } from '@app/shared/error404-page/error404-page.component';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { DEFAULT_PERFECT_SCROLLBAR_CONFIG } from '@app/core/app.config';
@@ -18,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderComponent } from './home/header/header.component';
 import { SearchboxComponent } from './home/searchbox/searchbox.component';
+import { Error404Component } from '@app/shared/404/error-404.component';
 
 @NgModule({
   imports: [
@@ -38,7 +38,7 @@ import { SearchboxComponent } from './home/searchbox/searchbox.component';
     AboutComponent,
     FeaturesComponent,
     MainComponent,
-    Error404PageComponent,
+    Error404Component,
     FooterComponent,
     ListingcardComponent,
     HomeComponent,

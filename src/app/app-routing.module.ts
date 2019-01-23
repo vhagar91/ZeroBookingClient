@@ -7,6 +7,7 @@ import { LoginComponent } from '@app/modules/admin/login/login.component';
 import { AdminGuard } from '@app/modules/admin/admin.guard';
 import { AppConfig } from '@app/core/app.config';
 import { MainComponent } from '@app/modules/zeroapp/layout/main.component';
+import { Error404Component } from '@app/shared/404/error-404.component';
 const routes: Routes = [
   {
     path: '',
@@ -18,6 +19,7 @@ const routes: Routes = [
     component: MainComponent,
     children: MainRoutes
   },
+  { path: AppConfig.routes.error404, component: Error404Component },
   {
     path: 'login',
     component: LoginComponent
@@ -31,7 +33,7 @@ const routes: Routes = [
   },
 
   // otherwise redirect to 404
-  { path: '**', redirectTo: 'home/' + AppConfig.routes.error404 }
+  { path: '**', redirectTo: AppConfig.routes.error404 }
 ];
 
 @NgModule({

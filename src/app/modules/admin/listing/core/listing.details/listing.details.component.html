@@ -1,13 +1,9 @@
 <zerofee-app-listingheader></zerofee-app-listingheader>
 <mat-tab-group mat-stretch-tabs backgroundColor="primary">
-  <mat-tab label="Overview">
-    <ng-template matTabContent>
-      Overview:
-    </ng-template>
-  </mat-tab>
+
   <mat-tab label="Property">
     <ng-template matTabContent>
-      <zerofee-app-property [descriptionData]="descriptionForm" [generalData]="generalForm" [termsData]="termsForm" [listingId]="selectedListings.pk"></zerofee-app-property>
+      <zerofee-app-property [descriptionData]="descriptionForm" [generalData]="generalForm" [termsData]="termsForm" [listingId]="selectedListings?.pk"></zerofee-app-property>
     </ng-template>
   </mat-tab>
   <mat-tab label="Pictures">
@@ -30,9 +26,14 @@
       <zerofee-app-calendar></zerofee-app-calendar>
     </ng-template>
   </mat-tab>
-  <mat-tab label="Reservations">
+  <mat-tab label="Amenities">
     <ng-template matTabContent>
       Reservations:
+    </ng-template>
+  </mat-tab>
+  <mat-tab label="SEO">
+    <ng-template matTabContent>
+      SEO:
     </ng-template>
   </mat-tab>
 </mat-tab-group>

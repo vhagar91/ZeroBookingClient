@@ -33,7 +33,7 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  it('should dispatch an action to Add User data', () => {
+  it('should dispatch an action to Login', () => {
     const action = new ActionAuthLogin({
       email: '',
       password: ''
