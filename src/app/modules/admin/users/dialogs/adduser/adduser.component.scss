@@ -1,6 +1,41 @@
-.mat-dialog-content {
-  height: 46vh;
-}
-.float-right {
-  float: right;
+@import '../../../../../core/scss/fuse';
+
+zerofee-app-adduser {
+  @include media-breakpoint('xs') {
+    width: 100%;
+  }
+
+  @include media-breakpoint-up('xs') {
+    width: 400px;
+  }
+  .mat-dialog-content {
+    overflow: hidden !important;
+  }
+  .mat-dialog-container {
+    padding: 0;
+
+    .mat-toolbar {
+      flex: 1 0 auto;
+      min-height: initial;
+    }
+
+    .toolbar-bottom {
+      height: auto;
+    }
+  }
+  .submit-button {
+    width: 220px;
+    margin: 1px auto;
+    display: block;
+
+    @include media-breakpoint('xs') {
+      width: 90%;
+    }
+  }
+  .dialog-content-wrapper {
+    max-height: 85vh;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+  }
 }

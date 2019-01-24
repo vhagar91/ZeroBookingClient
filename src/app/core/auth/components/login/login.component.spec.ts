@@ -4,10 +4,6 @@ import { MockStore, TestingModule } from '../../../../../testing/utils';
 import { ActionAuthLogin, CoreModule } from '../../../index';
 import { By } from '@angular/platform-browser';
 import { State, Store } from '@ngrx/store';
-import {
-  ActionAddUser,
-  ActionSearchUsers
-} from '../../../../modules/admin/users/reducer/users.actions';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -49,7 +45,20 @@ describe('LoginComponent', () => {
       .triggerEventHandler('click', {});
     expect(component.onLoginClick).toHaveBeenCalled();
   });
-
+  it('should emit action event on google Login', () => {
+    spyOn(component, 'socialSignIn');
+    fixture.debugElement
+      .query(By.css('.google'))
+      .triggerEventHandler('click', {});
+    expect(component.socialSignIn).toHaveBeenCalledWith('google');
+  });
+  it('should emit action event on facebook Login', () => {
+    spyOn(component, 'socialSignIn');
+    fixture.debugElement
+      .query(By.css('.facebook'))
+      .triggerEventHandler('click', {});
+    expect(component.socialSignIn).toHaveBeenCalledWith('facebook');
+  });
   it('should have h1 with "zerofee-app.menu.login"', () => {
     const bannerElement: HTMLElement = fixture.nativeElement;
     const h1 = bannerElement.querySelector('h1');

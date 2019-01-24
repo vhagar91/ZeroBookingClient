@@ -16,7 +16,7 @@ export class AuthService {
 
   login(payload: any) {
     return this.http.post<any>(AuthService.BASE_URL + login, {
-      username_or_email: payload.email,
+      email: payload.email,
       password: payload.password
     });
   }

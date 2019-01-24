@@ -37,17 +37,17 @@
       <div class="separator">
         <span class="text">OR</span>
       </div>
-      <button mat-raised-button class="google">
+      <button mat-raised-button class="google" (click)="socialSignIn('google')">
         Log in with Google
       </button>
 
-      <button mat-raised-button class="facebook">
+      <button mat-raised-button class="facebook" (click)="socialSignIn('facebook')">
         Log in with Facebook
       </button>
 
       <div class="register" fxLayout="column" fxLayoutAlign="center center">
         <span class="text">Don't have an account?</span>
-        <a class="link" class="cerate-account"[routerLink]="'/register'">Create an account</a>
+        <a class="cerate-account link"[routerLink]="'/register'">Create an account</a>
       </div>
 
     </div>

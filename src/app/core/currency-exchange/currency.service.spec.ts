@@ -7,7 +7,7 @@ import { AppErrorHandler } from '@app/core/error-handler/app-error-handler.servi
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { CurrencyService } from '@app/core/currency-exchange/currency.service';
 
-describe('UsersService', () => {
+describe('CurrencyExchangeService', () => {
   let httpClient: HttpClient;
   let httpTestingController: HttpTestingController;
   let currencyService: CurrencyService;

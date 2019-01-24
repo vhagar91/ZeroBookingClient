@@ -1,10 +1,9 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { MAT_DIALOG_DATA } from '@angular/material';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { User } from '@app/modules/admin/users/state/user';
 import { Group } from '@app/modules/admin/users/state/group';
-import { ActionUpdateProfile } from '@app/modules/admin/profile/reducer/profile.actions';
 import { Store } from '@ngrx/store';
 import { State } from '@app/modules/admin/admin.state';
 import { ActionAddUser } from '@app/modules/admin/users/reducer/users.actions';
@@ -12,7 +11,8 @@ import { ActionAddUser } from '@app/modules/admin/users/reducer/users.actions';
 @Component({
   selector: 'zerofee-app-adduser',
   templateUrl: './adduser.component.html',
-  styleUrls: ['./adduser.component.scss']
+  styleUrls: ['./adduser.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AddUserComponent implements OnInit {
   userForm: FormGroup;

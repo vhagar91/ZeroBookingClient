@@ -3,9 +3,9 @@ import { InjectionToken } from '@angular/core';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 // URLS
 export const userList = 'api/users/list/';
-export const login = 'api/login/';
+export const login = 'rest-auth/login/';
 export const getAvatar = 'api/users/avatar/';
-export const tokenRefresh = 'api/token/refresh/';
+export const tokenRefresh = 'rest-auth/refresh/';
 export const getProfile = 'api/users/profile/';
 export const putProfilePicture = 'api/users/avatar/';
 export const putProfile = 'api/users/profile/';

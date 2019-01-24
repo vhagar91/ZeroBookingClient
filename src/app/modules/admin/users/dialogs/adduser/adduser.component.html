@@ -1,56 +1,75 @@
-<div class="container">
-  <h3  mat-dialog-title>New User</h3>
-  <form class="mat-dialog-content" [formGroup]="userForm" (ngSubmit)="submit()" >
-    <div class="row">
-      <div class="col-md-6">
-        <mat-form-field >
-          <input matInput placeholder="Username" formControlName="username" >
+
+
+<div class="dialog-content-wrapper">
+  <mat-toolbar matDialogTitle class="mat-accent m-0">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+      <h3 class="title dialog-title">New User</h3>
+      <button mat-icon-button (click)="dialogRef.close()" aria-label="Close dialog">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <div mat-dialog-content class="p-24 m-0" fusePerfectScrollbar>
+
+    <form [formGroup]="userForm" (ngSubmit)="submit()">
+
+      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <mat-form-field fxFlex>
+          <mat-icon matPrefix class="mr-12 s-20 secondary-text">account_circle</mat-icon>
+          <input name="username" formControlName="username" placeholder="Name" matInput required>
         </mat-form-field>
       </div>
-      <div class="col-md-6">
-        <mat-form-field >
-          <input matInput placeholder="Email address" type="email" formControlName="email">
+
+      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <mat-form-field fxFlex>
+          <mat-icon matPrefix class="mr-12 s-20 secondary-text">account_circle</mat-icon>
+          <input name="first_name" formControlName="first_name" placeholder="Fist Name" matInput>
         </mat-form-field>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6">
-        <mat-form-field >
-          <input matInput placeholder="Fist Name" type="text" formControlName="first_name">
+
+      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <mat-form-field fxFlex>
+          <mat-icon matPrefix class="mr-12 s-20 secondary-text">star</mat-icon>
+          <input name="last_name" formControlName="last_name" matInput placeholder="Last Name">
         </mat-form-field>
       </div>
-      <div class="col-md-6">
-        <mat-form-field >
-          <input matInput placeholder="Last Name" type="text" formControlName="last_name">
+
+      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <mat-form-field fxFlex>
+          <mat-icon matPrefix class="mr-12 s-20 secondary-text">email</mat-icon>
+          <input name="email" formControlName="email" matInput type="email" placeholder="Email">
         </mat-form-field>
       </div>
-    </div>
-    <div class="row">
 
-        <mat-form-field class="col">
-          <input matInput placeholder="Password" type="password" formControlName="password">
+      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <mat-form-field fxFlex>
+          <mat-icon matPrefix class="mr-12 s-20 secondary-text">Password</mat-icon>
+          <input placeholder="Password" matInput type="password" formControlName="password">
         </mat-form-field>
+      </div>
 
-    </div>
-    <div class="row">
-    <mat-form-field class="col">
-      <mat-select placeholder="Group" formControlName="group">
-        <mat-option *ngFor="let group of groups" [value]="group.name">
-          {{group.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    </div>
+      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <mat-form-field fxFlex>
+          <mat-select placeholder="Group" formControlName="group">
+            <mat-option *ngFor="let group of groups" [value]="group.name">
+              {{group.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
 
-    <mat-checkbox formControlName="is_staff">Is Staff!</mat-checkbox>
-
-  </form>
-  <div mat-dialog-actions class="float-right">
-    <button mat-button (click)="onNoClick()">No Thanks</button>
-    <button mat-raised-button type="submit" [mat-dialog-close]="user.username" cdkFocusInitial (click)="submit()"  class="btn btn-primary">Save</button>
+      <div class="mb-24" fxLayout="row" fxLayoutAlign="start start">
+        <mat-checkbox fxFlex formControlName="is_staff">Is Staff!</mat-checkbox>
+      </div>
 
 
+    </form>
+
+  </div>
+
+  <div mat-dialog-actions class="m-0 p-16" fxLayout="row" fxLayoutAlign="space-between">
+    <button mat-raised-button type="submit" color="accent"  [disabled]="userForm.invalid" [mat-dialog-close]="user.username" cdkFocusInitial (click)="submit()"  class="btn btn-primary submit-button">Save</button>
 
   </div>
 </div>
-

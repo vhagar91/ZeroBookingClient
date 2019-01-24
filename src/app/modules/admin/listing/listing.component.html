@@ -28,55 +28,74 @@
                     [value]="90"
                     [bufferValue]="'10'">
   </mat-progress-bar>
-  <mat-list >
-    <mat-list-item  *ngFor="let listing of displayListings" (click)="seeDetails(listing.pk)">
 
-      <h3  > {{listing.nickname}} </h3>
-      <span class="pull-right"></span>
-      <h3  > {{listing.publicName}} </h3>
+  <mat-table #table [dataSource]="displayListings"
+             [@animateStagger]="{value:'50'}">
 
-      <span class="pull-right"></span>
-      <h3 [ngSwitch]="listing.roomType">
-        <div *ngSwitchCase="0">
-          No Set
-        </div>
-        <div *ngSwitchCase="1">
-          Room
-        </div>
-        <div *ngSwitchCase="2">
-          Full Property
-        </div>
-      </h3>
-      <span class="pull-right"></span>
-      <h3 [ngSwitch]="listing.propertyType">
-        <div *ngSwitchCase="0">
-          No Set
-        </div>
-        <div *ngSwitchCase="1">
-          APARTMENT
-        </div>
-        <div *ngSwitchCase="2">
-          HOME
-        </div>
-        <div *ngSwitchCase="3">
-          Villa
-        </div>
-        <div *ngSwitchCase="4">
-          Penthouse
-        </div>
+    <!-- NickName Column -->
+    <ng-container matColumnDef="nickname">
+      <mat-header-cell *matHeaderCellDef>Nickname</mat-header-cell>
+      <mat-cell *matCellDef="let listing">
+        <p class="text-truncate font-weight-600">{{listing.nickname}}</p>
+      </mat-cell>
+    </ng-container>
 
-      </h3>
-      <span class="pull-right"></span>
-      <mat-chip-list>
-        <mat-chip  *ngIf="listing.isActive" color="accent" selected="true" >
-        Active
-        </mat-chip>
-        <mat-chip *ngIf="!listing.isActive"  color="warn" selected="true" >
-          Inactive  &nbsp;
-        </mat-chip>
-      </mat-chip-list>
-    </mat-list-item>
-  </mat-list>
+    <!-- PublicName Column -->
+    <ng-container matColumnDef="publicName">
+      <mat-header-cell *matHeaderCellDef  >Public Name</mat-header-cell>
+      <mat-cell *matCellDef="let listing" >
+        <p class="email text-truncate">
+          {{listing.publicName}}
+        </p>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Room Type Column -->
+    <ng-container matColumnDef="roomType">
+      <mat-header-cell *matHeaderCellDef >Room Type</mat-header-cell>
+      <mat-cell *matCellDef="let listing" >
+        <p class="phone text-truncate">
+          {{listing.roomType}}
+        </p>
+      </mat-cell>
+    </ng-container>
+
+    <!-- PropertyType Title Column -->
+    <ng-container matColumnDef="propertyType">
+      <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>Property Type</mat-header-cell>
+      <mat-cell *matCellDef="let listing"fxHide fxShow.gt-sm >
+        <p class="job-title text-truncate">
+          {{listing.propertyType}}
+        </p>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Is Active Column -->
+    <ng-container matColumnDef="status">
+      <mat-header-cell *matHeaderCellDef fxHide fxShow.gt-sm>Status</mat-header-cell>
+      <mat-cell *matCellDef="let listing" fxHide fxShow.gt-sm>
+        <mat-chip-list>
+          <mat-chip  *ngIf="listing.isActive" color="accent" selected="true" >
+            Active
+          </mat-chip>
+          <mat-chip *ngIf="!listing.isActive"  color="warn" selected="true" >
+            Inactive  &nbsp;
+          </mat-chip>
+        </mat-chip-list>
+      </mat-cell>
+    </ng-container>
+
+
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let listing; columns: displayedColumns;"
+             class="contact"
+             (click)="seeDetails(listing.pk)"
+             matRipple
+             [@animate]="{value:'*',params:{y:'100%'}}">
+    </mat-row>
+  </mat-table>
   <mat-paginator [length]="resultsLength" [pageSizeOptions]="[10, 20, 30]"  showFirstLastButtons (page)="$event" ></mat-paginator>
 
 

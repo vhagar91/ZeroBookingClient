@@ -33,7 +33,6 @@ export class AuthEffects {
   login = this.actions$.pipe(
     // filter out the actions, except '[Customers Page] Get'
     ofType<ActionAuthLogin>(AuthActionTypes.LOGIN),
-    tap(action => console.log(action)),
     map(action => action),
     switchMap(campaign =>
       this.authService.login(campaign.payload).pipe(
@@ -48,20 +47,12 @@ export class AuthEffects {
     ofType(AuthActionTypes.LOGIN_SUCCESS),
     tap(access_token => {
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-      this.localStorageService.setItem(
-        'Token',
-        access_token.payload.token.access
-      );
-      this.localStorageService.setItem(
-        'Refresh',
-        access_token.payload.token.refresh
-      );
+      this.localStorageService.setItem('Token', access_token.payload.token);
       this.localStorageService.setItem(AUTH_KEY, {
         isAuthenticated: true,
         user: {
           ...access_token.payload.user,
-          access: access_token.payload.token.access,
-          refresh: access_token.payload.token.refresh
+          access: access_token.payload.token
         }
       });
       this.router.navigateByUrl(this.returnUrl);

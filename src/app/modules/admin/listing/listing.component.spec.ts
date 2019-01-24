@@ -8,10 +8,10 @@ import {
   MatExpansionModule,
   MatMenuModule,
   MatPaginatorModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatTableModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { ActionSearchUsers } from '@app/modules/admin/users/reducer/users.actions';
 import { State, Store } from '@ngrx/store';
 import { ActionSearchListings } from '@app/modules/admin/listing/reducer/listing.actions';
 
@@ -28,6 +28,7 @@ describe('ListingComponent', () => {
         MatMenuModule,
         MatExpansionModule,
         FlexLayoutModule,
+        MatTableModule,
         PerfectScrollbarModule,
         MatProgressBarModule,
         MatPaginatorModule

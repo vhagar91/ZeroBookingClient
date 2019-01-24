@@ -20,6 +20,37 @@ import { selectSettings, SettingsState } from '@app/settings';
 import { select, Store } from '@ngrx/store';
 import { OverlayContainer } from '@angular/cdk/overlay';
 
+/**
+ * Confirm password validator
+ *
+ * @param {AbstractControl} control
+ * @returns {ValidationErrors | null}
+ */
+export const confirmPasswordValidator: ValidatorFn = (
+  control: AbstractControl
+): ValidationErrors | null => {
+  if (!control.parent || !control) {
+    return null;
+  }
+
+  const password = control.parent.get('password');
+  const passwordConfirm = control.parent.get('passwordConfirm');
+
+  if (!password || !passwordConfirm) {
+    return null;
+  }
+
+  if (passwordConfirm.value === '') {
+    return null;
+  }
+
+  if (password.value === passwordConfirm.value) {
+    return null;
+  }
+
+  return { passwordsNotMatching: true };
+};
+
 @Component({
   selector: 'reset-password',
   templateUrl: './reset-password.component.html',
@@ -100,34 +131,3 @@ export class ResetPasswordComponent implements OnInit, OnDestroy {
     classList.add('default-theme');
   }
 }
-
-/**
- * Confirm password validator
- *
- * @param {AbstractControl} control
- * @returns {ValidationErrors | null}
- */
-export const confirmPasswordValidator: ValidatorFn = (
-  control: AbstractControl
-): ValidationErrors | null => {
-  if (!control.parent || !control) {
-    return null;
-  }
-
-  const password = control.parent.get('password');
-  const passwordConfirm = control.parent.get('passwordConfirm');
-
-  if (!password || !passwordConfirm) {
-    return null;
-  }
-
-  if (passwordConfirm.value === '') {
-    return null;
-  }
-
-  if (password.value === passwordConfirm.value) {
-    return null;
-  }
-
-  return { passwordsNotMatching: true };
-};
