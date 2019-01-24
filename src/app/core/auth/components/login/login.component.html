@@ -1,0 +1,57 @@
+
+<div id="login" fxLayout="column">
+
+  <div id="login-form-wrapper" fxLayout="column" fxLayoutAlign="center center">
+
+    <div id="login-form">
+
+      <div class="logo">
+        <img [src]="logo">
+      </div>
+
+      <h1 class="title">{{'zerofee-app.menu.login'| translate}}</h1>
+      <form name="loginForm" class="login-form">
+
+        <mat-form-field>
+          <input matInput placeholder="Enter your email" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" [formControl]="password">
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+        <div class="remember-forgot-password" fxLayout="row" fxLayout.xs="column"
+             fxLayoutAlign="space-between">
+          <mat-checkbox class="remember-me" aria-label="Remember Me">
+            Remember Me
+          </mat-checkbox>
+
+          <a class="forgot-password" [routerLink]="'/forgot-password'">
+            Forgot Password?
+          </a>
+        </div>
+
+        <button mat-raised-button color="accent" class="submit-button" (click)="onLoginClick()">{{'zerofee-app.menu.login'| translate}}</button>
+      </form>
+
+      <div class="separator">
+        <span class="text">OR</span>
+      </div>
+      <button mat-raised-button class="google">
+        Log in with Google
+      </button>
+
+      <button mat-raised-button class="facebook">
+        Log in with Facebook
+      </button>
+
+      <div class="register" fxLayout="column" fxLayoutAlign="center center">
+        <span class="text">Don't have an account?</span>
+        <a class="link" class="cerate-account"[routerLink]="'/register'">Create an account</a>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

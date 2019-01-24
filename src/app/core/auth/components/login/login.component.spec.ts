@@ -1,13 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoginComponent } from './login.component';
-import { MockStore, TestingModule } from '@testing/utils';
-import { ActionAuthLogin, CoreModule } from '@app/core';
+import { MockStore, TestingModule } from '../../../../../testing/utils';
+import { ActionAuthLogin, CoreModule } from '../../../index';
 import { By } from '@angular/platform-browser';
 import { State, Store } from '@ngrx/store';
 import {
   ActionAddUser,
   ActionSearchUsers
-} from '@app/modules/admin/users/reducer/users.actions';
+} from '../../../../modules/admin/users/reducer/users.actions';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -53,6 +53,6 @@ describe('LoginComponent', () => {
   it('should have h1 with "zerofee-app.menu.login"', () => {
     const bannerElement: HTMLElement = fixture.nativeElement;
     const h1 = bannerElement.querySelector('h1');
-    expect(h1.textContent).toEqual(' zerofee-app.menu.login ');
+    expect(h1.textContent).toEqual('zerofee-app.menu.login');
   });
 });

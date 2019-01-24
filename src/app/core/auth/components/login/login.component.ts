@@ -1,10 +1,16 @@
-import { Component, HostBinding, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  HostBinding,
+  OnDestroy,
+  OnInit,
+  ViewEncapsulation
+} from '@angular/core';
 import {
   ActionSettingsChangeAnimationsPageDisabled,
   selectSettings,
   SettingsState
-} from '../../../settings/index';
-import { ActionAuthLogin, AppState } from '../../../core/index';
+} from '../../../../settings/index';
+import { ActionAuthLogin, AppState } from '../../../index';
 import { select, Store } from '@ngrx/store';
 import browser from 'browser-detect';
 import { takeUntil } from 'rxjs/operators';
@@ -15,13 +21,14 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 @Component({
   selector: 'zerofee-app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit, OnDestroy {
   private unsubscribe$: Subject<void> = new Subject<void>();
   @HostBinding('class')
   componentCssClass;
-  logo = require('../../../../assets/logo.png');
+  logo = require('../../../../../assets/logo.png');
   hide = true;
   settings: SettingsState;
   email = new FormControl('', [Validators.required, Validators.email]);
@@ -38,8 +45,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     return this.email.hasError('required')
       ? 'You must enter a value'
       : this.email.hasError('email')
-        ? 'Not a valid email'
-        : '';
+      ? 'Not a valid email'
+      : '';
   }
   ngOnDestroy(): void {
     this.unsubscribe$.next();

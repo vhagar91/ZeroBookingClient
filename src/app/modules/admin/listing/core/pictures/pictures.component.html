@@ -16,18 +16,23 @@
   </div>
 
   <div fxLayout="row" fxLayout.xs="column">
-    <div class="grid">
-      <mat-card class="grid-item" *ngFor="let item of gallery ; let i = index">
-        <mat-card-header *ngIf="item.is_portrait">
-          <mat-card-title>Main Picture</mat-card-title>
-        </mat-card-header>
-        <img class="grid-image" mat-card-image  [src]="item.thumb"  alt="Photo of a">
-        <mat-card-actions>
-          <button mat-button *ngIf="!item.is_portrait" (click)="deletePicture(item.id)">Delete</button>
-          <button mat-button *ngIf="!item.is_portrait" (click)="makePortrait(item.id)" >Main</button>
-        </mat-card-actions>
-      </mat-card>
+    <div id="photos-videos" class="p-24">
+      <div class="period">
+
+
+        <div class="period-media" fxLayout="row wrap">
+          <div class="media" *ngFor="let media of gallery">
+            <img class="preview" [src]="media.thumb" title="ssdsd">
+            <div class="title">
+              <h3 *ngIf="media.is_portrait">Main Picture</h3>
+              <button mat-button *ngIf="!media.is_portrait" (click)="deletePicture(media.id)">Delete</button>
+              <button mat-button *ngIf="!media.is_portrait" (click)="makePortrait(media.id)" >Main</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
 

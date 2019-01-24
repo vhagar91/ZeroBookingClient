@@ -17,7 +17,11 @@
 @import 'app/app.component.scss-theme';
 @import 'app/shared/big-input/big-input.component.scss-theme';
 @import 'app/modules/zeroapp/about/about.component.scss-theme';
-
+@import 'app/core/auth/components/login/login.theme';
+@import 'app/core/auth/components/forgot-password/forgot-password.theme';
+@import 'app/core/auth/components/register/register.theme';
+@import 'app/core/auth/components/mail-confirm/mail-confirm.theme';
+@import 'app/core/auth/components/reset-password/reset-password.theme';
 @mixin custom-components-theme($theme) {
   @include zerofee-app-styles-reset-theme($theme);
   @include zerofee-app-app-component-theme($theme);
