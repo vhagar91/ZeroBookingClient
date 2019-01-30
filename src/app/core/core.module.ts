@@ -27,6 +27,7 @@ import { LoaderService } from '@app/core/loader/loader.service';
 import { CurrencyCustomPipe } from './pipes/currency.pipe';
 import { CurrencyService } from '@app/core/currency-exchange/currency.service';
 import { NotificationService } from '@app/core/notifications/notification.service';
+import { GoogleAnalyticsEffects } from '@app/core/google-analytics/google-analytics.effects';
 
 @NgModule({
   imports: [

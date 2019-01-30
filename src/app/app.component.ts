@@ -38,11 +38,6 @@ export class AppComponent implements OnInit, OnDestroy {
   private static isIEorEdgeOrSafari() {
     return ['ie', 'edge', 'safari'].includes(browser().name);
   }
-  private static trackPageView(event: NavigationEnd) {
-    // Google Analitics
-    // (<any>window).ga('set', 'page', event.urlAfterRedirects);
-    // (<any>window).ga('send', 'pageview');
-  }
   ngOnInit() {
     this.translate.setDefaultLang('en');
     this.subscribeToSettings();
@@ -59,9 +54,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.router.events.pipe(takeUntil(this.unsubscribe$)).subscribe(event => {
       if (event instanceof ActivationEnd) {
         this.seoService.setMetaTags(event.snapshot);
-      }
-      if (event instanceof NavigationEnd) {
-        AppComponent.trackPageView(event);
       }
     });
   }

@@ -13,9 +13,10 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { select, Store } from '@ngrx/store';
 import { map, takeUntil } from 'rxjs/operators';
 import { AppState } from '../../../core/index';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { User } from '@app/model/user';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
+
 import { SettingsState } from '@app/settings';
 
 @Component({
@@ -44,14 +45,14 @@ export class AdminComponent implements OnInit, OnDestroy, OnChanges {
   isAuthenticated: boolean;
 
   constructor(
-    private media: ObservableMedia,
+    private media: MediaObserver,
     private breakpointObserver: BreakpointObserver,
     public overlayContainer: OverlayContainer,
     private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
-    this.media.subscribe((mediaChange: MediaChange) => {
+    this.media.media$.subscribe((mediaChange: MediaChange) => {
       this.toggleView();
     });
     this.setTheme();
