@@ -1,16 +1,6 @@
 @import '../../../../../core/scss/fuse';
 
-zerofee-app-adduser {
-  @include media-breakpoint('xs') {
-    width: 100%;
-  }
-
-  @include media-breakpoint-up('xs') {
-    width: 400px;
-  }
-  .mat-dialog-content {
-    overflow: hidden !important;
-  }
+.contact-form-dialog {
   .mat-dialog-container {
     padding: 0;
 
@@ -23,6 +13,17 @@ zerofee-app-adduser {
       height: auto;
     }
   }
+  @include media-breakpoint('xs') {
+    width: 100%;
+  }
+
+  @include media-breakpoint-up('xs') {
+    width: 400px;
+  }
+  .mat-dialog-content {
+    overflow: hidden !important;
+  }
+
   .submit-button {
     width: 220px;
     margin: 1px auto;
@@ -37,5 +38,12 @@ zerofee-app-adduser {
     width: inherit;
     display: flex;
     flex-direction: column;
+  }
+  .m-0 {
+    margin: 0px !important;
+  }
+
+  .p-24 {
+    padding: 24px !important;
   }
 }

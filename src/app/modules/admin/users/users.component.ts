@@ -90,6 +90,7 @@ export class UsersComponent implements OnInit, OnDestroy {
   addNew() {
     const user = null;
     const dialogRef = this.dialog.open(AddUserComponent, {
+      panelClass: 'contact-form-dialog',
       data: { user: user }
     });
 

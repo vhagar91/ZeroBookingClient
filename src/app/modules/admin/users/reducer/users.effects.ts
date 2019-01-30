@@ -19,7 +19,6 @@ export class UsersEffects {
   returnUrl: string;
   constructor(
     private actions$: Actions<Action>,
-    private router: Router,
     private usersService: UsersService
   ) {}
   @Effect()
