@@ -153,17 +153,43 @@ mat-sidenav-container {
       margin-top: 56px !important;
     }
   }
+  .user-button,
+  .language-button,
+  .chat-panel-toggle-button,
+  .quick-panel-toggle-button {
+    min-width: auto;
+    height: 64px;
+  }
+  .avatar {
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 8px 0 0;
+    border-radius: 50%;
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+  }
+  span {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 mat-sidenav {
   width: 250px;
+  background-color: #3e4453 !important;
 
   .branding {
     height: 64px;
     padding: 8px 10px;
     font-size: 20px;
     font-weight: 500;
-
+    align-items: center;
+    display: flex;
+    flex-direction: row;
     img {
       height: 48px;
       margin: 2px 10px 0 0;
@@ -172,10 +198,22 @@ mat-sidenav {
     span {
       position: relative;
       top: 3px;
+      color: white;
     }
   }
 
   .mat-nav-list {
     padding-top: 0;
+  }
+  .mat-list-item {
+    color: white !important;
+  }
+}
+.logo {
+  display: flex;
+  align-items: center;
+
+  .logo-icon {
+    width: 38px;
   }
 }

@@ -75,7 +75,7 @@
 
 #colophon .widget-container li {
   margin-bottom: 10px;
-  padding-bottom: 0px;
+  padding-bottom: 0;
   border: none;
   vertical-align: top;
   line-height: 22px;
@@ -107,7 +107,7 @@
 .sub_footer_content {
   width: 100%;
   max-width: 1170px;
-  margin: 0px auto;
+  margin: 0 auto;
 }
 
 .subfooter_menu {
@@ -145,7 +145,7 @@
 }
 
 .social_sidebar_internal img {
-  margin: 0px 9px 9px 0px;
+  margin: 0 9px 9px 0;
   width: 40px;
 }
 
@@ -156,10 +156,9 @@
 #colophon .social_sidebar_internal a,
 #primary .social_sidebar_internal a {
   width: 45px;
-  height: 45px;
   padding: 10px 0px;
   color: #f0f0f0;
-  margin: 0px 10px 10px 0px;
+  margin: 0 10px 10px 0;
   text-align: center;
   display: inline-block;
   -webkit-transition: all 0.4s ease;
@@ -228,7 +227,7 @@
     float: none;
   }
   #footer-widget-area {
-    padding: 0 7px 0px;
+    padding: 0 7px 0;
   }
   #colophon {
     padding-top: 15px;

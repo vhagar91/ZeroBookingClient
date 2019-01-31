@@ -47,8 +47,8 @@ export const features: Feature[] = [
     show: false
   },
   {
-    name: 'Bootstrap',
-    version: env.versions.bootstrap,
+    name: 'Flex layout',
+    version: env.versions.flex,
     description: 'zerofee-app.features.bootstrap',
     github: 'https://github.com/twbs/bootstrap',
     documentation: 'https://getbootstrap.com/docs/4.0/layout/grid/',

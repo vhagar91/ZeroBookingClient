@@ -3,8 +3,6 @@
 @import 'styles-reset';
 
 @import '../node_modules/@angular/material/theming';
-@import '../node_modules/bootstrap/scss/bootstrap-reboot';
-@import '../node_modules/bootstrap/scss/bootstrap-grid';
 
 @include mat-core();
 
@@ -58,8 +56,8 @@ body {
   height: 100%;
 }
 body {
-  padding: 0px !important;
-  margin: 0px !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 body {
   margin: 0;

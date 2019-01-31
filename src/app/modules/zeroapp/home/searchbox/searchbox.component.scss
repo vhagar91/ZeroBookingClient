@@ -30,11 +30,21 @@
 .adv-2-wrapper {
   top: 65px;
   right: 0;
-  width: 335px;
   height: 330px;
   background: #fff;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
+}
+@media (max-width: 500px) {
+  .presentation-title {
+    font-size: 5em;
+  }
+  .adv-2-header {
+    width: 307px !important;
+  }
+  #infoi {
+    width: 284px !important;
+  }
 }
 #search_wrapper.type2 {
   left: 0;
@@ -53,9 +63,14 @@
 }
 #infoi {
   z-index: 10;
-  margin-left: 16px;
+  margin-left: 12px;
   margin-top: 7px;
 }
 .full {
   width: 100%;
+}
+#searcher {
+  button {
+    margin-left: 12px;
+  }
 }

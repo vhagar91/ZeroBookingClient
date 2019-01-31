@@ -1,14 +1,5 @@
 @import '../../../../styles-variables';
 
-.container {
-  margin-top: 20px;
-}
-
-.main-heading {
-  text-transform: uppercase;
-  margin: 0 0 20px 0;
-}
-
 mat-card {
   margin: 0 0 20px 0;
 
@@ -45,5 +36,28 @@ mat-card {
   a[mat-icon-button] {
     position: relative;
     left: 5px;
+  }
+}
+.courses {
+  width: 100%;
+  max-width: 1540px;
+  margin: 0 auto;
+
+  .no-courses {
+    font-size: 24px;
+    margin: 24px 0;
+    text-align: center;
+  }
+
+  .course {
+    padding: 16px;
+
+    &:hover {
+    }
+
+    .course-content {
+      min-height: 340px;
+      transition: box-shadow 150ms ease-in-out;
+    }
   }
 }

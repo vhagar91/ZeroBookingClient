@@ -1,14 +1,16 @@
-<div class="page-header section-dark" style="background-image: url('../../../../../assets/intro.jpg')">
+<div class="page-header section-dark"  style="background-image: url('../../../../../assets/intro.jpg')">
   <div class="filter"></div>
-  <div class="content-center row">
-    <div class="container col-md-6">
+  <div class="content-center" fxLayout="row" >
+    <div class="container" fxHide fxShow.gt-sm fxFlex="60" >
        <div class="title-brand">
         <h1 class="presentation-title">Travel the World</h1>
       </div>
 
       <h2 class="presentation-subtitle text-center">Discover your new favorite spaces.</h2>
     </div>
-    <zerofee-app-searchbox class="col-md-4 searcher " [ngClass]="routeAnimationsElements"></zerofee-app-searchbox>
+    <div fxFlex="" [ngClass]="routeAnimationsElements" >
+    <zerofee-app-searchbox class="searcher" ></zerofee-app-searchbox>
+    </div>
   </div>
 
   <div class="moving-clouds" style="background-image: url('../../../../../assets/images/clouds.png'); ">
