@@ -29,7 +29,8 @@
 
             <span routerLink="" class="branding spacer" fxHide fxShow.gt-sm>
               <img [src]="logo" />
-              {{ 'zerofee-app.title' | translate}}</span>
+              {{ 'zerofee-app.title' | translate}}
+            </span>
             <span fxHide fxShow.gt-sm>
               <button mat-button class="nav-button" *ngFor="let item of navigation" [routerLink]="[item.link]"
                       routerLinkActive="active">

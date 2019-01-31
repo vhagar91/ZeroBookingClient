@@ -37,18 +37,16 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     request = this.addTokenToRequest(request, this.authService.getToken());
     return next.handle(request).pipe(
-      tap(null, (err: HttpErrorResponse) => {
+      catchError(err => {
         if (err instanceof HttpErrorResponse) {
-          switch ((<HttpErrorResponse>err).status) {
-            case 401:
-              if (err.error.code === 'token_not_valid') {
-                return this.handle401Error(request, next);
-              } else {
-                return this.handleCustomError(err);
-              }
-
-            default:
+          if (err.status === 401) {
+            if (err.error.code === 'token_not_valid') {
+              return this.handle401Error(request, next);
+            } else {
               return this.handleCustomError(err);
+            }
+          } else {
+            return this.handleCustomError(err);
           }
         }
       })
@@ -116,5 +114,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   private handleCustomError(err) {
     const appErrorHandler = this.injector.get(ErrorHandler);
     appErrorHandler.handleError(err);
+    return throwError('backend comm error');
   }
 }
