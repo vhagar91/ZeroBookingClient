@@ -34,7 +34,7 @@ const customAnimation = animation(
   }
 );
 
-export const fuseAnimations = [
+export const systemAnimations = [
   trigger('animate', [
     transition('void => *', [useAnimation(customAnimation)])
   ]),
@@ -234,6 +234,25 @@ export const fuseAnimations = [
     ),
     transition('void => *', animate('300ms ease-out')),
     transition('* => void', animate('300ms ease-in'))
+  ]),
+
+  trigger('appearInOut', [
+    state(
+      'in',
+      style({
+        right: '15px',
+        bottom: '45px'
+      })
+    ),
+    state(
+      'out',
+      style({
+        bottom: '10px',
+        right: '-60px'
+      })
+    ),
+    transition('in => out', animate('0.5s ease-in-out')),
+    transition('out => in', animate('0.5s ease-in-out'))
   ]),
 
   // -----------------------------------------------------------------------------------------------------

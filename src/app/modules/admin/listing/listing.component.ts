@@ -7,13 +7,13 @@ import { select, Store } from '@ngrx/store';
 import { takeUntil } from 'rxjs/operators';
 import { MatPaginator } from '@angular/material';
 import { getListingListState, State } from '@app/modules/admin/admin.state';
-import { fuseAnimations } from '@app/core/animations';
+import { systemAnimations } from '@app/core/animations';
 
 @Component({
   selector: 'zerofee-app-listing',
   templateUrl: './listing.component.html',
   styleUrls: ['./listing.component.scss'],
-  animations: fuseAnimations
+  animations: systemAnimations
 })
 export class ListingComponent implements OnInit, OnDestroy {
   public showLoader = false;
