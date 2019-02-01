@@ -1,0 +1,27 @@
+.backtop {
+  background-color: #1a1a1a !important;
+  position: fixed;
+  bottom: 60px;
+  right: 21px;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  opacity: 0.7;
+  z-index: 102;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  mat-icon:hover,
+  mat-icon:focus {
+    color: #b881fc;
+    text-decoration: none;
+    outline: none;
+  }
+  .islive {
+    right: 15px;
+    bottom: 45px;
+  }
+  mat-icon {
+    color: #4285f4;
+  }
+}
