@@ -52,12 +52,14 @@
 .category_name {
   display: inline-block;
   font-weight: 400;
-  position: relative;
   color: #fff;
   font-size: 18px;
   text-align: left;
-  padding: 24px 15px 0;
+  padding: 23px 2px 0;
   width: 100%;
+  span {
+    font-size: 18px !important;
+  }
 }
 .property_listing a {
   text-decoration: none;
@@ -90,7 +92,7 @@
   display: inline-block;
   margin-bottom: 10px;
   position: absolute;
-  bottom: -16px;
+  bottom: -6px;
   top: auto;
   right: 26px;
 }

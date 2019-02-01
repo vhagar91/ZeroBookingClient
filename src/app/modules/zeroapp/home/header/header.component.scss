@@ -13,6 +13,8 @@
 }
 .container {
   margin-top: 76px;
+  padding-right: 150px;
+  margin-left: 20px;
 }
 .text-center {
   text-align: center !important;
@@ -39,7 +41,7 @@
   max-width: 730px;
   margin: 0 auto;
   position: relative;
-  text-align: center;
+  text-align: left;
   color: #fff;
   display: block;
 }
@@ -48,18 +50,22 @@ img {
   border-style: none;
 }
 .presentation-title {
-  font-size: 6em;
+  font-size: 4em;
   font-weight: 700;
   margin: 0;
   color: #fff;
-  background: linear-gradient(to bottom, #fff 35%, #4e6773 100%);
+  background: #ffffff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .presentation-subtitle {
-  font-size: 1.7em;
   color: #fff;
+  text-shadow: 1px 1px 3px rgba(68, 68, 68, 0.25);
+  font-size: 20px;
+  margin: 0 auto;
+  text-align: left;
+  padding-top: 16px;
 }
 .moving-clouds {
   position: absolute;
@@ -100,6 +106,7 @@ cloudLoop {
     margin-top: 3em;
   }
 }
+
 @media (width: 1024px) {
   .page-header.section-dark .content-center {
     z-index: 2;
@@ -111,9 +118,14 @@ cloudLoop {
     min-height: 69vh;
   }
 }
+@media (height: 1366px) {
+  .page-header {
+    min-height: 45vh;
+  }
+}
 @media (width: 1366px) {
   .page-header.section-dark .content-center {
     z-index: 2;
-    margin-top: 17em;
+    margin-top: 5em;
   }
 }

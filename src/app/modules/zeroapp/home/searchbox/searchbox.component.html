@@ -8,17 +8,17 @@
   </div>
   <div id='infoi'>
     <form id='searcher' class="mat-dialog-content" >
-      <p>
-        <zerofee-app-big-input placeholder="Location" [value]="searchLocation" (keyup)="onLocationChange($event.target.value)" ></zerofee-app-big-input>
+      <p style="margin-top: 15px;margin-bottom: 5px;">
+        <zerofee-app-big-input  placeholder="Location" [value]="searchLocation" (keyup)="onLocationChange($event.target.value)" ></zerofee-app-big-input>
       </p>
-      <p>
+      <p style="margin-top: 5px;   margin-bottom: 5px;">
         <zerofee-app-big-datepicker placeholder="From"  [value]="fromDate"  (notifyValue)="onDateChange($event)"></zerofee-app-big-datepicker>
+
+      <p style="margin-top: 5px;   margin-bottom: 5px;">
+        <zerofee-app-big-datepicker   placeholder="To" [value]="toDate" (notifyValue)=onDateToChange($event) ></zerofee-app-big-datepicker>
       </p>
-      <p>
-        <zerofee-app-big-datepicker  placeholder="To" [value]="toDate" (notifyValue)=onDateToChange($event) ></zerofee-app-big-datepicker>
-      </p>
-      <p>
-        <zerofee-app-big-input  placeholder="Guests" [value]="guests" (keyup)="onGuestsChange($event.target.value)"></zerofee-app-big-input>
+      <p style="margin-top: 5px;   margin-bottom: 5px;">
+        <zerofee-app-big-input  [icon]="'account_circle'"  placeholder="Guests" [value]="guests" (keyup)="onGuestsChange($event.target.value)"></zerofee-app-big-input>
       </p>
       <button mat-raised-button type="submit"  color="warn"  class="btn btn-primary full">SEARCH</button>
     </form>

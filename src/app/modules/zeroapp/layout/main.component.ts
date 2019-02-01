@@ -68,6 +68,7 @@ export class MainComponent implements OnInit, OnDestroy {
       this.componentRef.directiveRef.scrollToTop();
     }
   }
+
   private subscribeToRouterEvents() {
     this.router.events.pipe(takeUntil(this.unsubscribe$)).subscribe(event => {
       if (event instanceof NavigationEnd) {

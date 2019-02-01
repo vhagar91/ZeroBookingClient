@@ -15,5 +15,8 @@ export class BigInputComponent {
   @Input()
   disabled = false;
 
+  @Input()
+  icon = 'place';
+
   hasFocus = false;
 }

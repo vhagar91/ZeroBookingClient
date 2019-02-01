@@ -100,6 +100,7 @@ import {
   DropzoneModule
 } from 'ngx-dropzone-wrapper';
 import { environment } from '@env/environment';
+import { BackToTopComponent } from './back-to-top/back-to-top.component';
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address:
   url: environment.BaseUrl,
@@ -138,7 +139,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   declarations: [
     BigInputComponent,
     BigInputActionComponent,
-    BigDatepickerComponent
+    BigDatepickerComponent,
+    BackToTopComponent
   ],
   exports: [
     CommonModule,
@@ -173,6 +175,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     BigInputComponent,
     BigInputActionComponent,
     BigDatepickerComponent,
+    BackToTopComponent,
     DropzoneModule
   ],
   providers: [

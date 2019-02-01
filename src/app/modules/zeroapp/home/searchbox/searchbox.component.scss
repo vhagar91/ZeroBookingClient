@@ -14,12 +14,12 @@
   top: 0;
   right: 0;
   width: 335px;
-  height: 65px;
+  height: 45px;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   background-color: #b881fc;
   color: #fff;
-  font-size: 20px;
+  font-size: 25px;
   padding: 22px 0 0 30px;
   font-weight: 600;
 }
@@ -63,7 +63,7 @@
 }
 #infoi {
   z-index: 10;
-  margin-left: 12px;
+  margin-left: 30px;
   margin-top: 7px;
 }
 .full {
@@ -71,6 +71,17 @@
 }
 #searcher {
   button {
-    margin-left: 12px;
+    margin-top: 7px;
+    padding: 10px 15px;
+    color: #fff;
+    background-color: #4d5567;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    margin-bottom: 0;
+    border-radius: 2px;
+  }
+  .mat-ripple {
+    width: 100%;
   }
 }
