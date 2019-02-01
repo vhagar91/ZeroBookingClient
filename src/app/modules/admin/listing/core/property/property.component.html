@@ -5,52 +5,54 @@
   </div>
 
   <div fxLayout="row" fxLayout.xs="column">
-    <form *ngIf="generalData" [formGroup]="generalData" (ngSubmit)="onSubmitGeneral()" fxLayout="column" fxFlex="100" >
-      <div class="row">
 
-        <mat-form-field class="col-md-6" color="warn" appearance="outline" >
+    <form *ngIf="generalData" [formGroup]="generalData" (ngSubmit)="onSubmitGeneral()" class="mat-card mat-elevation-z4 p-24 mr-24" fxLayout="column" fxLayoutAlign="start"
+          fxFlex="1 0 auto" >
+      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" >
+
+        <mat-form-field class="ml-10" fxFlex="1 0 auto" color="warn" appearance="outline" >
           <mat-label>Public Name</mat-label>
           <input matInput placeholder="Placeholder" formControlName="publicName" >
           <mat-icon matSuffix>book</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="col-md-6" color="warn" appearance="outline">
+        <mat-form-field fxFlex="1 0 auto" color="warn" appearance="outline">
           <mat-label>NickName</mat-label>
           <input matInput placeholder="Placeholder" formControlName="nickname">
           <mat-icon matSuffix>bookmark</mat-icon>
         </mat-form-field>
 
       </div>
-      <div class="row">
+      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
 
-      <mat-form-field class="col-md-4" color="warn" appearance="outline" >
+      <mat-form-field fxFlex="" class="ml-10" color="warn" appearance="outline" >
         <mat-label>Accommodates</mat-label>
         <input type="number" min="1" matInput placeholder="Placeholder" formControlName="accommodates">
         <mat-icon matSuffix>accessibility_new</mat-icon>
       </mat-form-field>
 
-      <mat-form-field class="col-md-4" color="warn" appearance="outline">
+      <mat-form-field fxFlex="" class="ml-10" color="warn" appearance="outline">
         <mat-label>Bedrooms</mat-label>
         <input type="number" min="1" matInput placeholder="Placeholder" formControlName="bedrooms" >
         <mat-icon matSuffix>compare_arrows</mat-icon>
       </mat-form-field>
 
-      <mat-form-field class="col-md-4" color="warn" appearance="outline">
+      <mat-form-field fxFlex="" color="warn" appearance="outline">
         <mat-label>Beds</mat-label>
         <input type="number" min="1" matInput placeholder="Placeholder" formControlName="beds">
         <mat-icon matSuffix>airline_seat_individual_suite</mat-icon>
       </mat-form-field>
 
     </div>
-      <div class="row">
+      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
 
-        <mat-form-field class="col-md-6" color="warn" appearance="outline" >
+        <mat-form-field fxFlex="" class="ml-10" color="warn" appearance="outline" >
           <mat-label>Check In</mat-label>
           <input type="time" matInput placeholder="Placeholder" formControlName="checkInTime" >
           <mat-icon matSuffix>alarm_on</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="col-md-6" color="warn" appearance="outline">
+        <mat-form-field fxFlex="" color="warn" appearance="outline">
           <mat-label>Check Out</mat-label>
           <input type="time" matInput placeholder="Placeholder" formControlName="checkOutTime" >
           <mat-icon matSuffix>alarm_off</mat-icon>
@@ -58,9 +60,9 @@
 
 
       </div>
-      <div class="row">
+      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
 
-        <mat-form-field class="col-md-6" appearance="outline" >
+        <mat-form-field fxFlex="" class="ml-10" appearance="outline" >
           <mat-label>Property Type</mat-label>
           <mat-select placeholder="Select" formControlName="propertyType">
             <mat-option *ngFor="let type of propertyTypes" [value]="type.value">
@@ -69,7 +71,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="col-md-6"  appearance="outline">
+        <mat-form-field fxFlex=""  appearance="outline">
           <mat-label>Room Type</mat-label>
           <mat-select placeholder="Select" formControlName="roomType">
             <mat-option *ngFor="let type of roomsTypes" [value]="type.value">
@@ -96,17 +98,17 @@
     TERMS
   </div>
 
-  <div fxLayout="row" fxLayout.xs="column">
-    <form *ngIf="termsData" [formGroup]="termsData"  (ngSubmit)="onSubmitTerms()" fxLayout="column" fxFlex="100" >
-      <div class="row">
+  <div fxLayout="row"  fxLayout.sm="column" fxLayout.xs="column">
+    <form *ngIf="termsData" [formGroup]="termsData"  (ngSubmit)="onSubmitTerms()" class="mat-card mat-elevation-z4 p-24 mr-24" fxLayout="column" fxFlex="100" >
+      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
 
-        <mat-form-field class="col-md-6" color="warn" appearance="outline" >
+        <mat-form-field fxFlex="" class="ml-10" color="warn" appearance="outline" >
           <mat-label>Min Nights Stay</mat-label>
           <input matInput type="number" min="1" placeholder="Placeholder" formControlName="minNights">
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="col-md-6" color="warn" appearance="outline">
+        <mat-form-field fxFlex="" color="warn" appearance="outline">
           <mat-label>Max Nights Stay</mat-label>
           <input matInput type="number" min="1" placeholder="Placeholder" formControlName="maxNights">
           <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
@@ -129,10 +131,10 @@
   </div>
 
   <div fxLayout="row" fxLayout.xs="column">
-    <form *ngIf="descriptionData" [formGroup]="descriptionData" (ngSubmit)="onSubmitDescription()" fxLayout="column" fxFlex="100" >
-      <div class="row">
+    <form *ngIf="descriptionData" [formGroup]="descriptionData" (ngSubmit)="onSubmitDescription()" class="mat-card mat-elevation-z4 p-24 mr-24" fxLayout="column" fxFlex="100" >
+      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
 
-        <mat-form-field class="col" color="warn" appearance="outline" >
+        <mat-form-field fxFlex="" color="warn" appearance="outline" >
           <mat-label>Description</mat-label>
           <textarea matInput placeholder="Placeholder" formControlName="description"></textarea>
 

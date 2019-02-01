@@ -5,10 +5,10 @@
   </div>
 
   <div fxLayout="row" fxLayout.xs="column">
-    <form *ngIf="priceData" [formGroup]="priceData" (ngSubmit)="onSubmitPrices()" fxLayout="column" fxFlex="100" >
-      <div class="row">
+    <form *ngIf="priceData" [formGroup]="priceData"  class="mat-card mat-elevation-z4 p-24 mr-24" (ngSubmit)="onSubmitPrices()" fxLayout="column" fxFlex="100" >
+      <div fxLayout="row" fxLayout.sm="column" fxLayout.xs="column">
 
-        <mat-form-field class="col-md-6" appearance="outline" >
+        <mat-form-field class="ml-10" fxFlex="" appearance="outline" >
           <mat-label>Currency</mat-label>
           <mat-select placeholder="Select" formControlName="currency">
             <mat-option *ngFor="let cur of currencies" [value]="cur.id">
@@ -19,21 +19,21 @@
 
 
       </div>
-      <div class="row">
+      <div class="row" fxLayout.sm="column" fxLayout.xs="column">
 
-        <mat-form-field class="col-md-4" color="warn" appearance="outline" >
+        <mat-form-field fxFlex="" class="ml-10" color="warn" appearance="outline" >
           <mat-label>Base Price</mat-label>
           <input  matInput type="number" min="0" placeholder="Placeholder" formControlName="basePrice">
           <mat-icon matSuffix>attach_money</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="col-md-4" color="warn" appearance="outline">
+        <mat-form-field fxFlex="" class="ml-10" color="warn" appearance="outline">
           <mat-label>Extra Person Fee</mat-label>
           <input matInput type="number" min="0" placeholder="Placeholder" formControlName="extraPersonFee" >
           <mat-icon matSuffix>attach_money</mat-icon>
         </mat-form-field>
 
-        <mat-form-field class="col-md-4" color="warn" appearance="outline">
+        <mat-form-field fxFlex="" color="warn" appearance="outline">
           <mat-label>Breakfast</mat-label>
           <input  matInput type="number" min="0" placeholder="Placeholder" formControlName="breakfastFee">
           <mat-icon matSuffix>attach_money</mat-icon>

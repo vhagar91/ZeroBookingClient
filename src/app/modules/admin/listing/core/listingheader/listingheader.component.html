@@ -5,15 +5,18 @@
   </div>
   <div class="content ng-binding">
     <div class="pull-right">
-      <mat-chip  color="warn" selected="true" >
+      <mat-chip *ngIf="!listing?.isActive" color="warn" selected="true" >
        &nbsp; Inactive
+      </mat-chip>
+      <mat-chip *ngIf="listing?.isActive" color="primary" selected="true" >
+        &nbsp; Active
       </mat-chip>
     </div>
     <strong class="item-title ">
-      <mat-chip color="accent" selected>CH004</mat-chip>
-      Casa Cary y Lu00e1zaro
+      <mat-chip color="accent" selected>{{listing?.nickname}}</mat-chip>
+      {{listing?.publicName}}
     </strong>
     <mat-icon>place</mat-icon>
-    403 San Rafael, La Habana, Cuba
+    {{listing?.address.full}}
      </div>
 </mat-toolbar>
