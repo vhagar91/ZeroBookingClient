@@ -19,7 +19,8 @@ import {
   ActionSettingsPersist,
   ActionSettingsChangeLanguage,
   ActionSettingsChangeAnimationsPageDisabled,
-  ActionSettingsChangeCurrency
+  ActionSettingsChangeCurrency,
+  Language
 } from '@app/settings';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import { NavigationEnd, Router } from '@angular/router';
@@ -139,11 +140,14 @@ export class MainComponent implements OnInit, OnDestroy {
     this.store.dispatch(new ActionAuthLogout());
   }
 
-  onLanguageSelect({ value: language }) {
-    this.store.dispatch(new ActionSettingsChangeLanguage({ language }));
+  onLanguageSelect(language: Language) {
+    const payload = {
+      language: language
+    };
+    this.store.dispatch(new ActionSettingsChangeLanguage(payload));
     this.store.dispatch(new ActionSettingsPersist({ settings: this.settings }));
   }
-  onCurrencySelect({ value: currency }) {
+  onCurrencySelect(currency: string) {
     const payload = {
       from: currency,
       to: this.currencies

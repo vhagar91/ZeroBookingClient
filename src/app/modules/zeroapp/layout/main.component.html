@@ -68,20 +68,37 @@
               </button>
 
             </mat-menu>
-            <span  >
-          <mat-select style="width: 57px" [ngModel]="settings?.currency" (selectionChange)="onCurrencySelect($event)" >
-            <mat-option *ngFor="let c of currencies" [value]="c">
-              {{ c }}
-            </mat-option>
-          </mat-select>
-        </span>
-            <span >
-          <mat-select [ngModel]="settings?.language" (selectionChange)="onLanguageSelect($event)">
-            <mat-option *ngFor="let l of languages" [value]="l">
-              {{ l.toUpperCase() }}
-            </mat-option>
-          </mat-select>
-        </span>
+            <button mat-button [matMenuTriggerFor]="seetingsMenu"
+                    class="user-button">
+              <div fxLayout="row" fxLayoutAlign="center center">
+                <mat-icon>settings</mat-icon>
+                <mat-icon class="s-16" fxHide.xs>keyboard_arrow_down</mat-icon>
+              </div>
+            </button>
+
+            <mat-menu #seetingsMenu="matMenu" [overlapTrigger]="false">
+
+              <button mat-menu-item [matMenuTriggerFor]="subMenuLanguage">
+                <mat-icon>language</mat-icon>
+                <span>{{settings?.language | uppercase}}</span>
+              </button>
+
+              <button mat-menu-item [matMenuTriggerFor]="subMenuCurrency" >
+                <mat-icon>attach_money</mat-icon>
+                <span>{{settings?.currency}}</span>
+              </button>
+
+
+
+            </mat-menu>
+            <mat-menu #subMenuLanguage="matMenu">
+              <button mat-menu-item *ngFor="let l of languages" (click)="onLanguageSelect(l)">{{l.toUpperCase()}}</button>
+
+            </mat-menu>
+            <mat-menu #subMenuCurrency="matMenu">
+              <button mat-menu-item *ngFor="let c of currencies" (click)="onCurrencySelect(c)">{{c}}</button>
+            </mat-menu>
+
           </div>
         </div>
       </mat-toolbar>
