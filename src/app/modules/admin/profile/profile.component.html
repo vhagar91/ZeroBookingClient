@@ -14,50 +14,50 @@
         <h1 class="mat-headline center-align" >{{profile.first_name}} {{profile.last_name}}</h1>
         <div class="mat-subheading-1 center-align" >
           <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" fxLayout="column" fxFlex="100" >
-          <div class="row">
+          <div fxLayout="row">
 
-              <mat-form-field  class="col-md-6">
+              <mat-form-field  fxFlex="" class="col-md-6">
                 <input matInput placeholder="Username" formControlName="username" >
               </mat-form-field>
 
 
-              <mat-form-field class="col-md-6" >
+              <mat-form-field fxFlex="" class="col-md-6" >
                 <input matInput placeholder="Email address" type="email" formControlName="email">
               </mat-form-field>
 
           </div>
-          <div class="row">
+          <div fxLayout="row">
 
-              <mat-form-field class="col-md-6" >
+              <mat-form-field fxFlex="" class="col-md-6" >
                 <input matInput placeholder="Fist Name" type="text" formControlName="first_name">
               </mat-form-field>
 
 
-              <mat-form-field class="col-md-6" >
+              <mat-form-field fxFlex="" class="col-md-6" >
                 <input matInput placeholder="Last Name" type="text" formControlName="last_name">
               </mat-form-field>
 
           </div>
-            <div class="row">
+            <div fxLayout="row">
 
-              <mat-form-field class="col">
+              <mat-form-field fxFlex="" class="col">
                 <input matInput placeholder="Adress" type="text" formControlName="address">
               </mat-form-field>
             </div>
 
-          <div class="row">
+          <div fxLayout="row">
 
-              <mat-form-field class="col-md-4" >
+              <mat-form-field fxFlex="" class="col-md-4" >
                 <input matInput placeholder="City" type="text" formControlName="city">
               </mat-form-field>
 
 
-              <mat-form-field class="col-md-4" >
+              <mat-form-field fxFlex="" class="col-md-4" >
                 <input matInput placeholder="Country" type="text"formControlName="country" >
               </mat-form-field>
 
 
-              <mat-form-field  class="dummy col-md-4">
+              <mat-form-field fxFlex="" class="dummy col-md-4">
                 <mat-select placeholder="Gender" formControlName="gender">
                   <mat-option value="M">Male</mat-option>
                   <mat-option value="F">Female</mat-option>
@@ -68,7 +68,7 @@
 
           </div>
 
-            <div class="row">
+            <div fxLayout="row">
 
               <mat-form-field  class="col">
                 <textarea matInput placeholder="About Me"  formControlName="about_me"></textarea>
