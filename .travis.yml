@@ -13,7 +13,6 @@ cache:
   - $HOME/.npm
 install:
   - npm i -g npm@6.0.1
-  - npm install
   - npm ci
 before_script:
   - npm install -g firebase-tools
