@@ -63,7 +63,6 @@
     "@ngrx/router-store": "^7.2.0",
     "@ngrx/store": "^7.2.0",
     "@ngrx/store-devtools": "^7.2.0",
-    "@ngx-gallery/core": "^4.0.1",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "browser-detect": "^0.2.28",
