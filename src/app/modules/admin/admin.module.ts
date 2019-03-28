@@ -30,7 +30,6 @@ import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarModule
 } from 'ngx-perfect-scrollbar';
-import { GALLERY_CONFIG } from '@ngx-gallery/core';
 import { DEFAULT_PERFECT_SCROLLBAR_CONFIG } from '@app/core/app.config';
 import { ProfileComponent } from '@app/modules/admin/profile/profile.component';
 import { ProfileEffects } from '@app/modules/admin/profile/reducer/profile.effects';
@@ -54,7 +53,6 @@ import { MapComponent } from './listing/core/map/map.component';
 import { CalendarComponent } from './listing/core/calendar/calendar.component';
 import { ListingEffects } from '@app/modules/admin/listing/reducer/listing.effects';
 import { ListingsService } from '@app/modules/admin/listing/service/listings.service';
-import { GalleryModule } from '@ngx-gallery/core';
 import { AddpicturesComponent } from './listing/core/addpictures/addpictures.component';
 
 @NgModule({
@@ -76,8 +74,6 @@ import { AddpicturesComponent } from './listing/core/addpictures/addpictures.com
     SharedModule,
     MatExpansionModule,
 
-    // Galery
-    GalleryModule,
     // app
     StaticRoutingModule,
     // store
@@ -93,14 +89,7 @@ import { AddpicturesComponent } from './listing/core/addpictures/addpictures.com
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
     },
     ProfileService,
-    ListingsService,
-    {
-      provide: GALLERY_CONFIG,
-      useValue: {
-        dots: true,
-        imageSize: 'cover'
-      }
-    }
+    ListingsService
   ],
   entryComponents: [AddUserComponent, FilterComponent, AddpicturesComponent],
   declarations: [

@@ -22,7 +22,10 @@ export class PricesComponent implements OnInit {
     this.currencies = [{ id: 1, name: 'Euro', code: 'EUR' }];
   }
   onSubmitPrices() {
-    const updatedData = this.priceData.value;
+    let updatedData = {};
+    if (this.priceData) {
+      updatedData = this.priceData.value;
+    }
     const payload = {
       pk: this.listingId,
       data: updatedData
