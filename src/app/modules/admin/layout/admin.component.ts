@@ -52,7 +52,7 @@ export class AdminComponent implements OnInit, OnDestroy, OnChanges {
   ) {}
 
   ngOnInit(): void {
-    this.media.media$.subscribe((mediaChange: MediaChange) => {
+    this.media.asObservable().subscribe(mediaChange => {
       this.toggleView();
     });
     this.setTheme();
