@@ -22,7 +22,6 @@ import {
 import { CustomSerializer } from './router/custom-serializer';
 import { AuthService } from '@app/core/auth/auth.service';
 import { Error } from 'tslint/lib/error';
-import { BreadcrumbComponent } from '../admin/breadcrumb/breadcrumb.component';
 import { LoaderService } from '@app/core/loader/loader.service';
 import { CurrencyCustomPipe } from './pipes/currency.pipe';
 import { CurrencyService } from '@app/core/currency-exchange/currency.service';
@@ -38,7 +37,7 @@ import { GoogleAnalyticsEffects } from '@app/core/google-analytics/google-analyt
     // ngrx
     StoreModule.forRoot(reducers, { metaReducers }),
     StoreRouterConnectingModule.forRoot(),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, GoogleAnalyticsEffects]),
     environment.production
       ? []
       : StoreDevtoolsModule.instrument({
