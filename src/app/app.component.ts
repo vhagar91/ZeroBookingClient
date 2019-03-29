@@ -46,8 +46,10 @@ export class AppComponent implements OnInit, OnDestroy {
     this.storageService.testLocalStorage();
   }
   ngOnDestroy(): void {
-    this.unsubscribe$.next();
-    this.unsubscribe$.complete();
+    if (this.unsubscribe$) {
+      this.unsubscribe$.next();
+      this.unsubscribe$.complete();
+    }
   }
 
   private subscribeToRouterEvents() {

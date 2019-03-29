@@ -5,7 +5,7 @@
   "zerofee-app.header.github": "Github Repotitár Projektu",
   "zerofee-app.footer.changelog": "Zobraziť list zmien",
   "zerofee-app.menu.about": "Domov",
-  "zerofee-app.menu.home": "",
+  "zerofee-app.menu.home": "Domov",
   "zerofee-app.menu.features": "Vlastnosti",
   "zerofee-app.menu.examples": "Príklady",
   "zerofee-app.menu.settings": "Nastavenia",
@@ -73,5 +73,5 @@
   "zerofee-app.new.main.picture": "Hlavný obrázok",
   "zerofee-app.new.picture": "Nový obrázok",
   "zerofee-app.features.components": "súčasti",
-  "zerofee-app.listings": ""
+  "zerofee-app.listings": "výpisy"
 }

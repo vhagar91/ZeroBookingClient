@@ -5,7 +5,7 @@
   "zerofee-app.header.github": "Dépot Github",
   "zerofee-app.footer.changelog": "Afficher le journal des changements",
   "zerofee-app.menu.about": "À propos",
-  "zerofee-app.menu.home": "",
+  "zerofee-app.menu.home": "Accueil",
   "zerofee-app.menu.features": "Fonctionnalités",
   "zerofee-app.menu.examples": "Exemples",
   "zerofee-app.menu.settings": "Paramètres",
@@ -74,5 +74,5 @@
   "zerofee-app.new.main.picture": "Image principale",
   "zerofee-app.new.picture": "Nouvelle photo",
   "zerofee-app.features.components": "Composants",
-  "zerofee-app.listings": ""
+  "zerofee-app.listings": "Inscriptions"
 }
