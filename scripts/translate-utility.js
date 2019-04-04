@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const deepmerge = require('deepmerge');
 
-const translateText = (text, sourceLang, targetLang) => {
+const translateText = (text, sourceLang, targetLang)  => {
   if (!text) return Promise.resolve('');
 
   const url = "https://translate.googleapis.com/translate_a/single";
